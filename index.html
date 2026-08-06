@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KesherOS — מערכת ההפעלה הקהילתית</title>
+  <meta name="description" content="פלטפורמת SaaS לניהול קיבוצים, מושבים ויישובים קהילתיים. אלפון, מסמכים, הצבעות, אירועים, חירום — הכל במקום אחד.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ─── Header ─── -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-lockup" aria-label="KesherOS">
+        <svg class="logo-mark" width="40" height="40" viewBox="0 0 512 512" aria-hidden="true">
+          <defs>
+            <radialGradient id="kBg" cx=".26" cy=".2" r=".95">
+              <stop offset="0" stop-color="#2F578A"/><stop offset=".45" stop-color="#14294A"/><stop offset="1" stop-color="#050C16"/>
+            </radialGradient>
+            <linearGradient id="kLit" x1="0" y1="0" x2=".8" y2="1">
+              <stop offset="0" stop-color="#F7D68C"/><stop offset="1" stop-color="#DCAC48"/>
+            </linearGradient>
+            <linearGradient id="kMid" x1="0" y1="0" x2=".8" y2="1">
+              <stop offset="0" stop-color="#D3A13B"/><stop offset="1" stop-color="#AE821F"/>
+            </linearGradient>
+            <linearGradient id="kShade" x1="0" y1="0" x2=".7" y2="1">
+              <stop offset="0" stop-color="#9B7220"/><stop offset="1" stop-color="#6B4E12"/>
+            </linearGradient>
+            <linearGradient id="kDeep" x1="0" y1="0" x2=".5" y2="1">
+              <stop offset="0" stop-color="#7A5817"/><stop offset="1" stop-color="#4A340B"/>
+            </linearGradient>
+          </defs>
+          <rect width="512" height="512" rx="112" fill="url(#kBg)"/>
+          <g transform="translate(26.4 4.3) scale(.86)">
+            <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="url(#kDeep)"/>
+            <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="url(#kMid)"/>
+            <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="url(#kShade)"/>
+            <path d="M104 116h304l-32 46H104Z" fill="url(#kLit)"/>
+          </g>
+        </svg>
+        <span class="logo-text"><span class="logo-kesher">Kesher</span><span class="logo-os">OS</span></span>
+      </div>
+      <nav class="header-nav" aria-label="ניווט ראשי">
+        <a href="#features">יכולות</a>
+        <a href="#pricing">תמחור</a>
+        <a href="#contact" class="nav-cta">צרו קשר</a>
+      </nav>
+      <button class="menu-toggle" aria-label="תפריט" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>מערכת ההפעלה<br><em>של הקהילה</em></h1>
+      <p class="hero-sub">פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים קהילתיים.<br>אלפון, מסמכים, הצבעות, אירועים, חירום — הכל במקום אחד.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">צרו קשר</a>
+        <a href="#features" class="btn btn-outline">גלו עוד</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>15</strong><span>שפות</span></div>
+        <div class="stat"><strong>9</strong><span>מודולים</span></div>
+        <div class="stat"><strong>5,000+</strong><span>בדיקות אוטומטיות</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Problem ─── -->
+  <section class="problem">
+    <div class="container">
+      <h2>הבעיה שאנחנו פותרים</h2>
+      <p class="section-lead">קהילות כפריות מנהלות את חייהן באמצעות כלים מפוצלים: אקסלים, וורדים, תיקיות ענן והודעות מפוזרות. מנהל קהילה ממוצע מבזבז 15-20 שעות שבועיות על ניהול מידע ידני.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">📋</div>
+          <h3>מידע מפוצל</h3>
+          <p>רשימות באקסל, פרוטוקולים בוורד, הודעות בווטסאפ — כל מידע במקום אחר</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🚨</div>
+          <h3>חירום ללא כלים</h3>
+          <p>אין כלי לאתר כל תושב תוך דקות. אחרי אוקטובר 2023 — זה כבר לא תיאורטי</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🗳️</div>
+          <h3>הצבעות ידניות</h3>
+          <p>אסיפות כלליות ללא שקיפות, תיעוד או אימות — הכל על הנייר</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">🌐</div>
+          <h3>מחסום שפה</h3>
+          <p>עובדים זרים, קהילות ערביות ורוסיות — ללא פתרון שפה הולם</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Features ─── -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>שלוש קבוצות, מערכת אחת</h2>
+      <p class="section-lead">כל מודול עומד בפני עצמו, אך ביחד הם מערכת ניהול קהילתית מלאה.</p>
+      <div class="features-grid">
+
+        <div class="feature-group feature-records">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="32" height="36" rx="4"/><line x1="16" y1="16" x2="32" y2="16"/><line x1="16" y1="24" x2="28" y2="24"/><line x1="16" y1="32" x2="24" y2="32"/></svg>
+          </div>
+          <h3>Records — רשומות</h3>
+          <ul>
+            <li><strong>אלפון ומשקי בית</strong> — פרופילים, משפחות, חיפוש</li>
+            <li><strong>מסמכים ותקנונים</strong> — גרסאות, הרשאות, תפוגה</li>
+            <li><strong>פרוטוקולים</strong> — ארכיון החלטות וחיפוש</li>
+          </ul>
+        </div>
+
+        <div class="feature-group feature-connect">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 36V12a6 6 0 0 1 6-6h24a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H14l-8 8Z"/><circle cx="16" cy="20" r="2" fill="currentColor"/><circle cx="24" cy="20" r="2" fill="currentColor"/><circle cx="32" cy="20" r="2" fill="currentColor"/></svg>
+          </div>
+          <h3>Connect — קשר</h3>
+          <ul>
+            <li><strong>לוח מודעות</strong> — הודעות, עדכונים, ניוזלטר</li>
+            <li><strong>אירועים</strong> — לוח שנה, רישום, תזכורות</li>
+            <li><strong>חירום</strong> — Fan-out SMS/אימייל תוך שניות</li>
+          </ul>
+        </div>
+
+        <div class="feature-group feature-govern">
+          <div class="feature-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4L42 14v10c0 12-8 20-18 24C14 44 6 36 6 24V14Z"/><polyline points="16 24 22 30 34 18"/></svg>
+          </div>
+          <h3>Govern — ממשל</h3>
+          <ul>
+            <li><strong>הצבעות וסקרים</strong> — אנונימיות, אימות, ארכיון</li>
+            <li><strong>ועדות</strong> — חברים, פגישות, מעקב משימות</li>
+            <li><strong>קריאות שירות</strong> — בקשות, ניתוב, SLA</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Languages ─── -->
+  <section class="languages">
+    <div class="container">
+      <h2>15 שפות — כולל מה שאחרים לא מכסים</h2>
+      <p class="section-lead">עברית, ערבית, רוסית, אנגלית, אמהרית, אוקראינית, ספרדית, צרפתית, גרמנית, איטלקית, פורטוגלית — ועוד <strong>הינדי, סינהלית, תאית וסינית</strong> לעובדים הזרים בקהילות.</p>
+      <p class="lang-note">יישוב שמפעיל התראת פינוי חירום <strong>חייב</strong> להגיע גם אליהם. זהו פער בטיחותי, לא רק נוחות.</p>
+    </div>
+  </section>
+
+  <!-- ─── Pricing ─── -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2>תמחור</h2>
+      <p class="section-lead">מנוי חודשי, ללא התחייבות. פחות מ-₪1 לחבר קהילה.</p>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <h3>Kesher Start</h3>
+          <div class="price">₪590<span>/חודש</span></div>
+          <p class="price-for">עד 150 משפחות</p>
+          <ul>
+            <li>מודולי Records בסיסיים</li>
+            <li>אלפון ומשקי בית</li>
+            <li>מסמכים ופרוטוקולים</li>
+            <li>תמיכה במייל</li>
+          </ul>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-badge">פופולרי</div>
+          <h3>Kesher Community</h3>
+          <div class="price">₪1,190<span>/חודש</span></div>
+          <p class="price-for">עד 400 משפחות</p>
+          <ul>
+            <li>כל המודולים</li>
+            <li>הצבעות וסקרים</li>
+            <li>אירועים ולוח שנה</li>
+            <li>התראות חירום</li>
+            <li>תמיכה בצ׳אט</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <h3>Kesher Professional</h3>
+          <div class="price">₪2,190<span>/חודש</span></div>
+          <p class="price-for">עד 800 משפחות</p>
+          <ul>
+            <li>הכל ב-Community</li>
+            <li>חיפוש AI סמנטי</li>
+            <li>דוחות BI מתקדמים</li>
+            <li>אוטומציות</li>
+            <li>תמיכה ייעודית</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <h3>Kesher District</h3>
+          <div class="price">₪4,500+<span>/חודש</span></div>
+          <p class="price-for">ללא הגבלה</p>
+          <ul>
+            <li>ריבוי יישובים</li>
+            <li>White-label</li>
+            <li>API וחיבורים</li>
+            <li>SLA מותאם</li>
+            <li>מנהל לקוח ייעודי</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact" class="contact">
+    <div class="container contact-inner">
+      <h2>רוצים לשמוע עוד?</h2>
+      <p>נשמח לשוחח ולהתאים את הפתרון לקהילה שלכם.</p>
+      <a href="mailto:hello@kesher.app" class="btn btn-primary btn-lg">hello@kesher.app</a>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text"><span class="logo-kesher">Kesher</span><span class="logo-os">OS</span></span>
+        <p>מערכת ההפעלה הקהילתית</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hello@kesher.app">hello@kesher.app</a>
+      </div>
+      <p class="footer-copy">© 2026 KesherOS. כל הזכויות שמורות.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.header-nav');
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('open', !open);
+    });
+    // Close on link click
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+    }));
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>

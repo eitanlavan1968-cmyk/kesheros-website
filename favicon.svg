@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<!-- KesherOS mark, flat: 16-48px, print, single-colour. Background stays solid on purpose -->
+  <rect width="512" height="512" rx="112" fill="#0E2340"/>
+  <g transform="translate(26.4 4.3) scale(.86)">
+    <path d="M104 116h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="#C4922A"/>
+  </g>
+</svg>
