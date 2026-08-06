@@ -1,0 +1,32 @@
+name: Deploy to Cloudflare Pages
+
+# Auto-deploy the site to the existing (direct-upload) Cloudflare Pages project
+# on every push to master. Needs two repo secrets:
+#   CLOUDFLARE_API_TOKEN  — a Cloudflare token with "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID — the account id (set for you)
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}   # allow manual runs from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Stage only the site files — keep .git / .github out of the deployment.
+      - name: Stage site files
+        run: |
+          mkdir -p dist
+          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=kesheros-website --branch=master
