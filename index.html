@@ -21,7 +21,7 @@
   <meta property="og:title" content="KesherOS — מערכת ההפעלה הקהילתית">
   <meta property="og:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי, ניהול חירום.">
   <meta property="og:locale" content="he_IL">
-  <meta property="og:image" content="https://kesheros.co.il/og-image.svg">
+  <meta property="og:image" content="https://kesheros.co.il/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KesherOS — מערכת ההפעלה הקהילתית">
   <meta name="twitter:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי.">
-  <meta name="twitter:image" content="https://kesheros.co.il/og-image.svg">
+  <meta name="twitter:image" content="https://kesheros.co.il/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -84,8 +84,8 @@
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-content,.hero-visual{animation:none}}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807f" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807f"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807g" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807g"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -98,7 +98,7 @@
     "operatingSystem": "Web",
     "description": "Community Operating System — platform for managing kibbutzim, moshavim, and community settlements. 21 modules, 15 languages, AI-powered search, emergency management.",
     "inLanguage": "he",
-    "image": "https://kesheros.co.il/og-image.svg",
+    "image": "https://kesheros.co.il/og-image.png",
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "ILS",
@@ -1956,6 +1956,11 @@
     </div>
   </footer>
 
+  <!-- Back to top -->
+  <button class="btt-fab" aria-label="חזרה למעלה" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
   <!-- WhatsApp FAB -->
   <a href="https://wa.me/972528296824?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20KesherOS"
      class="wa-fab" target="_blank" rel="noopener" aria-label="שלחו הודעת WhatsApp">
@@ -1968,7 +1973,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807d" defer></script>
+  <script src="script.js?v=20260807g" defer></script>
   <script>
   (function(){
     var KEY='_ko_gate';
@@ -1999,6 +2004,8 @@
     var form=document.getElementById('contact-form');
     var thanks=document.getElementById('cf-thanks');
     if(!form||!thanks)return;
+    var submitBtn=form.querySelector('.cf-submit');
+    var btnText=submitBtn.textContent;
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var name=document.getElementById('cf-name').value.trim();
@@ -2015,14 +2022,49 @@
       var emailEl=document.getElementById('cf-email');
       if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;}
       if(bad)return;
-      // Send via mailto
-      var subject=encodeURIComponent('פנייה מאתר KesherOS — '+community);
-      var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
-      window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subject+'&body='+body,'_blank');
-      // Show thank-you
-      document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
-      form.style.display='none';
-      thanks.style.display='block';
+      // Submit via Web3Forms API
+      submitBtn.disabled=true;
+      submitBtn.textContent='שולח…';
+      var data={
+        access_key:'YOUR_WEB3FORMS_KEY',
+        subject:'פנייה מאתר KesherOS — '+community,
+        from_name:name,
+        name:name,
+        email:email,
+        phone:phone||'לא צוין',
+        community:community,
+        message:msg||'(ללא הודעה)'
+      };
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+      }).then(function(r){return r.json();}).then(function(res){
+        if(res.success){
+          document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
+          form.style.display='none';
+          thanks.style.display='block';
+        } else {
+          // Fallback to mailto
+          var subj=encodeURIComponent('פנייה מאתר KesherOS — '+community);
+          var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
+          window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+body,'_blank');
+          document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
+          form.style.display='none';
+          thanks.style.display='block';
+        }
+      }).catch(function(){
+        // Network error — fallback to mailto
+        var subj=encodeURIComponent('פנייה מאתר KesherOS — '+community);
+        var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
+        window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+body,'_blank');
+        document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
+        form.style.display='none';
+        thanks.style.display='block';
+      }).finally(function(){
+        submitBtn.disabled=false;
+        submitBtn.textContent=btnText;
+      });
     });
     // Reset button
     thanks.querySelector('.cf-reset').addEventListener('click',function(){

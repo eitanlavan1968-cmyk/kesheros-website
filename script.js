@@ -167,6 +167,20 @@
     activePanel.querySelectorAll('[data-demo-count]').forEach(animateDemoCounter);
   }
 
+  /* ─── Back-to-top FAB ─── */
+  var bttBtn = document.querySelector('.btt-fab');
+  if (bttBtn) {
+    var bttObserver = new IntersectionObserver(function (entries) {
+      // Show button when hero is NOT visible (scrolled past it)
+      bttBtn.classList.toggle('visible', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    var heroSection = document.querySelector('.hero');
+    if (heroSection) bttObserver.observe(heroSection);
+    bttBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* ─── Smooth scroll for anchor links ─── */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
