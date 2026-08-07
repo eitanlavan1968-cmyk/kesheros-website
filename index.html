@@ -2022,42 +2022,38 @@
       var emailEl=document.getElementById('cf-email');
       if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;}
       if(bad)return;
-      // Submit via Web3Forms API
+      // Submit via FormSubmit API (no signup needed)
       submitBtn.disabled=true;
       submitBtn.textContent='שולח…';
-      var data={
-        access_key:'YOUR_WEB3FORMS_KEY',
-        subject:'פנייה מאתר KesherOS — '+community,
-        from_name:name,
-        name:name,
-        email:email,
-        phone:phone||'לא צוין',
-        community:community,
-        message:msg||'(ללא הודעה)'
-      };
-      fetch('https://api.web3forms.com/submit',{
+      var formData=new FormData();
+      formData.append('name',name);
+      formData.append('email',email);
+      formData.append('phone',phone||'לא צוין');
+      formData.append('community',community);
+      formData.append('message',msg||'(ללא הודעה)');
+      formData.append('_subject','פנייה מאתר KesherOS — '+community);
+      formData.append('_captcha','false');
+      formData.append('_template','table');
+      fetch('https://formsubmit.co/ajax/eitan.lavan.1968@gmail.com',{
         method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(data)
+        body:formData
       }).then(function(r){return r.json();}).then(function(res){
-        if(res.success){
+        if(res.success==='true'||res.success===true){
           document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
           form.style.display='none';
           thanks.style.display='block';
         } else {
-          // Fallback to mailto
           var subj=encodeURIComponent('פנייה מאתר KesherOS — '+community);
-          var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
-          window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+body,'_blank');
+          var bd=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
+          window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+bd,'_blank');
           document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
           form.style.display='none';
           thanks.style.display='block';
         }
       }).catch(function(){
-        // Network error — fallback to mailto
         var subj=encodeURIComponent('פנייה מאתר KesherOS — '+community);
-        var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
-        window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+body,'_blank');
+        var bd=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
+        window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subj+'&body='+bd,'_blank');
         document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
         form.style.display='none';
         thanks.style.display='block';
