@@ -196,7 +196,17 @@ img, svg { display: block; max-width: 100%; }
 :root[data-theme="light"] .site-header[data-scrolled] .logo-kesher { color: var(--navy); }
 
 .header-nav { display: flex; align-items: center; gap: 28px; font-size: 15px; }
-.header-nav a { color: var(--text-on-dark); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+.header-nav a {
+  color: var(--text-on-dark); font-weight: 500; text-decoration: none;
+  transition: color 0.2s; position: relative;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--gold); border-radius: 1px;
+  transform: scaleX(0); transition: transform 0.25s ease;
+}
+.header-nav a:hover::after,
+.header-nav a.active::after { transform: scaleX(1); }
 .site-header[data-scrolled] .header-nav a { color: var(--text); }
 .header-nav a:hover { color: var(--gold); text-decoration: none; }
 .header-nav a.active { color: var(--gold); }
@@ -2173,7 +2183,14 @@ img, svg { display: block; max-width: 100%; }
 .contact-form input.cf-invalid,
 .contact-form textarea.cf-invalid { border-color: #e74c3c; box-shadow: 0 0 0 3px rgba(231,76,60,0.2); }
 .contact-form textarea { resize: vertical; min-height: 80px; }
-.cf-submit { width: 100%; margin-top: 8px; transition: background 0.3s; }
+.cf-submit { width: 100%; margin-top: 8px; transition: background 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.cf-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+.cf-spinner {
+  display: inline-block; width: 16px; height: 16px;
+  border: 2px solid rgba(14,35,64,0.3); border-top-color: var(--navy);
+  border-radius: 50%; animation: cf-spin .6s linear infinite;
+}
+@keyframes cf-spin { to { transform: rotate(360deg); } }
 .cf-alt { font-size: 0.82rem; color: var(--text-on-dark); opacity: 0.6; margin-top: 14px; text-align: center; }
 .cf-alt a { color: var(--gold-light); text-decoration: underline; }
 @media (max-width: 500px) {

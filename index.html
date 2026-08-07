@@ -102,8 +102,8 @@
   *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807r" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807r"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807s" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807s"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -2073,7 +2073,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807r" defer></script>
+  <script src="script.js?v=20260807s" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){
@@ -2137,7 +2137,7 @@
       if(bad){if(firstBad)firstBad.focus();return;}
       // Submit via Web3Forms API
       submitBtn.disabled=true;
-      submitBtn.textContent='שולח…';
+      submitBtn.innerHTML='<span class="cf-spinner"></span> שולח…';
       var data={
         access_key:'b715a94d-d99b-437b-9dd8-43ede19e33a3',
         subject:'פנייה מאתר KesherOS — '+community,
@@ -2174,7 +2174,7 @@
         thanks.style.display='block';
       }).finally(function(){
         submitBtn.disabled=false;
-        submitBtn.textContent=btnText;
+        submitBtn.innerHTML=btnText;
       });
     });
     // Clear red border on input
