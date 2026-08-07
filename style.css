@@ -201,7 +201,7 @@ img, svg { display: block; max-width: 100%; }
 .header-nav a:hover { color: var(--gold); text-decoration: none; }
 .header-nav a.active { color: var(--gold); }
 .nav-cta {
-  background: var(--gold); color: #FFF !important; padding: 9px 22px;
+  background: var(--gold); color: var(--navy) !important; padding: 9px 22px;
   border-radius: var(--radius-sm); font-weight: 600;
 }
 .nav-cta:hover { background: var(--gold-light); }
@@ -292,7 +292,7 @@ img, svg { display: block; max-width: 100%; }
   cursor: pointer; text-decoration: none !important; border: none;
   font-family: var(--font-body);
 }
-.btn-primary { background: var(--gold); color: #FFF; }
+.btn-primary { background: var(--gold); color: var(--navy); }
 .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
 .btn-outline {
   background: transparent; color: var(--text-on-dark);
@@ -460,16 +460,16 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--border);
   box-shadow: var(--card-shadow);
 }
-.ba-before { border-top: 3px solid #c0392b; }
-.ba-after  { border-top: 3px solid #27ae60; }
+.ba-before { border-top: 3px solid var(--danger); }
+.ba-after  { border-top: 3px solid var(--success); }
 .ba-label {
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 20px;
   text-align: center;
 }
-.ba-label-before { color: #c0392b; }
-.ba-label-after  { color: #27ae60; }
+.ba-label-before { color: var(--danger); }
+.ba-label-after  { color: var(--success); }
 .ba-list {
   list-style: none;
   padding: 0;
@@ -623,7 +623,7 @@ img, svg { display: block; max-width: 100%; }
   color: var(--gold);
 }
 .timeline-icon svg { width: 40px; height: 40px; }
-.timeline-step h4 { font-size: 1rem; margin-bottom: 6px; color: #FFF; font-weight: 600; }
+.timeline-step h3 { font-size: 1rem; margin-bottom: 6px; color: #FFF; font-weight: 600; }
 .timeline-step p { font-size: 0.85rem; color: var(--text-on-dark-muted); line-height: 1.6; }
 
 .emergency-features {
@@ -641,7 +641,7 @@ img, svg { display: block; max-width: 100%; }
   text-align: center;
 }
 .emf-card svg { width: 36px; height: 36px; color: var(--gold); margin: 0 auto 14px; }
-.emf-card h4 { font-size: 1rem; margin-bottom: 8px; color: #FFF; }
+.emf-card h3 { font-size: 1rem; margin-bottom: 8px; color: #FFF; }
 .emf-card p { font-size: 0.85rem; color: var(--text-on-dark-muted); line-height: 1.6; }
 
 /* ═══════════════════════════════════════════════════════════
@@ -895,7 +895,7 @@ img, svg { display: block; max-width: 100%; }
 .price-card.featured:hover { transform: translateY(-9px); }
 .price-badge {
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-  background: var(--gold); color: #FFF; padding: 4px 18px; border-radius: 20px;
+  background: var(--gold); color: var(--navy); padding: 4px 18px; border-radius: 20px;
   font-size: 0.78rem; font-weight: 700; white-space: nowrap;
 }
 .price-card h3 { font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; }
@@ -997,8 +997,11 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.75;
 }
 .extras-card strong {
-  color: var(--gold);
+  color: var(--warm);
 }
+@media (prefers-color-scheme: dark) { .extras-card strong { color: var(--gold); } }
+:root[data-theme="dark"] .extras-card strong { color: var(--gold); }
+:root[data-theme="light"] .extras-card strong { color: var(--warm); }
 .extras-bottom {
   display: flex;
   align-items: center;
@@ -1517,7 +1520,7 @@ img, svg { display: block; max-width: 100%; }
 :root[data-theme="light"] .footer-brand .logo-kesher { color: var(--navy); }
 
 .footer-brand p { font-size: 0.95rem; color: var(--text); opacity: 0.7; margin-top: 6px; letter-spacing: 0.02em; }
-.footer-col h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
+.footer-col h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; color: var(--text); }
 .footer-col a { display: block; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; }
 .footer-col a:hover { color: var(--teal); text-decoration: none; }
 .footer-bottom {
@@ -1763,7 +1766,7 @@ img, svg { display: block; max-width: 100%; }
 .cf-thanks { text-align: center; padding: 40px 0; }
 .cf-thanks-icon {
   width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
-  background: #27ae60; color: #FFF; font-size: 2rem; font-weight: 700;
+  background: var(--success); color: #FFF; font-size: 2rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   animation: thanks-pop 0.4s ease-out;
 }
@@ -1878,6 +1881,12 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 768px) {
   .chat-mock { font-size: 13px; }
   .chat-msg { max-width: 92%; }
+}
+
+/* ─── Utility ─── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
 /* ─── Focus ─── */

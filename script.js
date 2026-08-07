@@ -92,6 +92,7 @@
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
       nav.classList.toggle('open', !open);
+      if (!open) { const first = nav.querySelector('a'); if (first) first.focus(); }
     });
   }
   // Close on link click
