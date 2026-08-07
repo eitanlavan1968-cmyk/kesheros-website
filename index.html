@@ -30,7 +30,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href="fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260807c">
+  <link rel="stylesheet" href="style.css?v=20260807d">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 
   <!-- JSON-LD Structured Data -->
@@ -61,25 +61,39 @@
 </head>
 <body>
 
+  <!-- Shared SVG symbols -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="logo-shield" viewBox="0 0 512 512">
+      <defs>
+        <radialGradient id="sBg" cx=".26" cy=".2" r=".95"><stop offset="0" stop-color="#2F578A"/><stop offset=".45" stop-color="#14294A"/><stop offset="1" stop-color="#050C16"/></radialGradient>
+        <linearGradient id="sLit" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#F7D68C"/><stop offset="1" stop-color="#DCAC48"/></linearGradient>
+        <linearGradient id="sMid" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#D3A13B"/><stop offset="1" stop-color="#AE821F"/></linearGradient>
+        <linearGradient id="sShade" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#9B7220"/><stop offset="1" stop-color="#6B4E12"/></linearGradient>
+        <linearGradient id="sDeep" x1="0" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#7A5817"/><stop offset="1" stop-color="#4A340B"/></linearGradient>
+      </defs>
+      <rect width="512" height="512" rx="112" fill="url(#sBg)"/>
+      <g transform="translate(26.4 4.3) scale(.86)">
+        <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="url(#sDeep)"/>
+        <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="url(#sMid)"/>
+        <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="url(#sShade)"/>
+        <path d="M104 116h304l-32 46H104Z" fill="url(#sLit)"/>
+      </g>
+    </symbol>
+    <symbol id="logo-shield-flat" viewBox="0 0 512 512">
+      <rect width="512" height="512" rx="112" fill="#14294A"/>
+      <g transform="translate(26.4 4.3) scale(.86)">
+        <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="#6B4E12"/>
+        <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="#AE821F"/>
+        <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="#7A5817"/>
+        <path d="M104 116h304l-32 46H104Z" fill="#DCAC48"/>
+      </g>
+    </symbol>
+  </svg>
+
   <!-- ═══ Password gate (temporary) ═══ -->
   <div id="site-gate">
     <div class="gate-box">
-      <svg class="gate-logo" width="48" height="48" viewBox="0 0 512 512" aria-hidden="true">
-        <defs>
-          <radialGradient id="gBg" cx=".26" cy=".2" r=".95"><stop offset="0" stop-color="#2F578A"/><stop offset=".45" stop-color="#14294A"/><stop offset="1" stop-color="#050C16"/></radialGradient>
-          <linearGradient id="gLit" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#F7D68C"/><stop offset="1" stop-color="#DCAC48"/></linearGradient>
-          <linearGradient id="gMid" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#D3A13B"/><stop offset="1" stop-color="#AE821F"/></linearGradient>
-          <linearGradient id="gShade" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#9B7220"/><stop offset="1" stop-color="#6B4E12"/></linearGradient>
-          <linearGradient id="gDeep" x1="0" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#7A5817"/><stop offset="1" stop-color="#4A340B"/></linearGradient>
-        </defs>
-        <rect width="512" height="512" rx="112" fill="url(#gBg)"/>
-        <g transform="translate(26.4 4.3) scale(.86)">
-          <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="url(#gDeep)"/>
-          <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="url(#gMid)"/>
-          <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="url(#gShade)"/>
-          <path d="M104 116h304l-32 46H104Z" fill="url(#gLit)"/>
-        </g>
-      </svg>
+      <svg class="gate-logo" width="48" height="48" aria-hidden="true"><use href="#logo-shield"/></svg>
       <h2>KesherOS</h2>
       <p>אתר זה מוגן בסיסמה</p>
       <input type="password" id="gate-pw" placeholder="סיסמה" autocomplete="off">
@@ -97,31 +111,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="logo-lockup" aria-label="KesherOS — דף הבית">
-        <svg class="logo-mark" width="40" height="40" viewBox="0 0 512 512" aria-hidden="true">
-          <defs>
-            <radialGradient id="kBg" cx=".26" cy=".2" r=".95">
-              <stop offset="0" stop-color="#2F578A"/><stop offset=".45" stop-color="#14294A"/><stop offset="1" stop-color="#050C16"/>
-            </radialGradient>
-            <linearGradient id="kLit" x1="0" y1="0" x2=".8" y2="1">
-              <stop offset="0" stop-color="#F7D68C"/><stop offset="1" stop-color="#DCAC48"/>
-            </linearGradient>
-            <linearGradient id="kMid" x1="0" y1="0" x2=".8" y2="1">
-              <stop offset="0" stop-color="#D3A13B"/><stop offset="1" stop-color="#AE821F"/>
-            </linearGradient>
-            <linearGradient id="kShade" x1="0" y1="0" x2=".7" y2="1">
-              <stop offset="0" stop-color="#9B7220"/><stop offset="1" stop-color="#6B4E12"/>
-            </linearGradient>
-            <linearGradient id="kDeep" x1="0" y1="0" x2=".5" y2="1">
-              <stop offset="0" stop-color="#7A5817"/><stop offset="1" stop-color="#4A340B"/>
-            </linearGradient>
-          </defs>
-          <rect width="512" height="512" rx="112" fill="url(#kBg)"/>
-          <g transform="translate(26.4 4.3) scale(.86)">
-            <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="url(#kDeep)"/>
-            <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="url(#kMid)"/>
-            <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="url(#kShade)"/>
-            <path d="M104 116h304l-32 46H104Z" fill="url(#kLit)"/>
-          </g>
+        <svg class="logo-mark" width="40" height="40" aria-hidden="true"><use href="#logo-shield"/>
         </svg>
         <span class="logo-text"><span class="logo-kesher">Kesher</span><span class="logo-os">OS</span></span>
       </a>
@@ -442,15 +432,7 @@
         <!-- Topbar (52px, matches real app) -->
         <div class="demo-topbar">
           <div class="demo-topbar-brand">
-            <svg width="28" height="28" viewBox="0 0 512 512" aria-hidden="true">
-              <rect width="512" height="512" rx="112" fill="#14294A"/>
-              <g transform="translate(26.4 4.3) scale(.86)">
-                <path d="M126 139h304v152c0 90-64 150-152 178-88-28-152-88-152-178Z" fill="#6B4E12"/>
-                <path d="M104 116h152v330C168 418 104 358 104 268Z" fill="#AE821F"/>
-                <path d="M256 116h152v152c0 90-64 150-152 178Z" fill="#7A5817"/>
-                <path d="M104 116h304l-32 46H104Z" fill="#DCAC48"/>
-              </g>
-            </svg>
+            <svg width="28" height="28" aria-hidden="true"><use href="#logo-shield-flat"/></svg>
             <span class="demo-brand-text">KesherOS</span>
           </div>
           <span class="demo-site-name">קיבוץ הדגמה</span>
@@ -1732,7 +1714,19 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260807c" defer></script>
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/972528296824?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20KesherOS"
+     class="wa-fab" target="_blank" rel="noopener" aria-label="שלחו הודעת WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Mobile sticky CTA bar -->
+  <div class="mobile-cta-bar">
+    <a href="#contact" class="btn btn-primary">צרו קשר</a>
+    <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <script src="script.js?v=20260807d" defer></script>
   <script>
   (function(){
     var KEY='_ko_gate';
