@@ -28,7 +28,7 @@
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href="fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=20260807c">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -1547,12 +1547,90 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       11. CTA
+       11. ORIGIN STORY
+       ═══════════════════════════════════════════════════════ -->
+  <section class="origin-section" id="story" aria-label="הסיפור שלנו">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>למה בנינו את KesherOS</h2>
+      </div>
+      <div class="origin-timeline">
+        <div class="origin-step reveal">
+          <div class="origin-marker">1</div>
+          <div class="origin-content">
+            <h3>ניסיון אישי בקהילה</h3>
+            <p>חיים בקיבוץ. הודעות בשלוש קבוצות וואטסאפ, מיילים שנבלעים, פרוטוקולים שאף אחד לא מוצא. עובדים זרים שלא מבינים עברית ולא מקבלים שום מידע. ראינו את הבעיה כל יום — וידענו שחייב להיות פתרון טוב יותר.</p>
+          </div>
+        </div>
+        <div class="origin-step reveal reveal-delay-1">
+          <div class="origin-marker">2</div>
+          <div class="origin-content">
+            <h3>אוקטובר 2023 — רגע ההכרעה</h3>
+            <p>אחרי ה-7 באוקטובר, הפער הפך לסכנה. קהילות שלא הצליחו לאתר תושבים. הודעות פינוי שלא הגיעו לעובדים הזרים. מרשם פגיעים שלא היה קיים. זה לא היה עוד "נוחות" — זה היה פער בטיחותי. החלטנו לבנות.</p>
+          </div>
+        </div>
+        <div class="origin-step reveal reveal-delay-2">
+          <div class="origin-marker">3</div>
+          <div class="origin-content">
+            <h3>טכנולוגיה עם חזון</h3>
+            <p>בנינו מערכת שמשלבת את כל מה שקהילה צריכה — ניהול, תקשורת וחירום — במקום אחד. 15 שפות כי בחירום כולם חייבים להבין. AI סמנטי כי מידע שאי אפשר למצוא לא שווה כלום. ו-5,000 בדיקות אוטומטיות כי קהילות סומכות עלינו.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       12. FAQ
+       ═══════════════════════════════════════════════════════ -->
+  <section class="faq-section" id="faq" aria-label="שאלות נפוצות">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>שאלות נפוצות</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>כמה זמן לוקחת ההקמה?</summary>
+          <p>הקמה בסיסית תוך יום עבודה אחד. הגדרה מלאה כולל ייבוא אוכלוסייה, מסמכים וועדות — בדרך כלל עד שבוע. אנחנו מלווים אתכם בכל שלב.</p>
+        </details>
+        <details class="faq-item reveal reveal-delay-1">
+          <summary>האם צריך להתקין משהו?</summary>
+          <p>לא. KesherOS עובדת בענן ונגישה מכל דפדפן. בנוסף, זו אפליקציית PWA — אפשר להתקין אותה על הטלפון בלחיצה ולהשתמש גם ללא חיבור לאינטרנט.</p>
+        </details>
+        <details class="faq-item reveal reveal-delay-1">
+          <summary>איך עובד ניהול החירום?</summary>
+          <p>מנהל מפעיל התראה → SMS ואימייל נשלחים לכל התושבים בשפה שלהם → כל תושב מדווח סטטוס בלחיצה → לוח בקרה חי מראה מי בטוח ומי חסר. הכל תוך דקות.</p>
+        </details>
+        <details class="faq-item reveal reveal-delay-2">
+          <summary>מה קורה אם אני רוצה לבטל?</summary>
+          <p>ללא התחייבות. אפשר לבטל בכל עת. המידע שלכם תמיד שלכם — נספק ייצוא מלא של כל הנתונים.</p>
+        </details>
+        <details class="faq-item reveal reveal-delay-2">
+          <summary>האם המערכת מותאמת לנגישות?</summary>
+          <p>כן. KesherOS נבנתה מהיסוד לפי תקן WCAG 2.1 — ניווט מקלדת, תמיכה בקורא מסך, ניגודיות גבוהה, והגדלת טקסט. כל שינוי נבדק אוטומטית.</p>
+        </details>
+        <details class="faq-item reveal reveal-delay-3">
+          <summary>מה ההבדל בינכם למתחרים?</summary>
+          <p>שלושה דברים עיקריים: <strong>15 שפות</strong> (כולל תאילנדית, הינדי וסינית — שפות של עובדים זרים), <strong>מניפת חירום</strong> עם מרשם פגיעים ופינוי רב-שפתי, ו-<strong>AI סמנטי</strong> שמבין שאלות בשפה חופשית ומחזיר תשובה ממקורות הקהילה.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       13. CTA
        ═══════════════════════════════════════════════════════ -->
   <section class="cta-section" id="contact" aria-label="צרו קשר">
     <div class="container">
       <h2>מוכנים לשדרג את הקהילה?</h2>
       <p>נשמח לשוחח ולהתאים את הפתרון לקהילה שלכם. אין התחייבות.</p>
+      <!-- Thank-you state (hidden by default) -->
+      <div id="cf-thanks" class="cf-thanks" style="display:none">
+        <div class="cf-thanks-icon">✓</div>
+        <h3>הפנייה נשלחה בהצלחה!</h3>
+        <p>תודה <span id="cf-thanks-name"></span>. נחזור אליכם בהקדם.</p>
+        <button type="button" class="btn btn-outline cf-reset" style="color:#FFF;border-color:rgba(255,255,255,0.3);margin-top:16px">שלחו פנייה נוספת</button>
+      </div>
       <form id="contact-form" class="contact-form" novalidate>
         <div class="form-row">
           <div class="form-group">
@@ -1617,7 +1695,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260807c"></script>
+  <script src="script.js?v=20260807c" defer></script>
   <script>
   (function(){
     var KEY='_ko_gate';
@@ -1646,7 +1724,8 @@
   <script>
   (function(){
     var form=document.getElementById('contact-form');
-    if(!form)return;
+    var thanks=document.getElementById('cf-thanks');
+    if(!form||!thanks)return;
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var name=document.getElementById('cf-name').value.trim();
@@ -1654,7 +1733,6 @@
       var email=document.getElementById('cf-email').value.trim();
       var phone=document.getElementById('cf-phone').value.trim();
       var msg=document.getElementById('cf-msg').value.trim();
-      // Simple validation
       var bad=false;
       ['cf-name','cf-community','cf-email'].forEach(function(id){
         var el=document.getElementById(id);
@@ -1664,19 +1742,31 @@
       var emailEl=document.getElementById('cf-email');
       if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;}
       if(bad)return;
-      // Build mailto
+      // Send via mailto
       var subject=encodeURIComponent('פנייה מאתר KesherOS — '+community);
       var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
-      window.location.href='mailto:eitan.lavan.1968@gmail.com?subject='+subject+'&body='+body;
-      // Show success feedback
-      var btn=form.querySelector('.cf-submit');
-      btn.textContent='✓ נפתח חלון אימייל';
-      btn.style.background='#27ae60';
-      setTimeout(function(){btn.textContent='שלחו פנייה';btn.style.background='';},3000);
+      window.open('mailto:eitan.lavan.1968@gmail.com?subject='+subject+'&body='+body,'_blank');
+      // Show thank-you
+      document.getElementById('cf-thanks-name').textContent=name.split(' ')[0];
+      form.style.display='none';
+      thanks.style.display='block';
+    });
+    // Reset button
+    thanks.querySelector('.cf-reset').addEventListener('click',function(){
+      thanks.style.display='none';
+      form.style.display='block';
+      form.reset();
     });
     // Clear invalid on input
     form.querySelectorAll('input,textarea').forEach(function(el){
       el.addEventListener('input',function(){el.classList.remove('cf-invalid');});
+    });
+    // FAQ toggle animation
+    document.querySelectorAll('.faq-item summary').forEach(function(s){
+      s.addEventListener('click',function(e){
+        var details=s.parentElement;
+        if(details.open){e.preventDefault();details.removeAttribute('open');}
+      });
     });
   })();
   </script>

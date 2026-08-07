@@ -1336,6 +1336,14 @@ img, svg { display: block; max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════════════════════════ */
+/* ── Skip rendering off-screen sections (perf) ── */
+.problem, .product, .demo-section, .emergency,
+.ai-section, .languages, .quality, .pricing,
+.origin-section, .faq-section, .cta-section, .site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -1401,6 +1409,73 @@ img, svg { display: block; max-width: 100%; }
   .price-features li { padding-right: 0; }
   .price-features li::before { position: static; margin-left: 6px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ORIGIN STORY
+   ═══════════════════════════════════════════════════════════ */
+.origin-section { padding: 80px 0; background: var(--bg-alt); }
+.origin-timeline { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; position: relative; }
+.origin-timeline::before {
+  content: ''; position: absolute; right: 23px; top: 48px; bottom: 48px;
+  width: 2px; background: var(--border);
+}
+.origin-step { display: flex; gap: 24px; align-items: flex-start; padding: 20px 0; }
+.origin-marker {
+  width: 48px; height: 48px; min-width: 48px; border-radius: 50%;
+  background: var(--gold); color: #FFF; font-weight: 700; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+}
+.origin-content h3 { font-size: 1.15rem; margin-bottom: 8px; font-weight: 700; }
+.origin-content p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; }
+@media (max-width: 600px) {
+  .origin-timeline::before { right: 23px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════════════════════════ */
+.faq-section { padding: 80px 0; background: var(--bg); }
+.faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.faq-item[open] { box-shadow: var(--card-shadow); }
+.faq-item summary {
+  padding: 18px 24px; font-weight: 700; font-size: 1rem; cursor: pointer;
+  list-style: none; display: flex; justify-content: space-between; align-items: center;
+  color: var(--text); transition: color 0.2s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--text-muted);
+  transition: transform 0.2s;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item summary:hover { color: var(--gold); }
+.faq-item p {
+  padding: 0 24px 18px; font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THANK-YOU STATE
+   ═══════════════════════════════════════════════════════════ */
+.cf-thanks { text-align: center; padding: 40px 0; }
+.cf-thanks-icon {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+  background: #27ae60; color: #FFF; font-size: 2rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  animation: thanks-pop 0.4s ease-out;
+}
+@keyframes thanks-pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.cf-thanks h3 { color: #FFF; font-size: 1.5rem; margin-bottom: 8px; }
+.cf-thanks p { color: rgba(255,255,255,0.75); font-size: 1rem; }
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT FORM
