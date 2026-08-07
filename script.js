@@ -78,18 +78,30 @@
     requestAnimationFrame(tick);
   }
 
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          animateCounter(e.target);
-          counterObserver.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-  document.querySelectorAll('[data-count]').forEach((el) => counterObserver.observe(el));
+  // Delay counter observer until gate/preloader clears (so hero stats animate visibly)
+  function startCounters() {
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            animateCounter(e.target);
+            counterObserver.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    document.querySelectorAll('[data-count]').forEach(function (el) { counterObserver.observe(el); });
+  }
+  var gate = document.getElementById('site-gate');
+  if (gate) {
+    // Wait for gate to be removed, then start counters
+    var gateCheck = setInterval(function () {
+      if (!document.getElementById('site-gate')) { clearInterval(gateCheck); startCounters(); }
+    }, 200);
+  } else {
+    startCounters();
+  }
 
   /* ─── Mobile menu toggle ─── */
   const toggle = document.querySelector('.menu-toggle');
