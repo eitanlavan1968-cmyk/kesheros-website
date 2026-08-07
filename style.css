@@ -375,7 +375,8 @@ img, svg { display: block; max-width: 100%; }
 }
 :root[data-theme="dark"] .pain-card:nth-child(1) .pain-icon { color: #5B8FCA; }
 
-.pain-icon svg { width: 36px; height: 36px; }
+.pain-icon svg { width: 36px; height: 36px; transition: transform 0.25s; }
+.pain-card:hover .pain-icon svg { transform: scale(1.12) rotate(-3deg); }
 .pain-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 700; }
 .pain-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; }
 
@@ -493,8 +494,15 @@ img, svg { display: block; max-width: 100%; }
   border-radius: var(--radius-sm);
   font-size: 0.88rem;
   line-height: 1.5;
+  transition: background 0.2s, transform 0.2s;
+  cursor: default;
 }
-.module-tile svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+.module-tile:hover {
+  background: var(--card-bg);
+  transform: translateX(-4px);
+}
+.module-tile svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: transform 0.2s; }
+.module-tile:hover svg { transform: scale(1.15); }
 .module-tile strong { display: block; color: var(--text); font-weight: 600; }
 .module-tile small { color: var(--text-muted); }
 
@@ -709,7 +717,7 @@ img, svg { display: block; max-width: 100%; }
   border-top: 3px solid var(--border);
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.lang-chip:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+.lang-chip:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); border-top-color: var(--gold); }
 .lang-chip.unique { border-top-color: var(--gold); }
 .lang-native { font-size: 1.05rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 2px; }
 .lang-name { font-size: 0.78rem; color: var(--text-muted); }
@@ -820,7 +828,7 @@ img, svg { display: block; max-width: 100%; }
   display: flex; flex-direction: column;
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.price-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+.price-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); border-color: var(--gold); }
 .price-card.featured {
   border: 2px solid var(--gold);
   box-shadow: 0 4px 24px rgba(196,146,42,0.15);
@@ -1091,6 +1099,18 @@ img, svg { display: block; max-width: 100%; }
   border-bottom-color: #4C9AFF;
 }
 .demo-tab svg { width: 20px; height: 20px; }
+
+/* Panel transition animations */
+@keyframes panel-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes panel-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+.panel-enter { animation: panel-fade-in .3s ease-out both; }
+.panel-exit  { animation: panel-fade-out .2s ease-in both; }
 
 /* Emergency dome */
 .demo-emergency-dome {
@@ -1556,7 +1576,9 @@ img, svg { display: block; max-width: 100%; }
   .ring-inner, .ring-middle, .ring-outer { animation: none; }
   .btn-glow::after { animation: none; }
   .demo-dome-inner::after { animation: none; }
-  .pain-card, .price-card, .lang-chip, .product-group { transition: none; }
+  .pain-card, .price-card, .lang-chip, .product-group, .module-tile, .extras-card { transition: none; }
+  .panel-enter, .panel-exit { animation: none; }
+  .pain-icon svg, .module-tile svg { transition: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════

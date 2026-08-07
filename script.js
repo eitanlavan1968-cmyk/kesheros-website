@@ -104,20 +104,67 @@
     );
   }
 
-  /* ─── Demo tab switching ─── */
+  /* ─── Demo tab switching with transition ─── */
+  var activePanel = document.querySelector('.demo-panel[style*="block"]') ||
+                    document.querySelector('.demo-panel');
   document.querySelectorAll('.demo-tab').forEach((tab) => {
     tab.addEventListener('click', () => {
+      var nextPanel = document.getElementById('demo-' + tab.dataset.panel);
+      if (!nextPanel || nextPanel === activePanel) return;
+
+      // Update tabs
       document.querySelectorAll('.demo-tab').forEach((t) => {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
       });
-      document.querySelectorAll('.demo-panel').forEach((p) => (p.style.display = 'none'));
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
-      const panel = document.getElementById('demo-' + tab.dataset.panel);
-      if (panel) panel.style.display = 'block';
+
+      // Animate: fade out old → fade in new
+      if (activePanel) {
+        activePanel.classList.add('panel-exit');
+        activePanel.addEventListener('animationend', function handler() {
+          activePanel.removeEventListener('animationend', handler);
+          activePanel.style.display = 'none';
+          activePanel.classList.remove('panel-exit');
+          nextPanel.style.display = 'block';
+          nextPanel.classList.add('panel-enter');
+          nextPanel.addEventListener('animationend', function h2() {
+            nextPanel.removeEventListener('animationend', h2);
+            nextPanel.classList.remove('panel-enter');
+          });
+          activePanel = nextPanel;
+          // Animate counters in the new panel
+          nextPanel.querySelectorAll('[data-demo-count]').forEach(animateDemoCounter);
+        });
+      } else {
+        nextPanel.style.display = 'block';
+        activePanel = nextPanel;
+      }
     });
   });
+
+  /* ─── Demo counter animation (fan panel numbers) ─── */
+  function animateDemoCounter(el) {
+    var target = parseInt(el.dataset.demoCount, 10);
+    var suffix = el.dataset.demoSuffix || '';
+    var prefix = el.dataset.demoPrefix || '';
+    var duration = 1200;
+    var start = performance.now();
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(eased * target);
+      el.textContent = prefix + current.toLocaleString('he-IL') + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  // Initial run for visible panel
+  if (activePanel) {
+    activePanel.querySelectorAll('[data-demo-count]').forEach(animateDemoCounter);
+  }
 
   /* ─── Smooth scroll for anchor links ─── */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
