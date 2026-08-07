@@ -108,9 +108,49 @@
       a.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');
         nav.classList.remove('open');
+        document.querySelector('.menu-overlay')?.classList.remove('visible');
       })
     );
   }
+
+  // Mobile menu overlay — close menu when tapping backdrop
+  var overlay = document.querySelector('.menu-overlay');
+  if (overlay && toggle) {
+    overlay.addEventListener('click', function () {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      overlay.classList.remove('visible');
+    });
+  }
+
+  // Show/hide overlay with menu
+  if (toggle && overlay) {
+    var origToggleClick = toggle.onclick;
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.contains('open');
+      overlay.classList.toggle('visible', open);
+    });
+  }
+
+  /* ─── Keyboard: Escape closes open panels ─── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    // Close mobile menu
+    if (nav && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      if (overlay) overlay.classList.remove('visible');
+      toggle.focus();
+      return;
+    }
+    // Close a11y panel
+    var a11yP = document.querySelector('.a11y-panel');
+    if (a11yP && !a11yP.hidden) {
+      a11yP.hidden = true;
+      document.querySelector('.a11y-fab')?.focus();
+      return;
+    }
+  });
 
   /* ─── Demo tab switching with transition ─── */
   var activePanel = document.querySelector('.demo-panel[style*="block"]') ||

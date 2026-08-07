@@ -90,10 +90,16 @@
   @media(max-width:768px){.menu-toggle{display:block}.header-nav{display:none;position:fixed;top:68px;right:0;left:0;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;padding:16px 24px;gap:12px}.header-nav.open{display:flex}.hero{padding:110px 0 60px}.hero h1{font-size:clamp(2rem,8vw,2.6rem)}}
   @media(max-width:600px){.hero-visual{display:none!important}.trust-sep{display:none}.trust-inner{gap:20px 40px;flex-direction:column;text-align:center}.trust-badge{justify-content:center}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-content,.hero-visual{animation:none}}
+  #preloader{position:fixed;inset:0;z-index:100000;background:#0E2340;display:flex;align-items:center;justify-content:center;transition:opacity .4s ease}
+  .preloader-logo{font-family:Georgia,'Times New Roman',serif;font-size:2rem;color:#FFF;letter-spacing:-.5px;opacity:.7}
+  .preloader-logo span{color:#C4922A}
+  .menu-overlay{position:fixed;inset:0;z-index:89;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s}
+  .menu-overlay.visible{opacity:1;pointer-events:auto}
+  *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807j" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807j"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807k" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807k"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -230,8 +236,16 @@
     </div>
   </div>
 
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-logo">Kesher<span>OS</span></div>
+  </div>
+
   <!-- Skip to content -->
   <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+
+  <!-- Mobile menu overlay -->
+  <div class="menu-overlay" aria-hidden="true"></div>
 
   <!-- ═══════════════════════════════════════════════════════
        1. HEADER
@@ -2021,7 +2035,20 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807j" defer></script>
+  <script src="script.js?v=20260807k" defer></script>
+  <script>
+  // Preloader — fade out once page is ready
+  (function(){
+    var pre=document.getElementById('preloader');
+    if(!pre)return;
+    window.addEventListener('load',function(){
+      setTimeout(function(){
+        pre.style.opacity='0';
+        setTimeout(function(){pre.remove();},400);
+      },200);
+    });
+  })();
+  </script>
   <script>
   (function(){
     var KEY='_ko_gate';

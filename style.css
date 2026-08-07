@@ -2133,4 +2133,57 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ─── Focus ─── */
-:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ─── Mobile menu overlay ─── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 89;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.menu-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT
+   ═══════════════════════════════════════════════════════════ */
+@media print {
+  /* Hide fixed UI & interactive elements */
+  .site-header, .scroll-progress, .btt-fab, .wa-fab, .a11y-fab, .a11y-panel,
+  .mobile-cta-bar, .menu-overlay, #site-gate, #preloader,
+  .demo-section, .hero-visual { display: none !important; }
+
+  /* Reset backgrounds to white */
+  body, .hero, .emergency, .cta-section, .site-footer {
+    background: #fff !important;
+    color: #1a1a1a !important;
+  }
+  .hero { padding-top: 40px !important; }
+
+  /* Black text, no shadows */
+  * { box-shadow: none !important; text-shadow: none !important; }
+  h1, h2, h3, h4 { color: #0E2340 !important; }
+  a { color: #0E2340 !important; text-decoration: underline !important; }
+
+  /* No animations */
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  /* Single column */
+  .product-group { grid-template-columns: 1fr !important; }
+  .pricing-grid { grid-template-columns: 1fr !important; }
+
+  /* Show URLs after external links */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #666; }
+  a[href^="#"]::after { content: none; }
+
+  /* Page breaks */
+  section { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+}
