@@ -319,6 +319,68 @@
     });
   }
 
+  /* ─── Section nav dots ─── */
+  var dotsNav = document.querySelector('.section-dots');
+  if (dotsNav) {
+    var dots = dotsNav.querySelectorAll('.dot');
+    // Show dots only after scrolling past hero
+    var heroEl = document.querySelector('.hero');
+    if (heroEl) {
+      var dotsShowObserver = new IntersectionObserver(function (entries) {
+        dotsNav.classList.toggle('visible', !entries[0].isIntersecting);
+      }, { threshold: 0 });
+      dotsShowObserver.observe(heroEl);
+    }
+    // Highlight active dot
+    var dotSections = [];
+    dots.forEach(function (d) {
+      var sec = document.getElementById(d.dataset.section);
+      if (sec) dotSections.push({ el: sec, dot: d });
+    });
+    var dotObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var match = dotSections.find(function (s) { return s.el === entry.target; });
+        if (match) match.dot.classList.toggle('active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    dotSections.forEach(function (s) { dotObserver.observe(s.el); });
+    // Click handler with smooth scroll offset
+    dots.forEach(function (d) {
+      d.addEventListener('click', function (e) {
+        e.preventDefault();
+        var sec = document.getElementById(d.dataset.section);
+        if (sec) {
+          var hH = document.querySelector('.site-header').offsetHeight || 68;
+          window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - hH - 12, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  /* ─── Price count-up animation ─── */
+  var priceEls = document.querySelectorAll('[data-price]');
+  if (priceEls.length) {
+    var priceObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        priceObserver.unobserve(e.target);
+        var target = parseInt(e.target.dataset.price, 10);
+        var duration = 1400;
+        var start = performance.now();
+        function tick(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(eased * target);
+          e.target.textContent = '₪' + current.toLocaleString('he-IL');
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    priceEls.forEach(function (el) { priceObserver.observe(el); });
+  }
+
   /* ─── AI chat typing effect ─── */
   var chatMock = document.querySelector('.chat-mock');
   if (chatMock) {

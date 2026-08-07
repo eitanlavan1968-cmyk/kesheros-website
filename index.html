@@ -102,8 +102,8 @@
   *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807m" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807m"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807n" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807n"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -1757,7 +1757,7 @@
         <article class="price-card reveal">
           <h3>Kesher Start</h3>
           <div class="tier-capacity">עד 150 משפחות</div>
-          <div class="price-amount">₪590</div>
+          <div class="price-amount" data-price="590">₪590</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
             <li>אלפון ומשקי בית</li>
@@ -1774,7 +1774,7 @@
           <div class="price-badge">הכי פופולרי</div>
           <h3>Kesher Community</h3>
           <div class="tier-capacity">עד 400 משפחות</div>
-          <div class="price-amount">₪1,190</div>
+          <div class="price-amount" data-price="1190">₪1,190</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
             <li>כל מה שב-Start</li>
@@ -1791,7 +1791,7 @@
         <article class="price-card reveal reveal-delay-2">
           <h3>Kesher Professional</h3>
           <div class="tier-capacity">עד 800 משפחות</div>
-          <div class="price-amount">₪2,190</div>
+          <div class="price-amount" data-price="2190">₪2,190</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
             <li>כל מה שב-Community</li>
@@ -1807,7 +1807,7 @@
         <article class="price-card reveal reveal-delay-3">
           <h3>Kesher District</h3>
           <div class="tier-capacity">ללא הגבלה</div>
-          <div class="price-amount">₪4,500</div>
+          <div class="price-amount" data-price="4500">₪4,500</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
             <li>כל מה שב-Professional</li>
@@ -2010,6 +2010,16 @@
     </div>
   </footer>
 
+  <!-- Section nav dots -->
+  <nav class="section-dots" aria-label="ניווט סקשנים">
+    <a href="#product" class="dot" data-section="product" aria-label="מודולים"></a>
+    <a href="#demo" class="dot" data-section="demo" aria-label="הדגמה"></a>
+    <a href="#emergency" class="dot" data-section="emergency" aria-label="חירום"></a>
+    <a href="#ai" class="dot" data-section="ai" aria-label="AI"></a>
+    <a href="#pricing" class="dot" data-section="pricing" aria-label="תמחור"></a>
+    <a href="#contact" class="dot" data-section="contact" aria-label="צרו קשר"></a>
+  </nav>
+
   <!-- Accessibility FAB + panel -->
   <button class="a11y-fab" aria-label="נגישות" type="button">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2.5"/><path d="M12 7v5m0 0l-3 5m3-5l3 5"/><path d="M6 11c2-.5 4-.8 6-.8s4 .3 6 .8"/></svg>
@@ -2063,7 +2073,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807m" defer></script>
+  <script src="script.js?v=20260807n" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){
@@ -2116,15 +2126,15 @@
       var email=document.getElementById('cf-email').value.trim();
       var phone=document.getElementById('cf-phone').value.trim();
       var msg=document.getElementById('cf-msg').value.trim();
-      var bad=false;
+      var bad=false;var firstBad=null;
       ['cf-name','cf-community','cf-email'].forEach(function(id){
         var el=document.getElementById(id);
-        if(!el.value.trim()){el.classList.add('cf-invalid');bad=true;}
+        if(!el.value.trim()){el.classList.add('cf-invalid');bad=true;if(!firstBad)firstBad=el;}
         else{el.classList.remove('cf-invalid');}
       });
       var emailEl=document.getElementById('cf-email');
-      if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;}
-      if(bad)return;
+      if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;if(!firstBad)firstBad=emailEl;}
+      if(bad){if(firstBad)firstBad.focus();return;}
       // Submit via Web3Forms API
       submitBtn.disabled=true;
       submitBtn.textContent='שולח…';
@@ -2166,6 +2176,10 @@
         submitBtn.disabled=false;
         submitBtn.textContent=btnText;
       });
+    });
+    // Clear red border on input
+    form.querySelectorAll('input,textarea').forEach(function(el){
+      el.addEventListener('input',function(){el.classList.remove('cf-invalid');});
     });
     // Reset button
     thanks.querySelector('.cf-reset').addEventListener('click',function(){
