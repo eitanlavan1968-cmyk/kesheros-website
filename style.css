@@ -1755,6 +1755,8 @@ img, svg { display: block; max-width: 100%; }
   transition: color 0.15s;
 }
 .a11y-reset:hover { color: var(--text); border-color: var(--text-muted); }
+.a11y-theme-row { display: none; }
+@media (max-width: 768px) { .a11y-theme-row { display: flex; } }
 
 /* Accessibility modes applied to <html> */
 :root.a11y-high-contrast { filter: contrast(1.35); }
@@ -1948,10 +1950,16 @@ img, svg { display: block; max-width: 100%; }
   .price-features li { padding-right: 0; }
   .price-features li::before { position: static; margin-left: 6px; }
 
-  /* Mobile sticky CTA bar + hide desktop WhatsApp FAB */
+  /* Mobile sticky CTA bar + hide desktop-only elements */
   .mobile-cta-bar { display: flex; }
   .wa-fab { display: none; }
+  .theme-toggle { display: none; } /* moved to a11y panel on mobile */
   .site-footer { padding-bottom: 72px; } /* space for sticky bar */
+
+  /* Lift FABs above mobile CTA bar */
+  .btt-fab { bottom: 72px; }
+  .a11y-fab { bottom: 72px; }
+  .a11y-panel { bottom: 124px; }
 }
 
 /* ═══════════════════════════════════════════════════════════

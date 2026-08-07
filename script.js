@@ -262,6 +262,9 @@
     if (a11yState.contrast) { root.classList.add('a11y-high-contrast'); setToggle('contrast', true); }
     if (a11yState.links) { root.classList.add('a11y-highlight-links'); setToggle('links', true); }
     if (a11yState.motion) { root.classList.add('a11y-stop-motion'); setToggle('motion', true); }
+    // Sync theme label
+    var themeLabel = a11yPanel.querySelector('[data-a11y="theme"]');
+    if (themeLabel) themeLabel.textContent = (root.getAttribute('data-theme') || 'dark') === 'dark' ? 'כהה' : 'בהיר';
 
     function saveA11y() {
       localStorage.setItem('a11y', JSON.stringify({
@@ -299,6 +302,14 @@
       else if (action === 'contrast') { root.classList.toggle('a11y-high-contrast'); setToggle('contrast', root.classList.contains('a11y-high-contrast')); }
       else if (action === 'links') { root.classList.toggle('a11y-highlight-links'); setToggle('links', root.classList.contains('a11y-highlight-links')); }
       else if (action === 'motion') { root.classList.toggle('a11y-stop-motion'); setToggle('motion', root.classList.contains('a11y-stop-motion')); }
+      else if (action === 'theme') {
+        // Mirror the header theme toggle logic
+        var cur = root.getAttribute('data-theme');
+        var next = cur === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        btn.textContent = next === 'dark' ? 'כהה' : 'בהיר';
+      }
       else if (action === 'reset-all') {
         fontStep = 0; root.style.fontSize = '';
         root.classList.remove('a11y-high-contrast', 'a11y-highlight-links', 'a11y-stop-motion');
