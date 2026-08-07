@@ -381,27 +381,46 @@
     priceEls.forEach(function (el) { priceObserver.observe(el); });
   }
 
-  /* ─── AI chat typing effect ─── */
+  /* ─── AI chat sequential conversation effect ─── */
   var chatMock = document.querySelector('.chat-mock');
   if (chatMock) {
-    var aiMsgs = chatMock.querySelectorAll('.chat-msg.ai');
-    // Start all AI messages hidden with typing dots
-    aiMsgs.forEach(function (m) { m.classList.add('typing-pending'); });
+    var allMsgs = chatMock.querySelectorAll('.chat-msg');
+    // Hide all messages initially
+    allMsgs.forEach(function (m) { m.classList.add('chat-hidden'); });
 
     var chatObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         chatObserver.unobserve(entry.target);
-        // Stagger reveal of AI messages
-        aiMsgs.forEach(function (m, i) {
-          // Typing dots visible for a moment, then reveal
-          setTimeout(function () {
-            m.classList.remove('typing-pending');
-            m.classList.add('typing-reveal');
-          }, 600 + i * 900);
+        var delay = 400;
+        allMsgs.forEach(function (m, i) {
+          var isAI = m.classList.contains('ai');
+          if (isAI) {
+            // Show typing dots first, then reveal content
+            setTimeout(function () {
+              m.classList.remove('chat-hidden');
+              m.classList.add('typing-dots');
+            }, delay);
+            delay += 800;
+            setTimeout(function () {
+              m.classList.remove('typing-dots');
+              m.classList.add('chat-appear');
+              // Auto-scroll chat container
+              m.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, delay);
+            delay += 400;
+          } else {
+            // User message — just appear
+            setTimeout(function () {
+              m.classList.remove('chat-hidden');
+              m.classList.add('chat-appear');
+              m.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, delay);
+            delay += 600;
+          }
         });
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
     chatObserver.observe(chatMock);
   }
 
