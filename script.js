@@ -209,6 +209,65 @@
     });
   }
 
+  /* ─── Accessibility panel ─── */
+  var a11yFab = document.querySelector('.a11y-fab');
+  var a11yPanel = document.querySelector('.a11y-panel');
+  if (a11yFab && a11yPanel) {
+    var root = document.documentElement;
+    var fontStep = 0; // -2 to +4
+
+    // Restore saved state
+    var a11yState = JSON.parse(localStorage.getItem('a11y') || '{}');
+    if (a11yState.font) { fontStep = a11yState.font; root.style.fontSize = (16 + fontStep * 2) + 'px'; }
+    if (a11yState.contrast) { root.classList.add('a11y-high-contrast'); setToggle('contrast', true); }
+    if (a11yState.links) { root.classList.add('a11y-highlight-links'); setToggle('links', true); }
+    if (a11yState.motion) { root.classList.add('a11y-stop-motion'); setToggle('motion', true); }
+
+    function saveA11y() {
+      localStorage.setItem('a11y', JSON.stringify({
+        font: fontStep || undefined,
+        contrast: root.classList.contains('a11y-high-contrast') || undefined,
+        links: root.classList.contains('a11y-highlight-links') || undefined,
+        motion: root.classList.contains('a11y-stop-motion') || undefined
+      }));
+    }
+
+    function setToggle(key, on) {
+      var btn = a11yPanel.querySelector('[data-a11y="' + key + '"]');
+      if (btn) { btn.setAttribute('aria-pressed', String(on)); btn.textContent = on ? 'פעיל' : 'כבוי'; }
+    }
+
+    a11yFab.addEventListener('click', function () {
+      var open = !a11yPanel.hidden;
+      a11yPanel.hidden = open;
+      a11yFab.setAttribute('aria-expanded', String(!open));
+    });
+
+    a11yPanel.querySelector('.a11y-close').addEventListener('click', function () {
+      a11yPanel.hidden = true;
+      a11yFab.setAttribute('aria-expanded', 'false');
+    });
+
+    a11yPanel.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-a11y]');
+      if (!btn) return;
+      var action = btn.dataset.a11y;
+
+      if (action === 'font-up' && fontStep < 4) { fontStep++; root.style.fontSize = (16 + fontStep * 2) + 'px'; }
+      else if (action === 'font-down' && fontStep > -2) { fontStep--; root.style.fontSize = (16 + fontStep * 2) + 'px'; }
+      else if (action === 'font-reset') { fontStep = 0; root.style.fontSize = ''; }
+      else if (action === 'contrast') { root.classList.toggle('a11y-high-contrast'); setToggle('contrast', root.classList.contains('a11y-high-contrast')); }
+      else if (action === 'links') { root.classList.toggle('a11y-highlight-links'); setToggle('links', root.classList.contains('a11y-highlight-links')); }
+      else if (action === 'motion') { root.classList.toggle('a11y-stop-motion'); setToggle('motion', root.classList.contains('a11y-stop-motion')); }
+      else if (action === 'reset-all') {
+        fontStep = 0; root.style.fontSize = '';
+        root.classList.remove('a11y-high-contrast', 'a11y-highlight-links', 'a11y-stop-motion');
+        setToggle('contrast', false); setToggle('links', false); setToggle('motion', false);
+      }
+      saveA11y();
+    });
+  }
+
   /* ─── Smooth scroll for anchor links (with header offset) ─── */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {

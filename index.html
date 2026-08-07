@@ -92,8 +92,8 @@
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-content,.hero-visual{animation:none}}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807i" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807i"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807j" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807j"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -1972,6 +1972,38 @@
     </div>
   </footer>
 
+  <!-- Accessibility FAB + panel -->
+  <button class="a11y-fab" aria-label="נגישות" type="button">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2.5"/><path d="M12 7v5m0 0l-3 5m3-5l3 5"/><path d="M6 11c2-.5 4-.8 6-.8s4 .3 6 .8"/></svg>
+  </button>
+  <div class="a11y-panel" role="dialog" aria-label="הגדרות נגישות" hidden>
+    <div class="a11y-panel-header">
+      <span>נגישות</span>
+      <button class="a11y-close" aria-label="סגירה" type="button">&times;</button>
+    </div>
+    <div class="a11y-option">
+      <span>גודל גופן</span>
+      <div class="a11y-btns">
+        <button type="button" data-a11y="font-down" aria-label="הקטנת גופן">א-</button>
+        <button type="button" data-a11y="font-reset" aria-label="איפוס גופן">א</button>
+        <button type="button" data-a11y="font-up" aria-label="הגדלת גופן">א+</button>
+      </div>
+    </div>
+    <div class="a11y-option">
+      <span>ניגודיות גבוהה</span>
+      <button type="button" data-a11y="contrast" class="a11y-toggle" aria-pressed="false">כבוי</button>
+    </div>
+    <div class="a11y-option">
+      <span>הדגשת קישורים</span>
+      <button type="button" data-a11y="links" class="a11y-toggle" aria-pressed="false">כבוי</button>
+    </div>
+    <div class="a11y-option">
+      <span>עצירת אנימציות</span>
+      <button type="button" data-a11y="motion" class="a11y-toggle" aria-pressed="false">כבוי</button>
+    </div>
+    <button type="button" data-a11y="reset-all" class="a11y-reset">איפוס הכל</button>
+  </div>
+
   <!-- Back to top -->
   <button class="btt-fab" aria-label="חזרה למעלה" type="button">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
@@ -1989,7 +2021,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807i" defer></script>
+  <script src="script.js?v=20260807j" defer></script>
   <script>
   (function(){
     var KEY='_ko_gate';
