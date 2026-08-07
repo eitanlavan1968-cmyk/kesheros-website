@@ -591,9 +591,12 @@ img, svg { display: block; max-width: 100%; }
   gap: 36px;
   align-items: start;
   border-top: 4px solid var(--teal);
-  transition: box-shadow 0.25s;
+  transition: box-shadow 0.3s, transform 0.3s;
 }
-.product-group:hover { box-shadow: var(--card-shadow-hover); }
+.product-group:hover {
+  box-shadow: var(--card-shadow-hover), 0 0 24px var(--gold-glow);
+  transform: translateY(-4px);
+}
 .product-group.group-records { border-top-color: var(--navy); }
 .product-group.group-connect { border-top-color: var(--teal); }
 .product-group.group-govern  { border-top-color: var(--gold); }
@@ -1738,11 +1741,14 @@ img, svg { display: block; max-width: 100%; }
    REDUCED MOTION
    ═══════════════════════════════════════════════════════════ */
 /* ── Skip rendering off-screen sections (perf) ── */
-.pillars, .problem, .before-after, .product, .demo-section, .emergency,
-.ai-section, .languages, .quality, .pricing,
-.origin-section, .faq-section, .cta-section, .site-footer {
+.pillars, .problem, .before-after, .origin-section, .faq-section, .cta-section, .site-footer {
   content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
+  contain-intrinsic-size: auto 500px;
+}
+/* Heavier sections with SVG illustrations / interactive demo */
+.product, .demo-section, .emergency, .ai-section, .languages, .quality, .pricing {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1752,7 +1758,7 @@ img, svg { display: block; max-width: 100%; }
   .ring-inner, .ring-middle, .ring-outer { animation: none; }
   .btn-glow::after { animation: none; }
   .demo-dome-inner::after { animation: none; }
-  .pain-card, .price-card, .lang-chip, .product-group, .module-tile, .extras-card { transition: none; }
+  .pain-card, .price-card, .lang-chip, .product-group, .module-tile, .extras-card { transition: none; transform: none !important; }
   .panel-enter, .panel-exit { animation: none; }
   .pain-icon svg, .module-tile svg { transition: none; }
 }

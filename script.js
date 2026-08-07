@@ -209,13 +209,15 @@
     });
   }
 
-  /* ─── Smooth scroll for anchor links ─── */
+  /* ─── Smooth scroll for anchor links (with header offset) ─── */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const target = document.querySelector(a.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        var headerH = document.querySelector('.site-header').offsetHeight || 68;
+        var top = target.getBoundingClientRect().top + window.scrollY - headerH - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
   });
