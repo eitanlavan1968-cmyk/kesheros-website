@@ -19,13 +19,20 @@
   );
   document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-  /* ─── Header scroll effect ─── */
+  /* ─── Header scroll effect + scroll progress bar ─── */
   const header = document.querySelector('.site-header');
+  const progressBar = document.querySelector('.scroll-progress');
   let ticking = false;
   function onScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
         header.toggleAttribute('data-scrolled', window.scrollY > 60);
+        // Update scroll progress bar
+        if (progressBar) {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = docHeight > 0 ? (scrollTop / docHeight * 100) + '%' : '0%';
+        }
         ticking = false;
       });
       ticking = true;
@@ -178,6 +185,26 @@
     if (heroSection) bttObserver.observe(heroSection);
     bttBtn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ─── Dark / light theme toggle ─── */
+  var themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) {
+    // Restore saved theme
+    var saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+    themeBtn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var isDark;
+      if (current === 'dark') isDark = true;
+      else if (current === 'light') isDark = false;
+      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      var next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     });
   }
 
