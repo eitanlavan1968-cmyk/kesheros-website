@@ -16,17 +16,21 @@
   <meta property="og:title" content="KesherOS — מערכת ההפעלה הקהילתית">
   <meta property="og:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי, ניהול חירום.">
   <meta property="og:locale" content="he_IL">
+  <meta property="og:image" content="https://kesheros.co.il/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KesherOS — מערכת ההפעלה הקהילתית">
   <meta name="twitter:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי.">
+  <meta name="twitter:image" content="https://kesheros.co.il/og-image.svg">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260807b">
+  <link rel="stylesheet" href="style.css?v=20260807c">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 
   <!-- JSON-LD Structured Data -->
@@ -1549,7 +1553,34 @@
     <div class="container">
       <h2>מוכנים לשדרג את הקהילה?</h2>
       <p>נשמח לשוחח ולהתאים את הפתרון לקהילה שלכם. אין התחייבות.</p>
-      <a href="mailto:eitan.lavan.1968@gmail.com" class="btn btn-primary btn-lg btn-glow">eitan.lavan.1968@gmail.com</a>
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">שם מלא</label>
+            <input type="text" id="cf-name" required placeholder="ישראל ישראלי">
+          </div>
+          <div class="form-group">
+            <label for="cf-community">שם הקהילה / יישוב</label>
+            <input type="text" id="cf-community" required placeholder="קיבוץ / מושב / יישוב">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-email">אימייל</label>
+            <input type="email" id="cf-email" required placeholder="name@example.com" dir="ltr">
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">טלפון</label>
+            <input type="tel" id="cf-phone" placeholder="050-000-0000" dir="ltr">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cf-msg">איך נוכל לעזור?</label>
+          <textarea id="cf-msg" rows="3" placeholder="ספרו לנו קצת על הקהילה שלכם ומה אתם מחפשים..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-glow cf-submit">שלחו פנייה</button>
+        <p class="cf-alt">או שלחו אימייל ישירות: <a href="mailto:eitan.lavan.1968@gmail.com">eitan.lavan.1968@gmail.com</a></p>
+      </form>
     </div>
   </section>
 
@@ -1586,7 +1617,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20260807b"></script>
+  <script src="script.js?v=20260807c"></script>
   <script>
   (function(){
     var KEY='_ko_gate';
@@ -1610,6 +1641,43 @@
     btn.addEventListener('click',tryEnter);
     pw.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
     pw.focus();
+  })();
+  </script>
+  <script>
+  (function(){
+    var form=document.getElementById('contact-form');
+    if(!form)return;
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var name=document.getElementById('cf-name').value.trim();
+      var community=document.getElementById('cf-community').value.trim();
+      var email=document.getElementById('cf-email').value.trim();
+      var phone=document.getElementById('cf-phone').value.trim();
+      var msg=document.getElementById('cf-msg').value.trim();
+      // Simple validation
+      var bad=false;
+      ['cf-name','cf-community','cf-email'].forEach(function(id){
+        var el=document.getElementById(id);
+        if(!el.value.trim()){el.classList.add('cf-invalid');bad=true;}
+        else{el.classList.remove('cf-invalid');}
+      });
+      var emailEl=document.getElementById('cf-email');
+      if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('cf-invalid');bad=true;}
+      if(bad)return;
+      // Build mailto
+      var subject=encodeURIComponent('פנייה מאתר KesherOS — '+community);
+      var body=encodeURIComponent('שם: '+name+'\nקהילה: '+community+'\nאימייל: '+email+'\nטלפון: '+(phone||'לא צוין')+'\n\n'+msg);
+      window.location.href='mailto:eitan.lavan.1968@gmail.com?subject='+subject+'&body='+body;
+      // Show success feedback
+      var btn=form.querySelector('.cf-submit');
+      btn.textContent='✓ נפתח חלון אימייל';
+      btn.style.background='#27ae60';
+      setTimeout(function(){btn.textContent='שלחו פנייה';btn.style.background='';},3000);
+    });
+    // Clear invalid on input
+    form.querySelectorAll('input,textarea').forEach(function(el){
+      el.addEventListener('input',function(){el.classList.remove('cf-invalid');});
+    });
   })();
   </script>
 </body>

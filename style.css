@@ -570,6 +570,8 @@ img, svg { display: block; max-width: 100%; }
   color: #FFF;
   border-bottom-left-radius: 4px;
 }
+@media (prefers-color-scheme: dark) { .chat-msg.user { background: #1A3558; } }
+:root[data-theme="dark"] .chat-msg.user { background: #1A3558; }
 .chat-msg.ai {
   align-self: flex-start;
   background: var(--bg-alt);
@@ -871,7 +873,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* Topbar */
-.demo-disclaimer { text-align: center; color: var(--muted); font-size: 14px; margin-top: 18px; line-height: 1.7; }
+.demo-disclaimer { text-align: center; color: var(--text-muted); font-size: 14px; margin-top: 18px; line-height: 1.7; }
 .demo-disclaimer a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .demo-disclaimer a:hover { text-decoration: underline; }
 .demo-topbar {
@@ -1398,6 +1400,111 @@ img, svg { display: block; max-width: 100%; }
   .price-features { text-align: center; }
   .price-features li { padding-right: 0; }
   .price-features li::before { position: static; margin-left: 6px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT FORM
+   ═══════════════════════════════════════════════════════════ */
+.contact-form {
+  max-width: 560px; margin: 32px auto 0; text-align: right;
+}
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group:last-child:not(.form-row .form-group) { margin-bottom: 20px; }
+.contact-form label {
+  font-size: 0.88rem; font-weight: 600; color: var(--text-on-dark); opacity: 0.85;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08);
+  color: #FFF; font-size: 0.95rem; font-family: inherit;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 3px rgba(196,146,42,0.2);
+}
+.contact-form input.cf-invalid,
+.contact-form textarea.cf-invalid { border-color: #e74c3c; box-shadow: 0 0 0 3px rgba(231,76,60,0.2); }
+.contact-form textarea { resize: vertical; min-height: 80px; }
+.cf-submit { width: 100%; margin-top: 8px; transition: background 0.3s; }
+.cf-alt { font-size: 0.82rem; color: var(--text-on-dark); opacity: 0.6; margin-top: 14px; text-align: center; }
+.cf-alt a { color: var(--gold-light); text-decoration: underline; }
+@media (max-width: 500px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE POLISH
+   ═══════════════════════════════════════════════════════════ */
+
+/* Demo ribbon: scroll-hint gradient fades */
+.demo-ribbon { position: relative; }
+.demo-ribbon::before,
+.demo-ribbon::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 32px;
+  z-index: 2; pointer-events: none; opacity: 0; transition: opacity 0.2s;
+}
+.demo-ribbon::before { left: 0; background: linear-gradient(to right, #0f1f3a, transparent); }
+.demo-ribbon::after { right: 68px; background: linear-gradient(to left, #0f1f3a, transparent); }
+@media (max-width: 1100px) {
+  .demo-ribbon::before,
+  .demo-ribbon::after { opacity: 1; }
+}
+
+/* Hero constellation: scaled on tablet instead of hidden */
+@media (max-width: 1024px) {
+  .hero-visual {
+    display: flex !important; width: 260px; height: 260px;
+    margin: 0 auto; opacity: 0.55;
+  }
+  .hero-inner { justify-items: center; }
+}
+@media (max-width: 600px) {
+  .hero-visual { display: none !important; }
+}
+
+/* Pricing: featured card keeps distinction on mobile */
+@media (max-width: 768px) {
+  .price-card.featured {
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-glow), var(--card-shadow);
+  }
+}
+
+/* Trust strip: stack on narrow screens */
+@media (max-width: 600px) {
+  .trust-sep { display: none; }
+  .trust-inner { gap: 20px 40px; flex-direction: column; text-align: center; }
+  .trust-badge { justify-content: center; }
+}
+
+/* Demo topbar: slim on small phones */
+@media (max-width: 380px) {
+  .demo-user-name { display: none; }
+  .demo-user-chip { padding: 4px 6px; }
+  .demo-topbar { padding: 0 10px; }
+}
+
+/* Product group illustration: shrink on phones */
+@media (max-width: 480px) {
+  .group-illustration { width: 90px; height: 90px; }
+}
+
+/* Hero stats: stack vertically on tiny screens */
+@media (max-width: 400px) {
+  .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
+}
+
+/* AI chat mock: tighter on mobile */
+@media (max-width: 768px) {
+  .chat-mock { font-size: 13px; }
+  .chat-msg { max-width: 92%; }
 }
 
 /* ─── Focus ─── */
