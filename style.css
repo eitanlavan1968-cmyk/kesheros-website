@@ -794,6 +794,34 @@ img, svg { display: block; max-width: 100%; }
 }
 .chat-msg.thai { direction: ltr; text-align: left; }
 
+/* Chat typing animation */
+.chat-msg.ai { position: relative; }
+.chat-msg.ai.typing-pending { color: transparent; min-height: 44px; }
+.chat-msg.ai.typing-pending .msg-source,
+.chat-msg.ai.typing-pending .chat-action-card { visibility: hidden; }
+.chat-msg.ai.typing-pending::before {
+  content: '●  ●  ●';
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  animation: typing-dots 1.2s ease-in-out infinite;
+}
+@keyframes typing-dots {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+.chat-msg.ai.typing-reveal {
+  animation: msg-appear 0.3s ease-out forwards;
+}
+@keyframes msg-appear {
+  from { opacity: 0.7; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* AI action card (inside chat) */
 .chat-action-card {
   background: var(--bg-alt);
@@ -1885,6 +1913,11 @@ img, svg { display: block; max-width: 100%; }
   .pain-card, .price-card, .lang-chip, .product-group, .module-tile, .extras-card { transition: none; transform: none !important; }
   .panel-enter, .panel-exit { animation: none; }
   .pain-icon svg, .module-tile svg { transition: none; }
+  .chat-msg.ai.typing-pending { color: inherit; min-height: auto; }
+  .chat-msg.ai.typing-pending::before { display: none; }
+  .chat-msg.ai.typing-pending .msg-source,
+  .chat-msg.ai.typing-pending .chat-action-card { visibility: visible; }
+  .chat-msg.ai.typing-reveal { animation: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════

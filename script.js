@@ -319,6 +319,30 @@
     });
   }
 
+  /* ─── AI chat typing effect ─── */
+  var chatMock = document.querySelector('.chat-mock');
+  if (chatMock) {
+    var aiMsgs = chatMock.querySelectorAll('.chat-msg.ai');
+    // Start all AI messages hidden with typing dots
+    aiMsgs.forEach(function (m) { m.classList.add('typing-pending'); });
+
+    var chatObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        chatObserver.unobserve(entry.target);
+        // Stagger reveal of AI messages
+        aiMsgs.forEach(function (m, i) {
+          // Typing dots visible for a moment, then reveal
+          setTimeout(function () {
+            m.classList.remove('typing-pending');
+            m.classList.add('typing-reveal');
+          }, 600 + i * 900);
+        });
+      });
+    }, { threshold: 0.3 });
+    chatObserver.observe(chatMock);
+  }
+
   /* ─── Smooth scroll for anchor links (with header offset) ─── */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {

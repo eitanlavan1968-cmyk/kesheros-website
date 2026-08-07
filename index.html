@@ -14,6 +14,10 @@
   <link rel="alternate" hreflang="he" href="https://kesheros.co.il/">
   <link rel="alternate" hreflang="x-default" href="https://kesheros.co.il/">
 
+  <!-- Resource hints -->
+  <link rel="preconnect" href="https://api.web3forms.com">
+  <link rel="dns-prefetch" href="https://api.web3forms.com">
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kesheros.co.il/">
@@ -98,8 +102,8 @@
   *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807l" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807l"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260807m" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807m"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -190,6 +194,26 @@
         }
       }
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "KesherOS",
+    "url": "https://kesheros.co.il",
+    "logo": "https://kesheros.co.il/favicon.svg",
+    "email": "eitan.lavan.1968@gmail.com",
+    "description": "מערכת הפעלה קהילתית — פלטפורמת SaaS לניהול קיבוצים, מושבים ויישובים",
+    "sameAs": [
+      "https://wa.me/972528296824"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+972-52-829-6824",
+      "availableLanguage": ["Hebrew", "English"]
+    }
   }
   </script>
 </head>
@@ -2039,7 +2063,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807l" defer></script>
+  <script src="script.js?v=20260807m" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){
