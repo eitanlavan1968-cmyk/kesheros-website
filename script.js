@@ -240,6 +240,18 @@
     });
   }
 
+  /* ─── Mobile sticky CTA bar — hide when contact section is visible ─── */
+  var ctaBar = document.querySelector('.mobile-cta-bar');
+  if (ctaBar) {
+    var ctaSection = document.getElementById('contact');
+    if (ctaSection) {
+      var ctaObserver = new IntersectionObserver(function (entries) {
+        ctaBar.classList.toggle('hidden', entries[0].isIntersecting);
+      }, { threshold: 0.15 });
+      ctaObserver.observe(ctaSection);
+    }
+  }
+
   /* ─── Dark / light theme toggle ─── */
   var themeBtn = document.querySelector('.theme-toggle');
   if (themeBtn) {
