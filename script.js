@@ -191,9 +191,10 @@
   /* ─── Dark / light theme toggle ─── */
   var themeBtn = document.querySelector('.theme-toggle');
   if (themeBtn) {
-    // Restore saved theme
+    // Restore saved theme (default is dark via HTML attribute)
     var saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
+    else document.documentElement.setAttribute('data-theme', 'dark');
 
     themeBtn.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme');
