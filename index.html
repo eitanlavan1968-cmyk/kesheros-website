@@ -30,8 +30,57 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <link rel="preload" href="fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20260807d">
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <!-- Critical CSS — above-the-fold (gate + header + hero + trust) -->
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  @font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/heebo-hebrew.woff2) format('woff2');unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+  @font-face{font-family:'Heebo';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/heebo-latin.woff2) format('woff2');unicode-range:U+0000-024F,U+0300-036F,U+0370-03FF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2200-22FF}
+  :root{--navy:#0E2340;--navy-mid:#162D50;--navy-light:#1A3558;--gold:#C4922A;--gold-light:#E5B44A;--accent:#C4922A;--gold-pale:#F5E6C4;--gold-glow:rgba(196,146,42,0.25);--teal:#1B6B8A;--sand:#F5F3EE;--warm:#6B6256;--bg:#FFFFFF;--bg-alt:var(--sand);--bg-dark:var(--navy);--text:#1A1A1A;--text-muted:var(--warm);--text-on-dark:#F0EDE8;--text-on-dark-muted:rgba(240,237,232,0.65);--border:#E0DDD6;--card-bg:#FFFFFF;--card-shadow:0 2px 16px rgba(14,35,64,0.06);--font-display:'Heebo',system-ui,sans-serif;--font-body:'Heebo',system-ui,'Segoe UI',Arial,sans-serif;--font-logo:Georgia,'Times New Roman',serif;--radius:14px;--radius-sm:8px;--container:1140px}
+  @media(prefers-color-scheme:dark){:root{--bg:#0C0E12;--bg-alt:#141820;--bg-dark:#080C14;--text:#E8E4DC;--text-muted:#9A9083;--text-on-dark:#E8E4DC;--text-on-dark-muted:rgba(232,228,220,0.55);--border:#2A2E36;--card-bg:#1A1E26;--card-shadow:0 2px 16px rgba(0,0,0,0.3);--gold-glow:rgba(196,146,42,0.35)}}
+  :root[data-theme="dark"]{--bg:#0C0E12;--bg-alt:#141820;--bg-dark:#080C14;--text:#E8E4DC;--text-muted:#9A9083;--text-on-dark:#E8E4DC;--text-on-dark-muted:rgba(232,228,220,0.55);--border:#2A2E36;--card-bg:#1A1E26;--card-shadow:0 2px 16px rgba(0,0,0,0.3);--gold-glow:rgba(196,146,42,0.35)}
+  :root[data-theme="light"]{--bg:#FFFFFF;--bg-alt:var(--sand);--bg-dark:var(--navy);--text:#1A1A1A;--text-muted:var(--warm);--text-on-dark:#F0EDE8;--text-on-dark-muted:rgba(240,237,232,0.65);--border:#E0DDD6;--card-bg:#FFFFFF;--card-shadow:0 2px 16px rgba(14,35,64,0.06);--gold-glow:rgba(196,146,42,0.25)}
+  html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.3;text-wrap:balance}a{color:var(--teal);text-decoration:none}img,svg{display:block;max-width:100%}
+  .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+  #site-gate{position:fixed;inset:0;z-index:99999;background:#0E2340;display:flex;align-items:center;justify-content:center;transition:opacity .4s ease}
+  .gate-box{text-align:center;color:#E8EEF8;display:flex;flex-direction:column;align-items:center;gap:14px}.gate-box h2{font-family:Georgia,'Times New Roman',serif;font-size:1.6rem;margin:0;color:#FFF}.gate-box p{font-size:.9rem;color:#8ea3c4;margin:0}
+  #gate-pw{width:240px;padding:12px 16px;border-radius:10px;border:1px solid #22406e;background:#0a1628;color:#E8EEF8;font-size:1rem;text-align:center;outline:none}#gate-pw:focus{border-color:#C4922A;box-shadow:0 0 0 3px rgba(196,146,42,.2)}
+  #gate-btn{width:240px;padding:12px;border-radius:10px;border:none;background:#C4922A;color:#FFF;font-weight:700;font-size:.95rem;cursor:pointer}#gate-err{color:#ff5b52;font-size:.85rem}
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;transition:background .3s,border-color .3s,box-shadow .3s;border-bottom:1px solid transparent}
+  .site-header[data-scrolled]{background:var(--bg);border-bottom-color:var(--border);box-shadow:0 1px 8px rgba(0,0,0,.06)}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+  .logo-lockup{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-mark{width:36px;height:36px;flex-shrink:0}
+  .logo-text{font-family:var(--font-logo);font-size:22px;letter-spacing:-.5px;direction:ltr}.logo-kesher{color:#FFF;transition:color .3s}.logo-os{color:var(--gold)}
+  .site-header[data-scrolled] .logo-kesher{color:var(--navy)}
+  .header-nav{display:flex;align-items:center;gap:28px;font-size:15px}.header-nav a{color:var(--text-on-dark);font-weight:500;text-decoration:none}.site-header[data-scrolled] .header-nav a{color:var(--text)}
+  .nav-cta{background:var(--gold);color:#FFF!important;padding:9px 22px;border-radius:var(--radius-sm);font-weight:600}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}.menu-toggle span{display:block;width:22px;height:2px;background:var(--text-on-dark);margin:5px 0}
+  .hero{background:var(--bg-dark);color:var(--text-on-dark);padding:140px 0 90px;overflow:hidden;position:relative}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(27,107,138,.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(196,146,42,.08) 0%,transparent 70%);pointer-events:none}
+  .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;position:relative}
+  .hero-content{z-index:1;animation:hero-fade .8s ease-out both}.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);margin-bottom:20px;color:#FFF;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--gold)}.hero-sub{font-size:1.2rem;max-width:540px;margin-bottom:36px;color:var(--text-on-dark-muted);line-height:1.9}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-visual{position:relative;width:420px;height:420px;display:flex;align-items:center;justify-content:center;animation:hero-fade 1s ease-out .3s both}
+  .constellation{width:100%;height:100%}
+  .hero-stats{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;padding-top:56px;grid-column:1/-1}
+  .stat{text-align:center}.stat strong{display:block;font-family:var(--font-display);font-size:2.2rem;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums}.stat span{font-size:.88rem;color:var(--text-on-dark-muted)}
+  .btn{display:inline-block;padding:14px 32px;border-radius:var(--radius-sm);font-weight:600;font-size:16px;text-align:center;transition:.2s;cursor:pointer;text-decoration:none!important;border:none;font-family:var(--font-body)}
+  .btn-primary{background:var(--gold);color:#FFF}.btn-outline{background:transparent;color:var(--text-on-dark);border:2px solid rgba(255,255,255,.25)}.btn-lg{padding:18px 40px;font-size:18px}
+  .trust-strip{background:var(--bg-alt);padding:28px 0;border-bottom:1px solid var(--border)}.trust-inner{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+  .trust-badge{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--text-muted);font-weight:500}.trust-badge svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}.trust-badge strong{color:var(--text);font-weight:700}
+  .trust-sep{width:4px;height:4px;border-radius:50%;background:var(--border)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+  .skip-link{position:absolute;top:-100px;left:50%;transform:translateX(-50%);background:var(--gold);color:#FFF;padding:8px 24px;border-radius:var(--radius-sm);font-weight:600;z-index:1000}
+  @keyframes hero-fade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:1024px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-visual{display:flex!important;width:260px;height:260px;margin:0 auto;opacity:.55}.hero-sub{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}}
+  @media(max-width:768px){.menu-toggle{display:block}.header-nav{display:none;position:fixed;top:68px;right:0;left:0;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;padding:16px 24px;gap:12px}.header-nav.open{display:flex}.hero{padding:110px 0 60px}.hero h1{font-size:clamp(2rem,8vw,2.6rem)}}
+  @media(max-width:600px){.hero-visual{display:none!important}.trust-sep{display:none}.trust-inner{gap:20px 40px;flex-direction:column;text-align:center}.trust-badge{justify-content:center}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-content,.hero-visual{animation:none}}
+  </style>
+  <!-- Full CSS deferred — loads after first paint -->
+  <link rel="stylesheet" href="style.css?v=20260807e" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260807e"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -302,6 +351,73 @@
           </div>
           <h3>מחסום שפה</h3>
           <p>עובדים זרים, קהילות ערביות ורוסיות — ללא פתרון שפה הולם. בחירום, זה פער בטיחותי.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       4b. BEFORE / AFTER
+       ═══════════════════════════════════════════════════════ -->
+  <section class="before-after" id="before-after" aria-label="לפני ואחרי">
+    <div class="container">
+      <div class="section-header">
+        <h2>לפני KesherOS — ואחרי.</h2>
+        <p class="section-lead">הפער שקהילות חיות כל יום. ממשלוש קבוצות וואטסאפ — למערכת אחת שעושה הכל.</p>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-col ba-before reveal">
+          <div class="ba-label ba-label-before">היום ❌</div>
+          <ul class="ba-list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>3 קבוצות וואטסאפ, 2 מיילים, SMS — אותה הודעה, שום סדר</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>אקסלים מפוזרים עם פרטי תושבים לא מעודכנים</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>הצבעות בנייר, ספירה ידנית, תוצאות מאוחרות</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>בחירום — אין דרך לדעת מי בטוח ומי חסר</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>עובדים זרים לא מבינים כלום — לא מקבלים מידע בשפה שלהם</span>
+            </li>
+          </ul>
+        </div>
+        <div class="ba-divider reveal" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="ba-col ba-after reveal reveal-delay-1">
+          <div class="ba-label ba-label-after">עם KesherOS ✅</div>
+          <ul class="ba-list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              <span>מערכת אחת — מודעות, מסמכים, התראות, הכל דרך מקום אחד</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              <span>אלפון דיגיטלי חי — תמיד מעודכן, נגיש מכל מכשיר</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              <span>הצבעות דיגיטליות עם OTP — תוצאות מיידיות ומאובטחות</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              <span>מניפת חירום — כל תושב מדווח סטטוס, לוח בקרה חי תוך דקות</span>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              <span>15 שפות — כל תושב מקבל הכל בשפה שלו, כולל תאילנדית והינדי</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
