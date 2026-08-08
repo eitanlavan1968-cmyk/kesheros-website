@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-theme="dark">
+<html lang="he" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0E2340" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#080C14" media="(prefers-color-scheme: dark)">
   <title>KesherOS — מערכת ההפעלה הקהילתית</title>
-  <meta name="description" content="פלטפורמת SaaS לניהול קיבוצים, מושבים ויישובים קהילתיים. 21 מודולים, 15 שפות, AI סמנטי, ניהול חירום — הכל במקום אחד.">
+  <meta name="description" content="פלטפורמת SaaS לניהול קיבוצים, מושבים ויישובים קהילתיים. 22 מודולים, 15 שפות, AI סמנטי, ניהול חירום — הכל במקום אחד.">
   <meta name="keywords" content="ניהול קהילה, קיבוץ, מושב, יישוב, הצבעות דיגיטליות, ניהול חירום, KesherOS">
   <meta name="author" content="KesherOS">
-  <meta name="robots" content="index, follow">
+  <!-- ⚠️ האתר חסום בסיסמה — אין טעם שגוגל ישלח אליו אנשים.
+       כשמסירים את הגייט (#site-gate) יש להחזיר לכאן "index, follow"
+       ולהחזיר את robots.txt ל-"Allow: /". -->
+  <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://kesheros.co.il/">
   <link rel="alternate" hreflang="he" href="https://kesheros.co.il/">
   <link rel="alternate" hreflang="x-default" href="https://kesheros.co.il/">
@@ -23,7 +26,7 @@
   <meta property="og:url" content="https://kesheros.co.il/">
   <meta property="og:site_name" content="KesherOS">
   <meta property="og:title" content="KesherOS — מערכת ההפעלה הקהילתית">
-  <meta property="og:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי, ניהול חירום.">
+  <meta property="og:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 22 מודולים, 15 שפות, AI סמנטי, ניהול חירום.">
   <meta property="og:locale" content="he_IL">
   <meta property="og:image" content="https://kesheros.co.il/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -32,7 +35,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="KesherOS — מערכת ההפעלה הקהילתית">
-  <meta name="twitter:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 21 מודולים, 15 שפות, AI סמנטי.">
+  <meta name="twitter:description" content="פלטפורמה אחת לניהול קיבוצים, מושבים ויישובים. 22 מודולים, 15 שפות, AI סמנטי.">
   <meta name="twitter:image" content="https://kesheros.co.il/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -102,8 +105,8 @@
   *:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   </style>
   <!-- Full CSS deferred — loads after first paint -->
-  <link rel="stylesheet" href="style.css?v=20260807s" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260807s"></noscript>
+  <link rel="stylesheet" href="style.css?v=20260808e" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260808e"></noscript>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -114,7 +117,7 @@
     "url": "https://kesheros.co.il",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Community Operating System — platform for managing kibbutzim, moshavim, and community settlements. 21 modules, 15 languages, AI-powered search, emergency management.",
+    "description": "Community Operating System — platform for managing kibbutzim, moshavim, and community settlements. 22 modules, 15 languages, AI-powered search, emergency management.",
     "inLanguage": "he",
     "image": "https://kesheros.co.il/og-image.png",
     "offers": {
@@ -159,6 +162,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "מנהל מפעיל התראה → SMS ואימייל נשלחים לכל התושבים בשפה שלהם → כל תושב מדווח סטטוס בלחיצה → לוח בקרה חי מראה מי בטוח ומי חסר. הכל תוך דקות."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "מי רואה את המידע, ואיפה הוא נשמר?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "המידע שייך לקהילה — לא לנו. הגישה נקבעת לפי תפקיד והרשאה: תושב רואה את מה שרלוונטי לו, בעל תפקיד רואה את מה שתפקידו מחייב, ומרשם התושבים הפגיעים חשוף רק לגורמי החירום שהקהילה מגדירה. אנחנו לא מוכרים, לא משתפים ולא מנתחים את המידע לצרכים מסחריים, והוא אינו משמש לאימון מודלי AI. המערכת רצה בענן עם הצפנה בתעבורה ובאחסון וגיבויים אוטומטיים, וכל שינוי בקוד נבדק מול ניסיונות הזרקה, מעקף הרשאות ואימות קבצים. בכל רגע תוכלו לקבל ייצוא מלא של הנתונים — ובביטול, למחוק אותם."
         }
       },
       {
@@ -289,6 +300,7 @@
         <a href="#demo">הדגמה</a>
         <a href="#emergency">חירום</a>
         <a href="#ai">AI</a>
+        <a href="#languages">שפות</a>
         <a href="#pricing">תמחור</a>
         <a href="#contact" class="nav-cta">צרו קשר</a>
       </nav>
@@ -312,7 +324,7 @@
     <div class="container hero-inner">
       <div class="hero-content">
         <h1>מערכת ההפעלה<br><em>של הקהילה</em></h1>
-        <p class="hero-sub">שקיפות מלאה. חיבור אמיתי. בשגרה ובחירום.<br>פלטפורמה אחת לניהול קהילה — 21 מודולים, 15 שפות.</p>
+        <p class="hero-sub">שקיפות מלאה. חיבור אמיתי. בשגרה ובחירום.<br>פלטפורמה אחת לניהול קהילה — 22 מודולים, 15 שפות.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary btn-lg btn-glow">צרו קשר</a>
           <a href="#product" class="btn btn-outline btn-lg">גלו עוד</a>
@@ -411,7 +423,7 @@
 
       <div class="hero-stats">
         <div class="stat reveal"><strong data-count="15">0</strong><span>שפות</span></div>
-        <div class="stat reveal reveal-delay-1"><strong data-count="21">0</strong><span>מודולים</span></div>
+        <div class="stat reveal reveal-delay-1"><strong data-count="22">0</strong><span>מודולים</span></div>
         <div class="stat reveal reveal-delay-2"><strong data-count="5000" data-suffix="+">0</strong><span>בדיקות אוטומטיות</span></div>
       </div>
     </div>
@@ -428,8 +440,8 @@
       </div>
       <div class="trust-sep" aria-hidden="true"></div>
       <div class="trust-badge reveal reveal-delay-1">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <span><strong>34</strong> סבבי ביקורת AI</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+        <span><strong>0</strong> באגים פתוחים ידועים</span>
       </div>
       <div class="trust-sep" aria-hidden="true"></div>
       <div class="trust-badge reveal reveal-delay-2">
@@ -514,7 +526,41 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       4b. BEFORE / AFTER
+       4b. ORIGIN STORY
+       ═══════════════════════════════════════════════════════ -->
+  <section class="origin-section" id="story" aria-label="הסיפור שלנו">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>למה בנינו את KesherOS</h2>
+      </div>
+      <div class="origin-timeline">
+        <div class="origin-step reveal">
+          <div class="origin-marker">1</div>
+          <div class="origin-content">
+            <h3>ניסיון אישי בקהילה</h3>
+            <p>חיים בקיבוץ. הודעות בשלוש קבוצות וואטסאפ, מיילים שנבלעים, פרוטוקולים שאף אחד לא מוצא. עובדים זרים שלא מבינים עברית ולא מקבלים שום מידע. ראינו את הבעיה כל יום — וידענו שחייב להיות פתרון טוב יותר.</p>
+          </div>
+        </div>
+        <div class="origin-step reveal reveal-delay-1">
+          <div class="origin-marker">2</div>
+          <div class="origin-content">
+            <h3>אוקטובר 2023 — רגע ההכרעה</h3>
+            <p>אחרי ה-7 באוקטובר, הפער הפך לסכנה. קהילות שלא הצליחו לאתר תושבים. הודעות פינוי שלא הגיעו לעובדים הזרים. מרשם פגיעים שלא היה קיים. זה לא היה עוד "נוחות" — זה היה פער בטיחותי. החלטנו לבנות.</p>
+          </div>
+        </div>
+        <div class="origin-step reveal reveal-delay-2">
+          <div class="origin-marker">3</div>
+          <div class="origin-content">
+            <h3>טכנולוגיה עם חזון</h3>
+            <p>בנינו מערכת שמשלבת את כל מה שקהילה צריכה — ניהול, תקשורת וחירום — במקום אחד. 15 שפות כי בחירום כולם חייבים להבין. AI סמנטי כי מידע שאי אפשר למצוא לא שווה כלום. ו-5,000 בדיקות אוטומטיות כי קהילות סומכות עלינו.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       4c. BEFORE / AFTER
        ═══════════════════════════════════════════════════════ -->
   <section class="before-after" id="before-after" aria-label="לפני ואחרי">
     <div class="container">
@@ -586,7 +632,7 @@
   <section class="product" id="product" aria-label="מודולים">
     <div class="container">
       <div class="section-header">
-        <h2>21 מודולים. שלוש קבוצות. מערכת אחת.</h2>
+        <h2>22 מודולים. שלוש קבוצות. מערכת אחת.</h2>
         <p class="section-lead">כל מודול עומד בפני עצמו, אך ביחד הם מערכת ניהול קהילתית מלאה שמחליפה עשרות כלים מפוצלים.</p>
       </div>
 
@@ -609,6 +655,10 @@
             <p class="group-subtitle">הבסיס — כל המידע של הקהילה במקום אחד, מעודכן ומאובטח</p>
             <div class="module-tiles">
               <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                <div><strong>דף הבית</strong><br><small>מה חדש, מה דחוף, מה נוגע לך — במסך אחד</small></div>
+              </div>
+              <div class="module-tile">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg>
                 <div><strong>אלפון ומשקי בית</strong><br><small>פרופילים, משפחות, חיפוש חי</small></div>
               </div>
@@ -619,6 +669,22 @@
               <div class="module-tile">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
                 <div><strong>פרוטוקולים</strong><br><small>ארכיון החלטות, חיפוש, תקצירי AI</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                <div><strong>מרשם תושבים פגיעים</strong><br><small>ניידות מוגבלת, קשישים, צרכים מיוחדים</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <div><strong>חיפוש AI סמנטי</strong><br><small>שאלה בשפה חופשית, תשובה עם מקור</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M10 21v-6h4v6"/></svg>
+                <div><strong>מתקנים והזמנות</strong><br><small>חדרים, אולמות, ציוד — לוח זמינות</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <div><strong>דוחות ותובנות</strong><br><small>פילוחים, מגמות, ייצוא</small></div>
               </div>
             </div>
           </div>
@@ -661,6 +727,22 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 <div><strong>התראות חירום</strong><br><small>Fan-out SMS/אימייל בשניות</small></div>
               </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div><strong>כפתור מצוקה</strong><br><small>לחיצה אחת — כל הגורמים יודעים מיד</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                <div><strong>ניהול פינוי</strong><br><small>יעדים, הסעות, סטטוס בזמן אמת</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <div><strong>לוח בקרה חי</strong><br><small>מי בטוח, מי חסר — בזמן אמת</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l1.09 3.26L16 6l-2.91.74L12 10l-1.09-3.26L8 6l2.91-.74L12 2z"/><path d="M18 12l.7 2.1L21 15l-2.3.6L18 18l-.7-2.4L15 15l2.3-.9L18 12z"/><path d="M6 14l.7 2.1L9 17l-2.3.6L6 20l-.7-2.4L3 17l2.3-.9L6 14z"/></svg>
+                <div><strong>עוזר AI בצ׳אט</strong><br><small>שאלה, הצעה, אישור — ואז ביצוע</small></div>
+              </div>
             </div>
           </div>
         </article>
@@ -697,6 +779,22 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M15 5h2a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
                 <div><strong>קריאות שירות</strong><br><small>בקשות, ניתוב, SLA, סגירה</small></div>
               </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 118 2.83"/><path d="M22 12A10 10 0 0012 2v10z"/></svg>
+                <div><strong>תקציבים ושקיפות</strong><br><small>תקציב, הוצאות והחלטות — פתוח לתושבים</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <div><strong>משתמשים והרשאות</strong><br><small>תפקידים, גישה, מי רואה מה</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                <div><strong>ריבוי יישובים</strong><br><small>כמה קהילות תחת ניהול אחד</small></div>
+              </div>
+              <div class="module-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                <div><strong>לוח בקרה מועצתי</strong><br><small>תמונת מצב חוצת-יישובים</small></div>
+              </div>
             </div>
           </div>
         </article>
@@ -721,7 +819,8 @@
     <div class="container">
       <div class="section-header">
         <h2>ראו בעצמכם</h2>
-        <p class="section-lead">ממשק אחד. 21 מודולים. בדיוק כמו שהמנהלים שלכם ישתמשו.</p>
+        <p class="section-lead">ממשק אחד. 22 מודולים. בדיוק כמו שהמנהלים שלכם ישתמשו.</p>
+        <p class="demo-scope">תצוגה מקדימה · חלק מהמודולים, נתוני דוגמה</p>
       </div>
 
       <div class="demo-frame reveal">
@@ -750,7 +849,11 @@
         <!-- Ribbon (icon top, label bottom — matches real app) -->
         <div class="demo-ribbon" role="tablist">
           <div class="demo-ribbon-scroll">
-            <button class="demo-tab active" data-panel="directory" role="tab" aria-selected="true">
+            <button class="demo-tab active" data-panel="home" role="tab" aria-selected="true">
+              <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.83,103.77l-80-75.48a16,16,0,0,0-21.66,0l-80,75.48A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l80-75.48,80,75.48Z"/></svg>
+              <span>בית</span>
+            </button>
+            <button class="demo-tab" data-panel="directory" role="tab" aria-selected="false">
               <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM96,120a32,32,0,1,1,32-32A32,32,0,0,1,96,120Zm-8,72a8,8,0,0,1,0-16h64a8,8,0,0,1,0,16Zm96-56H128a8,8,0,0,1,0-16h56a8,8,0,0,1,0,16Z"/></svg>
               <span>אלפון</span>
             </button>
@@ -819,7 +922,53 @@
         <div class="demo-content">
 
           <!-- DIRECTORY PANEL -->
-          <div class="demo-panel" id="demo-directory" style="display:block" role="tabpanel">
+          <!-- HOME PANEL — the resident's hub: what's urgent, what's theirs, what's new -->
+          <div class="demo-panel" id="demo-home" style="display:block" role="tabpanel">
+            <div class="demo-home-alert">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div class="demo-home-alert-text">
+                <strong>תרגיל פינוי — מחר, 10:00</strong>
+                <small><span data-demo-count="38">0</span> מתוך 52 משקי בית אישרו קבלה</small>
+              </div>
+              <span class="demo-btn-outline demo-btn-sm">אישור קבלה</span>
+            </div>
+
+            <div class="demo-home-grid">
+              <div class="demo-home-col">
+                <h4 class="demo-home-title">מה מחכה לך</h4>
+                <div class="demo-home-item">
+                  <span class="demo-badge demo-badge-warn">להצבעה</span>
+                  <div><strong>תקציב 2026</strong><small>נסגר בעוד 3 ימים · טרם הצבעת</small></div>
+                </div>
+                <div class="demo-home-item">
+                  <span class="demo-badge demo-badge-blue">בטיפול</span>
+                  <div><strong>קריאת שירות מס׳ 182</strong><small>נזילה במקלחת · שובץ לאחזקה</small></div>
+                </div>
+                <div class="demo-home-item">
+                  <span class="demo-badge demo-badge-green">מאושר</span>
+                  <div><strong>חדר ישיבות</strong><small>שלישי 12.8 · 10:00–11:00</small></div>
+                </div>
+              </div>
+
+              <div class="demo-home-col">
+                <h4 class="demo-home-title">מה חדש בקהילה</h4>
+                <div class="demo-home-item">
+                  <span class="demo-home-time">היום</span>
+                  <div><strong>שעות פתיחה חדשות במרפאה</strong><small>לוח מודעות · ועדת בריאות</small></div>
+                </div>
+                <div class="demo-home-item">
+                  <span class="demo-home-time">אתמול</span>
+                  <div><strong>פרוטוקול ועד — 6.8</strong><small>מסמכים · 4 החלטות חדשות</small></div>
+                </div>
+                <div class="demo-home-item">
+                  <span class="demo-home-time">15 אוג׳</span>
+                  <div><strong>אסיפה כללית — תקציב</strong><small>אירועים · 42 נרשמו</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-panel" id="demo-directory" style="display:none" role="tabpanel">
             <div class="demo-toolbar">
               <div class="demo-search-wrap">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1445,7 +1594,10 @@
         <div class="demo-help-fab" aria-hidden="true">?</div>
 
       </div><!-- /demo-frame -->
-      <p class="demo-disclaimer">💡 <strong>זוהי הדגמה מצומצמת בלבד.</strong> המערכת המלאה כוללת 21 מודולים, הרשאות מתקדמות, בינה מלאכותית ועוד. <strong><a href="#contact">רוצים לראות הכל? דברו איתנו ←</a></strong></p>
+      <div class="demo-cta reveal">
+        <p class="demo-disclaimer">המערכת המלאה כוללת 22 מודולים, הרשאות מתקדמות, בינה מלאכותית ועוד.</p>
+        <a href="#contact" class="btn btn-primary btn-lg">לראות את המערכת המלאה</a>
+      </div>
     </div>
   </section>
 
@@ -1622,12 +1774,12 @@
         <div class="metric-card reveal">
           <div class="metric-number" data-count="5000" data-suffix="+">0</div>
           <div class="metric-label">בדיקות אוטומטיות</div>
-          <div class="metric-detail"><span class="check">✓</span> 0 כשלונות ידועים</div>
+          <div class="metric-detail"><span class="check">✓</span> רצות בכל שינוי בקוד</div>
         </div>
         <div class="metric-card reveal reveal-delay-1">
-          <div class="metric-number" data-count="34">0</div>
-          <div class="metric-label">סבבי ביקורת AI</div>
-          <div class="metric-detail">4 צוותים עצמאיים בו-זמנית</div>
+          <div class="metric-number">0</div>
+          <div class="metric-label">באגים פתוחים ידועים</div>
+          <div class="metric-detail">כל ממצא מתוקן לפני שחרור</div>
         </div>
         <div class="metric-card reveal reveal-delay-2">
           <div class="metric-number" data-count="120" data-suffix="+">0</div>
@@ -1670,8 +1822,11 @@
         </div>
       </div>
 
-      <div class="test-layers reveal">
-        <h3>אחת עשרה שכבות אימות, כיסוי מלא</h3>
+      <details class="test-layers reveal">
+        <summary class="test-layers-summary">
+          <svg class="test-layers-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span>אחת עשרה שכבות אימות — הפירוט הטכני המלא</span>
+        </summary>
         <p class="test-layers-lead">כל שכבה בודקת זווית שונה של המערכת — מה-API ועד לחוויית המשתמש בשפות שונות, מאבטחה ונגישות ועד ביצועים.</p>
         <div class="test-grid">
           <div class="test-type-card">
@@ -1719,26 +1874,7 @@
             <p>כל endpoint שמקבל טקסט נבדק מול מגבלות אורך, תווים חובה, ערכים מחוץ לטווח — חוסם קלט פגום בשער ולא במסד הנתונים.</p>
           </div>
         </div>
-      </div>
-
-      <!-- Advantages grid -->
-      <div class="advantages-wrap reveal">
-        <h3>למה KesherOS</h3>
-        <div class="advantages-grid">
-          <div class="adv-card"><span class="adv-check">✓</span><h4>15 שפות</h4><p>כולל תאילנדית, סינית, הינדי ועוד — שפות של עובדים זרים שחיים בקהילות</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>מניפת חירום</h4><p>SMS + אימייל ב-15 שפות — כל תושב מקבל הודעה בשפה שלו תוך שניות</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>כפתור מצוקה</h4><p>לחיצה אחת — כל הגורמים הרלוונטיים יודעים מיד</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>ניהול פינוי</h4><p>יעדים, הסעות, סטטוס בזמן אמת — רב-שפתי, כולל פגיעים</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>מרשם פגיעים</h4><p>רשימה מוכנה תמיד — ניידות מוגבלת, קשישים בודדים, צרכים מיוחדים</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>AI סמנטי (RAG)</h4><p>שואלים בשפה חופשית — מקבלים תשובה מדויקת עם מקור</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>פעולות AI</h4><p>הצעה → אישור → ביצוע. ה-AI לא רק עונה — הוא גם עושה</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>עזרה מובנית</h4><p>סיורים מודרכים ותוכן עזרה בכל מודול — ב-15 שפות</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>הצבעות OTP</h4><p>הצבעה אנונימית ומאובטחת — קוד חד-פעמי לכל מצביע</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>5,000+ בדיקות</h4><p>מדיניות אפס באגים ידועים — כל ממצא מתוקן ונבדק</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>נגישות WCAG</h4><p>מובנית מהיסוד — ניווט מקלדת, קורא מסך, ניגודיות</p></div>
-          <div class="adv-card"><span class="adv-check">✓</span><h4>PWA / אופליין</h4><p>מותקנת על הטלפון — עובדת גם בלי חיבור לאינטרנט</p></div>
-        </div>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -1850,7 +1986,7 @@
           </div>
         </div>
         <p class="extras-bottom">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="16" height="16" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <strong>שקיפות מלאה:</strong> אנחנו לא סוכנים ולא עושים מרווח על שירותים חיצוניים. אתם נרשמים ישירות, ואנחנו מלווים את ההגדרה חינם. העלות הנלווית המשוערת: <strong>₪30–80 לחודש</strong> הכל כלול.
         </p>
       </div>
@@ -1858,41 +1994,39 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       11. ORIGIN STORY
+       10b. PILOT COMMUNITIES
        ═══════════════════════════════════════════════════════ -->
-  <section class="origin-section" id="story" aria-label="הסיפור שלנו">
+  <section class="pilot-band" id="pilot" aria-label="קהילות פיילוט">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>למה בנינו את KesherOS</h2>
+      <div class="pilot-inner reveal">
+        <div class="pilot-text">
+          <span class="pilot-eyebrow">קהילות הפיילוט הראשונות</span>
+          <h2>אנחנו יוצאים לדרך עם מספר מצומצם של קהילות.</h2>
+          <p>הן מקבלות אותנו צמוד — ואנחנו מקבלים את מה שחשוב לנו יותר מהכל: קהילה אמיתית שתעצב את המוצר.</p>
+        </div>
+        <ul class="pilot-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+            <div><strong>ליווי צמוד</strong><br><small>הקמה, ייבוא נתונים והדרכה — על ידינו, לא במייל תמיכה</small></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+            <div><strong>השפעה על המוצר</strong><br><small>הצרכים שלכם קובעים מה נבנה הלאה</small></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><strong>תנאי מייסדים</strong><br><small>נסגור אותם יחד, לפני שהמחירון נסגר</small></div>
+          </li>
+        </ul>
       </div>
-      <div class="origin-timeline">
-        <div class="origin-step reveal">
-          <div class="origin-marker">1</div>
-          <div class="origin-content">
-            <h3>ניסיון אישי בקהילה</h3>
-            <p>חיים בקיבוץ. הודעות בשלוש קבוצות וואטסאפ, מיילים שנבלעים, פרוטוקולים שאף אחד לא מוצא. עובדים זרים שלא מבינים עברית ולא מקבלים שום מידע. ראינו את הבעיה כל יום — וידענו שחייב להיות פתרון טוב יותר.</p>
-          </div>
-        </div>
-        <div class="origin-step reveal reveal-delay-1">
-          <div class="origin-marker">2</div>
-          <div class="origin-content">
-            <h3>אוקטובר 2023 — רגע ההכרעה</h3>
-            <p>אחרי ה-7 באוקטובר, הפער הפך לסכנה. קהילות שלא הצליחו לאתר תושבים. הודעות פינוי שלא הגיעו לעובדים הזרים. מרשם פגיעים שלא היה קיים. זה לא היה עוד "נוחות" — זה היה פער בטיחותי. החלטנו לבנות.</p>
-          </div>
-        </div>
-        <div class="origin-step reveal reveal-delay-2">
-          <div class="origin-marker">3</div>
-          <div class="origin-content">
-            <h3>טכנולוגיה עם חזון</h3>
-            <p>בנינו מערכת שמשלבת את כל מה שקהילה צריכה — ניהול, תקשורת וחירום — במקום אחד. 15 שפות כי בחירום כולם חייבים להבין. AI סמנטי כי מידע שאי אפשר למצוא לא שווה כלום. ו-5,000 בדיקות אוטומטיות כי קהילות סומכות עלינו.</p>
-          </div>
-        </div>
+      <div class="pilot-cta reveal reveal-delay-1">
+        <a href="#contact" class="btn btn-primary btn-lg">לדבר על פיילוט</a>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       12. FAQ
+       11. FAQ
        ═══════════════════════════════════════════════════════ -->
   <section class="faq-section" id="faq" aria-label="שאלות נפוצות">
     <div class="container">
@@ -1911,6 +2045,10 @@
         <details class="faq-item reveal reveal-delay-1">
           <summary>איך עובד ניהול החירום?</summary>
           <div class="faq-body"><div class="faq-body-inner"><p>מנהל מפעיל התראה → SMS ואימייל נשלחים לכל התושבים בשפה שלהם → כל תושב מדווח סטטוס בלחיצה → לוח בקרה חי מראה מי בטוח ומי חסר. הכל תוך דקות.</p></div></div>
+        </details>
+        <details class="faq-item reveal reveal-delay-2">
+          <summary>מי רואה את המידע, ואיפה הוא נשמר?</summary>
+          <div class="faq-body"><div class="faq-body-inner"><p>המידע שייך לקהילה — לא לנו. הגישה נקבעת לפי תפקיד והרשאה: תושב רואה את מה שרלוונטי לו, בעל תפקיד רואה את מה שתפקידו מחייב, ו<strong>מרשם התושבים הפגיעים חשוף רק לגורמי החירום שהקהילה מגדירה</strong>. אנחנו לא מוכרים, לא משתפים ולא מנתחים את המידע לצרכים מסחריים, והוא אינו משמש לאימון מודלי AI. המערכת רצה בענן עם הצפנה בתעבורה ובאחסון וגיבויים אוטומטיים, וכל שינוי בקוד נבדק מול ניסיונות הזרקה, מעקף הרשאות ואימות קבצים. בכל רגע תוכלו לקבל ייצוא מלא של הנתונים — ובביטול, למחוק אותם.</p></div></div>
         </details>
         <details class="faq-item reveal reveal-delay-2">
           <summary>מה קורה אם אני רוצה לבטל?</summary>
@@ -1933,7 +2071,7 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       13. CTA
+       12. CTA
        ═══════════════════════════════════════════════════════ -->
   <section class="cta-section" id="contact" aria-label="צרו קשר">
     <div class="container">
@@ -1950,21 +2088,21 @@
         <div class="form-row">
           <div class="form-group">
             <label for="cf-name">שם מלא</label>
-            <input type="text" id="cf-name" required placeholder="ישראל ישראלי">
+            <input type="text" id="cf-name" required autocomplete="name" placeholder="ישראל ישראלי">
           </div>
           <div class="form-group">
             <label for="cf-community">שם הקהילה / יישוב</label>
-            <input type="text" id="cf-community" required placeholder="קיבוץ / מושב / יישוב">
+            <input type="text" id="cf-community" required autocomplete="organization" placeholder="קיבוץ / מושב / יישוב">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="cf-email">אימייל</label>
-            <input type="email" id="cf-email" required placeholder="name@example.com" dir="ltr">
+            <input type="email" id="cf-email" required autocomplete="email" placeholder="name@example.com" dir="ltr">
           </div>
           <div class="form-group">
             <label for="cf-phone">טלפון</label>
-            <input type="tel" id="cf-phone" placeholder="050-000-0000" dir="ltr">
+            <input type="tel" id="cf-phone" autocomplete="tel" placeholder="050-000-0000" dir="ltr">
           </div>
         </div>
         <div class="form-group">
@@ -1980,7 +2118,7 @@
   </main>
 
   <!-- ═══════════════════════════════════════════════════════
-       12. FOOTER
+       13. FOOTER
        ═══════════════════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
@@ -1999,7 +2137,9 @@
           <h3>קישורים</h3>
           <a href="#emergency">ניהול חירום</a>
           <a href="#ai">AI סמנטי</a>
+          <a href="#languages">15 שפות</a>
           <a href="#pricing">תמחור</a>
+          <a href="#pilot">קהילות פיילוט</a>
           <a href="mailto:eitan.lavan.1968@gmail.com">eitan.lavan.1968@gmail.com</a>
         </div>
       </div>
@@ -2073,7 +2213,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=20260807s" defer></script>
+  <script src="script.js?v=20260808e" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

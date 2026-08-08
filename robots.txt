@@ -1,4 +1,6 @@
+# האתר חסום בסיסמה (#site-gate) — חוסמים סריקה כדי שגוגל לא ישלח אנשים לקיר סיסמה.
+# כשמסירים את הגייט: להחזיר "Allow: /", ולהחזיר את meta robots ב-index.html ל-"index, follow".
 User-agent: *
-Allow: /
+Disallow: /
 
 Sitemap: https://kesheros.co.il/sitemap.xml

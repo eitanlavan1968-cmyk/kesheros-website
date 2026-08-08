@@ -255,10 +255,10 @@
   /* ─── Dark / light theme toggle ─── */
   var themeBtn = document.querySelector('.theme-toggle');
   if (themeBtn) {
-    // Restore saved theme (default is dark via HTML attribute)
+    // Restore saved theme (default is light via HTML attribute)
     var saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
-    else document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.setAttribute('data-theme', 'light');
 
     themeBtn.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme');
@@ -288,7 +288,7 @@
     if (a11yState.motion) { root.classList.add('a11y-stop-motion'); setToggle('motion', true); }
     // Sync theme label
     var themeLabel = a11yPanel.querySelector('[data-a11y="theme"]');
-    if (themeLabel) themeLabel.textContent = (root.getAttribute('data-theme') || 'dark') === 'dark' ? 'כהה' : 'בהיר';
+    if (themeLabel) themeLabel.textContent = (root.getAttribute('data-theme') || 'light') === 'dark' ? 'כהה' : 'בהיר';
 
     function saveA11y() {
       localStorage.setItem('a11y', JSON.stringify({
