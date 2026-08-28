@@ -589,6 +589,11 @@ img, svg { display: block; max-width: 100%; }
    5. PRODUCT OVERVIEW
    ═══════════════════════════════════════════════════════════ */
 .product { background: var(--bg-alt); padding: 90px 0; }
+.product-systems {
+  text-align: center; margin: 34px auto 0; max-width: 660px;
+  font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
+}
+.product-systems strong { color: var(--text); font-weight: 600; }
 /* Roadmap line — explicitly labelled as not shipped, so it can never read as a claim */
 .product-roadmap {
   text-align: center; margin: 28px auto 0; max-width: 620px;
@@ -615,6 +620,7 @@ img, svg { display: block; max-width: 100%; }
 .product-group.group-records { border-top-color: var(--navy); }
 .product-group.group-connect { border-top-color: var(--teal); }
 .product-group.group-govern  { border-top-color: var(--gold); }
+.product-group.group-protect { border-top-color: var(--danger); }
 @media (prefers-color-scheme: dark) {
   .product-group.group-records { border-top-color: #5B8FCA; }
 }
@@ -628,6 +634,7 @@ img, svg { display: block; max-width: 100%; }
 .group-records .group-illustration { color: var(--navy); }
 .group-connect .group-illustration { color: var(--teal); }
 .group-govern .group-illustration  { color: var(--gold); }
+.group-protect .group-illustration { color: var(--danger); }
 @media (prefers-color-scheme: dark) {
   .group-records .group-illustration { color: #5B8FCA; }
 }
@@ -640,7 +647,7 @@ img, svg { display: block; max-width: 100%; }
 .group-subtitle { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; }
 .module-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
 }
 .module-tile {
@@ -810,7 +817,7 @@ img, svg { display: block; max-width: 100%; }
 .chat-msg.thai { direction: ltr; text-align: left; }
 
 /* Chat conversation animation */
-.chat-msg.chat-hidden { display: none; }
+.chat-msg.chat-hidden { visibility: hidden; }
 .chat-msg.chat-appear {
   animation: msg-appear 0.3s ease-out forwards;
 }
@@ -1481,6 +1488,38 @@ img, svg { display: block; max-width: 100%; }
 .demo-ticket-stat { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #8ea3c4; }
 .demo-badge-warn { background: rgba(227,154,58,0.15); color: #E39A3A; }
 
+/* AI panel — chat with sourced answers and confirmable actions */
+.demo-ai-chat { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.demo-ai-msg {
+  max-width: 78%; padding: 10px 13px; border-radius: 12px;
+  font-size: 12.5px; line-height: 1.65;
+}
+.demo-ai-msg.user { align-self: flex-start; background: #14294A; color: #E8EEF8; border: 1px solid #22406e; }
+.demo-ai-msg.bot  { align-self: flex-end;  background: #0B1424; color: #E8EEF8; border: 1px solid #16233a; }
+.demo-ai-src { display: block; margin-top: 6px; font-size: 10.5px; color: #8ea3c4; }
+.demo-ai-action {
+  background: #070E1C; border: 1px solid #2b4a7a; border-radius: 9px;
+  padding: 10px; margin-bottom: 8px;
+}
+.demo-ai-action-head {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: #E39A3A; margin-bottom: 6px;
+}
+.demo-ai-action-body { font-size: 12px; color: #E8EEF8; margin-bottom: 9px; }
+.demo-ai-action-btns { display: flex; gap: 8px; }
+.demo-ai-btn {
+  font-size: 11px; padding: 5px 11px; border-radius: 7px;
+  border: 1px solid #22406e; color: #8ea3c4;
+}
+.demo-ai-btn.confirm { background: #C4922A; border-color: #C4922A; color: #fff; font-weight: 600; }
+.demo-ai-input {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 13px; border-radius: 9px;
+  background: #070E1C; border: 1px solid #22406e;
+  font-size: 12px; color: #8ea3c4;
+}
+@media (max-width: 700px) { .demo-ai-msg { max-width: 92%; } }
+
 /* Home panel — resident hub */
 .demo-home-alert {
   display: flex; align-items: center; gap: 12px;
@@ -1999,16 +2038,12 @@ img, svg { display: block; max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════════════════════════ */
-/* ── Skip rendering off-screen sections (perf) ── */
-.pillars, .problem, .before-after, .origin-section, .faq-section, .cta-section, .site-footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 500px;
-}
-/* Heavier sections with SVG illustrations / interactive demo */
-.product, .demo-section, .emergency, .ai-section, .languages, .quality, .pricing {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
-}
+/* content-visibility: auto was here on 14 sections with a 500/800px
+   contain-intrinsic-size placeholder. Every section swapped its placeholder for its real
+   height the moment it neared the viewport (.product alone is 2,028px, not 800px), so the
+   page grew under the reader mid-scroll and anchor targets moved. It only felt fine after
+   a while because `auto` caches the measured size once a section has been rendered once.
+   The saving was not worth the jumping; measure before putting it back. */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -2020,7 +2055,7 @@ img, svg { display: block; max-width: 100%; }
   .pain-card, .price-card, .lang-chip, .product-group, .module-tile, .extras-card { transition: none; transform: none !important; }
   .panel-enter, .panel-exit { animation: none; }
   .pain-icon svg, .module-tile svg { transition: none; }
-  .chat-msg.chat-hidden { display: flex !important; }
+  .chat-msg.chat-hidden { visibility: visible !important; }
   .chat-msg.ai.typing-dots { color: inherit; min-height: auto; }
   .chat-msg.ai.typing-dots::before { display: none; }
   .chat-msg.ai.typing-dots .msg-source,
@@ -2384,3 +2419,105 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   section { page-break-inside: avoid; }
   h2, h3 { page-break-after: avoid; }
 }
+
+/* trust-proof row: 3 across */
+.method-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .method-grid-3 { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════════════════════
+   9b. REGULATION + COMPARISON
+   ═══════════════════════════════════════════════════════════ */
+
+.reg-callout {
+  display: flex; align-items: flex-start; gap: 16px;
+  max-width: 860px; margin: 0 auto 56px;
+  padding: 22px 26px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-inline-start: 4px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+.reg-callout svg { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+.reg-callout p { margin: 0; font-size: 0.98rem; line-height: 1.8; color: var(--text-muted); }
+.reg-callout strong { color: var(--text); }
+
+@media (max-width: 700px) {
+  .reg-callout { flex-direction: column; gap: 10px; padding: 20px; }
+}
+
+/* ── Language proof: the product's own translated nav labels ── */
+.langdemo { margin: 44px auto 8px; max-width: 940px; }
+.langdemo-title {
+  text-align: center; font-size: 0.9rem; color: var(--text-muted);
+  margin: 0 auto 24px; max-width: 620px; line-height: 1.7;
+}
+.langdemo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.langdemo-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 16px; box-shadow: var(--card-shadow);
+}
+.langdemo-head {
+  display: flex; align-items: baseline; gap: 8px;
+  padding-bottom: 10px; margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.langdemo-native { font-weight: 700; font-size: 1rem; color: var(--text); }
+.langdemo-eng { font-size: 0.72rem; color: var(--text-muted); }
+.langdemo-nav { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.langdemo-nav li {
+  font-size: 0.86rem; color: var(--text-muted);
+  padding: 6px 10px; border-radius: 7px; background: var(--bg-alt);
+}
+@media (max-width: 860px) { .langdemo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .langdemo-grid { grid-template-columns: 1fr; } }
+
+/* ── Plan matcher ── */
+.plan-match {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 12px; margin: 0 auto 34px; max-width: 620px;
+  padding: 18px 22px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 999px; box-shadow: var(--card-shadow);
+}
+.plan-match label { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.plan-match input {
+  width: 120px; padding: 9px 14px; font-size: 0.95rem;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--text); text-align: center;
+}
+.plan-match input:focus {
+  outline: none; border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+.plan-match-out {
+  width: 100%; text-align: center; margin: 0;
+  font-size: 0.9rem; color: var(--text-muted); min-height: 1.2em;
+}
+.plan-match-out strong { color: var(--gold); }
+.price-card.pm-hit {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-glow), var(--card-shadow);
+}
+@media (max-width: 560px) { .plan-match { border-radius: 16px; } }
+
+.pilot-sheet {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 16px; font-size: 0.9rem;
+  color: var(--text-on-dark-muted); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+}
+.pilot-sheet:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.pilot-cta { display: flex; flex-direction: column; align-items: center; }
+
+/* folded quality block: same pill affordance as the test layers */
+.quality-method-fold { margin-top: 48px; margin-bottom: 48px; }
+.quality-method-fold .method-grid { margin-top: 28px; }
+.cf-sheet {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  flex-wrap: wrap; margin-top: 18px;
+  font-size: 0.85rem; color: var(--text-on-dark); opacity: 0.8;
+}
+.cf-sheet a { color: var(--gold-light); text-decoration: underline; }
+
+.test-layers-summary h3 { margin: 0; font-size: inherit; font-weight: inherit; color: inherit; }

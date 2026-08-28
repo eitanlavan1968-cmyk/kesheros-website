@@ -226,6 +226,37 @@
     activePanel.querySelectorAll('[data-demo-count]').forEach(animateDemoCounter);
   }
 
+
+  /* ─── Plan matcher — one field instead of making people cross-reference tiers ─── */
+  var pmInput = document.getElementById('pm-input');
+  var pmOut = document.getElementById('pm-out');
+  if (pmInput && pmOut) {
+    // index into .price-card in DOM order: Start, Community, Professional
+    var PM_TIERS = [
+      { max: 150, i: 0, name: 'Kesher Start' },
+      { max: 400, i: 1, name: 'Kesher Community' },
+      { max: 800, i: 2, name: 'Kesher Professional' }
+    ];
+    pmInput.addEventListener('input', function () {
+      var cards = document.querySelectorAll('.price-card');
+      cards.forEach(function (c) { c.classList.remove('pm-hit'); });
+
+      var n = parseInt(pmInput.value, 10);
+      if (!n || n < 1) { pmOut.textContent = ''; return; }
+
+      var hit = null;
+      for (var i = 0; i < PM_TIERS.length; i++) {
+        if (n <= PM_TIERS[i].max) { hit = PM_TIERS[i]; break; }
+      }
+      if (!hit) {
+        pmOut.innerHTML = '\u05DC\u05E7\u05D4\u05D9\u05DC\u05D4 \u05D1\u05D2\u05D5\u05D3\u05DC \u05D4\u05D6\u05D4 \u05E0\u05EA\u05D0\u05D9\u05DD \u05D7\u05D1\u05D9\u05DC\u05D4 \u05D0\u05D9\u05E9\u05D9\u05EA \u2014 <a href="#contact">\u05D3\u05D1\u05E8\u05D5 \u05D0\u05D9\u05EA\u05E0\u05D5</a>.';
+        return;
+      }
+      if (cards[hit.i]) cards[hit.i].classList.add('pm-hit');
+      pmOut.innerHTML = '\u05D4\u05DE\u05E1\u05DC\u05D5\u05DC \u05E9\u05DE\u05EA\u05D0\u05D9\u05DD \u05DC\u05DB\u05DD: <strong>' + hit.name + '</strong>';
+    });
+  }
+
   /* ─── Back-to-top FAB ─── */
   var bttBtn = document.querySelector('.btt-fab');
   if (bttBtn) {
@@ -255,10 +286,10 @@
   /* ─── Dark / light theme toggle ─── */
   var themeBtn = document.querySelector('.theme-toggle');
   if (themeBtn) {
-    // Restore saved theme (default is light via HTML attribute)
+    // Restore saved theme (default is dark via HTML attribute)
     var saved = localStorage.getItem('theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
-    else document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.setAttribute('data-theme', 'dark');
 
     themeBtn.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme');
@@ -288,7 +319,7 @@
     if (a11yState.motion) { root.classList.add('a11y-stop-motion'); setToggle('motion', true); }
     // Sync theme label
     var themeLabel = a11yPanel.querySelector('[data-a11y="theme"]');
-    if (themeLabel) themeLabel.textContent = (root.getAttribute('data-theme') || 'light') === 'dark' ? 'כהה' : 'בהיר';
+    if (themeLabel) themeLabel.textContent = (root.getAttribute('data-theme') || 'dark') === 'dark' ? 'כהה' : 'בהיר';
 
     function saveA11y() {
       localStorage.setItem('a11y', JSON.stringify({
@@ -409,7 +440,8 @@
   var chatMock = document.querySelector('.chat-mock');
   if (chatMock) {
     var allMsgs = chatMock.querySelectorAll('.chat-msg');
-    // Hide all messages initially
+    // Hide all messages initially (visibility, not display: they must keep
+    //  their space or the section grows as each one appears)
     allMsgs.forEach(function (m) { m.classList.add('chat-hidden'); });
 
     var chatObserver = new IntersectionObserver(function (entries) {
@@ -429,8 +461,6 @@
             setTimeout(function () {
               m.classList.remove('typing-dots');
               m.classList.add('chat-appear');
-              // Auto-scroll chat container
-              m.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }, delay);
             delay += 400;
           } else {
@@ -438,7 +468,6 @@
             setTimeout(function () {
               m.classList.remove('chat-hidden');
               m.classList.add('chat-appear');
-              m.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }, delay);
             delay += 600;
           }
