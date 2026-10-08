@@ -594,12 +594,6 @@ img, svg { display: block; max-width: 100%; }
   font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;
 }
 .product-systems strong { color: var(--text); font-weight: 600; }
-/* Roadmap line — explicitly labelled as not shipped, so it can never read as a claim */
-.product-roadmap {
-  text-align: center; margin: 28px auto 0; max-width: 620px;
-  font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
-}
-.product-roadmap strong { color: var(--text-muted); font-weight: 700; }
 .product-groups { display: flex; flex-direction: column; gap: 32px; }
 .product-group {
   background: var(--card-bg);
