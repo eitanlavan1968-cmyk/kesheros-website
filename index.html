@@ -108,7 +108,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=4e7524e7">
+  <link rel="stylesheet" href="style.css?v=15090a2e">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -672,12 +672,58 @@
         <p class="demo-scope">תצוגה מקדימה · חלק מהמודולים, נתוני דוגמה</p>
       </div>
 
-      <div class="dv-wrap reveal" id="distress-demo" data-dv>
+      <div class="dv-wrap reveal" id="stories" data-dv>
         <div class="dv-head">
-          <h3>30 שניות: מרגע הלחיצה ועד שהצוות יודע</h3>
-          <p>תושבת בשם דנה כהן לוחצת על כפתור המצוקה. כך זה נראה אצלה ואצל מי שמטפל. הנתונים בדויים.</p>
+          <h3>ככה זה נראה ביום אמת</h3>
+          <p>בחרו תסריט של 30 שניות מחיי היישוב. כל אחד מראה דבר אחד שהמערכת עושה בשבילכם.</p>
         </div>
-        <div class="dv-stage" role="group" aria-label="הדגמה מונפשת של התראת מצוקה: תושבת לוחצת על כפתור המצוקה, הצוות מקבל הודעה בפעמון ובמייל, וכשהיא מבטלת הצוות מקבל הודעת ביטול">
+        <div class="dv-cards" role="group" aria-label="בחירת תסריט">
+          <button type="button" class="dv-card" data-story-pick="fan" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">📋</i><b>מניפה</b><span>בדיקת מצב של כל הבתים, בזמן אמת</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="distress" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚨</i><b>התראת מצוקה</b><span>מהלחיצה ועד שהצוות יודע</span><em>30 שניות</em></button>
+        </div>
+        <div class="dv-stage" role="group" aria-label="">
+          <div class="dv-story is-active" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>מניפה</span></div>
+              <div class="dv-fx-body"><div class="dv-fx-title">מניפות פעילות</div><div class="dv-fx-empty">אין מניפה פתוחה כרגע</div>
+                <div class="dv-fx-new" aria-hidden="true">+ מניפה חדשה: בדיקת מצב ביישוב<i class="dv-tap"></i></div></div></div>
+            <div class="dv-note"><b>1</b> המנהל פותח מניפה: בדיקת מצב לכל בתי היישוב</div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>בדיקת מצב ביישוב</strong><span>האם אתם בסדר?</span></div>
+              <div class="dv-ans dv-ans-ok">בסדר</div><div class="dv-ans dv-ans-help">צריכים עזרה</div><div class="dv-ans">לא ביישוב</div>
+            </div></div>
+            <div class="dv-note"><b>2</b> כל תושב מקבל הודעה וענה בלחיצה אחת</div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>מניפה: בדיקת מצב ביישוב</span><span><b data-fx="pct">0</b>% ענו</span></div>
+              <div class="dv-fx-nums"><div class="fx-ok"><b data-fx="ok">0</b>בסדר</div><div class="fx-help"><b data-fx="help">0</b>צריכים עזרה</div><div class="fx-wait"><b data-fx="wait">128</b>טרם ענו</div></div>
+              <div class="dv-fx-bar"><i data-fx="bar"></i></div>
+              <div class="dv-fx-rows"><div class="dv-fx-row"><span>משפחת לוי</span><em class="ok">בסדר</em></div><div class="dv-fx-row"><span>משפחת מזרחי</span><em class="ok">בסדר</em></div><div class="dv-fx-row"><span>משפחת שפירא</span><em class="ok">בסדר</em></div></div></div>
+            <div class="dv-note"><b>3</b> התשובות נכנסות בזמן אמת</div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-list"><div class="dv-list-head">דורשים טיפול</div>
+              <div class="dv-row dv-row-open"><span>משפחת אברהם</span><span>בית 14</span><em>צריכים עזרה</em></div>
+              <div class="dv-row dv-row-open"><span>משפחת כהן</span><span>בית 31</span><em>צריכים עזרה</em></div>
+              <div class="dv-row dv-row-open"><span>משפחת דויד</span><span>בית 52</span><em>צריכים עזרה</em></div></div>
+            <div class="dv-note"><b>4</b> מי שביקש עזרה בולט מיד, עם הכתובת</div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>מניפה: בדיקת מצב ביישוב</span><span><b data-fx="pct">0</b>% ענו</span></div>
+              <div class="dv-fx-nums"><div class="fx-ok"><b data-fx="ok">0</b>בסדר</div><div class="fx-help"><b data-fx="help">0</b>צריכים עזרה</div><div class="fx-wait"><b data-fx="wait">128</b>טרם ענו</div></div>
+              <div class="dv-fx-bar"><i data-fx="bar"></i></div>
+              <div class="dv-fx-rows"><div class="dv-fx-row"><span>משפחת גולן</span><em class="rem">נשלחה תזכורת</em></div><div class="dv-fx-row"><span>משפחת פרץ</span><em class="rem">נשלחה תזכורת</em></div></div></div>
+            <div class="dv-note"><b>5</b> מי שלא ענה מקבל תזכורת, והתמונה מתמלאת</div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>כל היישוב בתמונה אחת, בזמן אמת</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+          </div>
+          <div class="dv-story" data-story="distress" data-label="תסריט מונפש של התראת מצוקה: תושבת לוחצת על כפתור המצוקה, הצוות מקבל הודעה בפעמון ובמייל, וכשהיא מבטלת הצוות מקבל הודעת ביטול">
           <div class="dv-scene" data-scene="0">
             <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body">
               <div class="dv-sos" aria-hidden="true"><svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M5.6 6.6l1.4 1.4M18.4 6.6L17 8M4 17h16v2H4zM6 17a6 6 0 0112 0"/></svg></div>
@@ -729,18 +775,20 @@
               <strong>כשיש אזעקה, כל שנייה קובעת</strong>
               <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
           </div>
+          </div>
         </div>
         <div class="dv-caption" aria-live="polite"></div>
         <div class="dv-controls">
           <button type="button" class="dv-btn" data-dv-toggle aria-label="השהיה">⏸</button>
           <button type="button" class="dv-btn" data-dv-restart aria-label="הפעלה מחדש">↺</button>
-          <div class="dv-dots" role="group" aria-label="קפיצה לשלב">
-            <button type="button" aria-label="שלב 1">1</button><button type="button" aria-label="שלב 2">2</button><button type="button" aria-label="שלב 3">3</button>
-            <button type="button" aria-label="שלב 4">4</button><button type="button" aria-label="שלב 5">5</button><button type="button" aria-label="סיום">✓</button>
-          </div>
+          <div class="dv-dots" role="group" aria-label="קפיצה לשלב"></div>
           <div class="dv-progress" aria-hidden="true"><i></i></div>
+          <button type="button" class="dv-btn dv-next" data-dv-next></button>
         </div>
-        <p class="sr-only">תיאור טקסטואלי: תושבת בשם דנה כהן לוחצת על כפתור המצוקה באפליקציה. ההתראה נשלחת מיד עם המיקום שלה. הצוות מקבל הודעה בפעמון המערכת ומייל, כל אחד בשפה שלו. כל ההתראות מופיעות ברשימה אחת עם הסטטוס שלהן. כשהיא מבטלת התראה, כל מי שקיבל אותה מקבל הודעת ביטול.</p>
+        <p class="dv-sig">תסריט להמחשה: המסכים מעוצבים בהשראת המערכת וקרובים מאוד למציאות, אך אינם צילום חי שלה. כל השמות והנתונים בדויים.</p>
+        <div class="dv-cta"><span>רוצים לראות את המערכת עצמה?</span> <a class="btn btn-primary" href="#contact">נקבע הדגמה חיה</a></div>
+        <p class="sr-only" data-story-desc="fan">תיאור טקסטואלי: המנהל פותח מניפה, בדיקת מצב לכל בתי היישוב. כל תושב מקבל הודעה ועונה בלחיצה אחת: בסדר, צריכים עזרה או לא ביישוב. התשובות נכנסות ללוח הבקרה בזמן אמת עם ספירה וסרגל התקדמות. מי שביקש עזרה מופיע מיד עם הכתובת. מי שלא ענה מקבל תזכורת, עד שרוב היישוב ענה.</p>
+        <p class="sr-only" data-story-desc="distress" hidden>תיאור טקסטואלי: תושבת בשם דנה כהן לוחצת על כפתור המצוקה באפליקציה. ההתראה נשלחת מיד עם המיקום שלה. הצוות מקבל הודעה בפעמון המערכת ומייל, כל אחד בשפה שלו. כל ההתראות מופיעות ברשימה אחת עם הסטטוס שלהן. כשהיא מבטלת התראה, כל מי שקיבל אותה מקבל הודעת ביטול.</p>
       </div>
 
       <div class="demo-frame reveal">
@@ -2493,7 +2541,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=844afd24" defer></script>
+  <script src="script.js?v=e8885621" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

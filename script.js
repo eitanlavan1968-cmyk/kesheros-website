@@ -506,52 +506,119 @@
     var text = aiYearsPhrase(new Date());
     document.querySelectorAll('[data-ai-years]').forEach(function (el) { el.textContent = text; });
   })();
-  /* ─── The 30-second distress story: a timeline of six scenes, captions, pause / restart / jump ───
+  /* ─── The stories: one shared stage, a row of cards to choose from, each story a timeline of scenes with captions, pause / restart / jump ───
      It starts when half of it is on screen, pauses when it leaves, loops; with reduced motion (the OS setting or the site's own accessibility panel) it does not move on its own: the viewer steps through the scenes. */
   (function () {
     var root = document.querySelector('[data-dv]');
     if (!root) return;
-    var scenes = root.querySelectorAll('.dv-scene');
+    var stage = root.querySelector('.dv-stage');
     var caption = root.querySelector('.dv-caption');
     var bar = root.querySelector('.dv-progress i');
-    var dots = root.querySelectorAll('.dv-dots button');
+    var dotsBox = root.querySelector('.dv-dots');
     var toggle = root.querySelector('[data-dv-toggle]');
-    var STEPS = [
-      { at: 0, text: 'תושבת בקיבוץ לוחצת על כפתור המצוקה באפליקציה.' },
-      { at: 5, text: 'ההתראה נשלחת מיד, עם המיקום שלה.' },
-      { at: 10, text: 'הצוות מקבל הודעה בפעמון ובמייל, כל אחד בשפה שלו.' },
-      { at: 17, text: 'כל ההתראות במקום אחד, עם הסטטוס של כל אחת.' },
-      { at: 23, text: 'היא ביטלה? כל מי שקיבל את ההתראה מקבל עדכון מיד.' },
-      { at: 28, text: 'כשיש אזעקה, כל שנייה קובעת.' }
-    ];
-    var TOTAL = 32, SUBJ = ['[קיבוץ הדגמה] 🚨 התראת מצוקה — דנה כהן', '[Demo Kibbutz] 🚨 Distress alert — Dana Cohen', '[ชุมชนตัวอย่าง] 🚨 การแจ้งเหตุฉุกเฉิน — Dana Cohen'];
+    var nextBtn = root.querySelector('[data-dv-next]');
+    var cards = root.querySelectorAll('[data-story-pick]');
+    var storyEls = root.querySelectorAll('.dv-story');
+    var descs = root.querySelectorAll('[data-story-desc]');
+    var ORDER = ['fan', 'distress'];
+
+    function lerp(pts, t, k) {
+      if (t <= pts[0][0]) return pts[0][k];
+      for (var i = 1; i < pts.length; i++) {
+        if (t <= pts[i][0]) { var a = pts[i - 1], b = pts[i]; return a[k] + (b[k] - a[k]) * (t - a[0]) / (b[0] - a[0]); }
+      }
+      return pts[pts.length - 1][k];
+    }
+    var SUBJ = ['[קיבוץ הדגמה] 🚨 התראת מצוקה — דנה כהן', '[Demo Kibbutz] 🚨 Distress alert — Dana Cohen', '[ชุมชนตัวอย่าง] 🚨 การแจ้งเหตุฉุกเฉิน — Dana Cohen'];
+    var FAN_PTS = [[11, 0, 0], [18, 74, 3], [25, 74, 3], [28.5, 96, 4]];      // [seconds, answered ok, need help]: 128 households
+
+    var DEFS = {
+      fan: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'המנהל פותח מניפה: בדיקת מצב לכל בתי היישוב.' },
+          { at: 5, text: 'כל תושב מקבל הודעה ועונה בלחיצה אחת.' },
+          { at: 11, text: 'התשובות נכנסות ללוח הבקרה בזמן אמת.', settle: 6 },
+          { at: 19, text: 'מי שביקש עזרה בולט מיד, עם הכתובת.' },
+          { at: 25, text: 'מי שלא ענה מקבל תזכורת, והתמונה מתמלאת.', settle: 3 },
+          { at: 29, text: 'כל היישוב בתמונה אחת, בזמן אמת.' }
+        ],
+        frame: function (t) {
+          var ok = Math.round(lerp(FAN_PTS, t, 1)), help = Math.round(lerp(FAN_PTS, t, 2));
+          var vals = { ok: ok, help: help, wait: 128 - ok - help, pct: Math.round((ok + help) / 128 * 100) };
+          Object.keys(vals).forEach(function (k) {
+            root.querySelectorAll('[data-fx="' + k + '"]').forEach(function (el) { el.textContent = vals[k]; });
+          });
+          root.querySelectorAll('[data-fx="bar"]').forEach(function (el) { el.style.width = vals.pct + '%'; });
+        }
+      },
+      distress: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'תושבת בקיבוץ לוחצת על כפתור המצוקה באפליקציה.' },
+          { at: 5, text: 'ההתראה נשלחת מיד, עם המיקום שלה.' },
+          { at: 10, text: 'הצוות מקבל הודעה בפעמון ובמייל, כל אחד בשפה שלו.' },
+          { at: 17, text: 'כל ההתראות במקום אחד, עם הסטטוס של כל אחת.' },
+          { at: 23, text: 'היא ביטלה? כל מי שקיבל את ההתראה מקבל עדכון מיד.' },
+          { at: 28, text: 'כשיש אזעקה, כל שנייה קובעת.' }
+        ],
+        frame: function (t, scenes) {
+          var sc = scenes[2];
+          if (!sc || !sc.classList.contains('is-on')) return;
+          var k = Math.min(2, Math.floor((t - 11.5) / 1.8));
+          if (k < 0) k = 0;
+          sc.querySelectorAll('.dv-langs span').forEach(function (c, j) { c.classList.toggle('on', j === k); });
+          var subj = sc.querySelector('#dv-subj');
+          subj.textContent = SUBJ[k];
+          subj.dir = k === 0 ? 'rtl' : 'ltr';      // an English or Thai subject line reads left to right, whatever the page direction
+        }
+      }
+    };
+
     var still = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('a11y-stop-motion'); };
+    var story = 'fan', def = DEFS.fan, scenes = [], dots = [];
     var t = 0, cur = -1, playing = false, visible = false, timer = null, userStarted = false;      // userStarted: the viewer pressed play themselves, which is allowed even with reduced motion
 
+    function cardTitle(id) { return root.querySelector('[data-story-pick="' + id + '"] b').textContent; }
     function show(i) {
       if (i === cur) return;
       cur = i;
       scenes.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
       dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
-      caption.textContent = STEPS[i].text;
-    }
-    function langs() {
-      var sc = scenes[2];
-      if (!sc || !sc.classList.contains('is-on')) return;
-      var k = Math.min(2, Math.floor((t - 11.5) / 1.8));
-      if (k < 0) k = 0;
-      var chips = sc.querySelectorAll('.dv-langs span');
-      chips.forEach(function (c, j) { c.classList.toggle('on', j === k); });
-      var subj = sc.querySelector('#dv-subj');
-      subj.textContent = SUBJ[k];
-      subj.dir = k === 0 ? 'rtl' : 'ltr';      // an English or Thai subject line reads left to right, whatever the page direction
+      caption.textContent = def.steps[i].text;
     }
     function frame() {
       var i = 0;
-      STEPS.forEach(function (s, k) { if (t >= s.at) i = k; });
+      def.steps.forEach(function (s, k) { if (t >= s.at) i = k; });
       show(i);
-      langs();
-      bar.style.width = Math.min(100, t / TOTAL * 100) + '%';
+      def.frame(t, scenes);
+      bar.style.width = Math.min(100, t / def.total * 100) + '%';
+    }
+    function select(id) {
+      scenes.forEach(function (s) { s.classList.remove('is-on'); });
+      story = id; def = DEFS[id];
+      var el = root.querySelector('.dv-story[data-story="' + id + '"]');
+      storyEls.forEach(function (s) { s.classList.toggle('is-active', s === el); });
+      scenes = Array.prototype.slice.call(el.querySelectorAll('.dv-scene'));
+      cards.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-story-pick') === id ? 'true' : 'false'); });
+      descs.forEach(function (d) { d.hidden = d.getAttribute('data-story-desc') !== id; });
+      stage.setAttribute('aria-label', el.getAttribute('data-label'));
+      dotsBox.textContent = '';
+      dots = def.steps.map(function (s, k) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        var last = k === def.steps.length - 1;
+        b.textContent = last ? '✓' : String(k + 1);
+        b.setAttribute('aria-label', last ? 'סיום' : 'שלב ' + (k + 1));
+        b.addEventListener('click', function () { jump(k); });
+        dotsBox.appendChild(b);
+        return b;
+      });
+      var nxt = ORDER[(ORDER.indexOf(id) + 1) % ORDER.length];
+      nextBtn.textContent = 'התסריט הבא: ' + cardTitle(nxt) + ' ←';
+      nextBtn.setAttribute('data-next', nxt);
+      t = 0; cur = -1; frame();
+      root.classList.toggle('dv-settle', !playing);      // paused: show the scene as it ends up, not frozen before its animations begin
     }
     var wasStill = still();
     function tick() {
@@ -559,20 +626,28 @@
       if (s && !wasStill) userStarted = false;      // the viewer has just switched motion off (the site's accessibility panel): that wins over an earlier play
       wasStill = s;
       if (s && !userStarted) { setPlaying(false); return; }
-      t += 0.1; if (t >= TOTAL) { t = 0; cur = -1; } frame(); }
+      t += 0.1; if (t >= def.total) { t = 0; cur = -1; } frame(); }
     function setPlaying(on) {
       playing = on && (!still() || userStarted);
       root.classList.toggle('dv-paused', !playing);
+      if (playing) root.classList.remove('dv-settle');
       toggle.textContent = playing ? '⏸' : '▶';
       toggle.setAttribute('aria-label', playing ? 'השהיה' : 'הפעלה');
       clearInterval(timer);
       if (playing) timer = setInterval(tick, 100);
     }
-    function jump(i) { t = STEPS[i].at; cur = -1; frame(); }
+    function jump(i) {
+      var s = def.steps[i];
+      var hold = still() || !playing;
+      t = s.at + (hold && s.settle ? s.settle : 0);      // stepping through by hand: show the scene settled, with its counters at their final values
+      cur = -1; frame();
+      root.classList.toggle('dv-settle', hold);
+    }
 
     toggle.addEventListener('click', function () { if (!playing && still()) { userStarted = true; root.classList.remove('dv-still'); } setPlaying(!playing); });
     root.querySelector('[data-dv-restart]').addEventListener('click', function () { if (still()) { userStarted = true; root.classList.remove('dv-still'); } t = 0; cur = -1; frame(); setPlaying(true); });
-    dots.forEach(function (d, k) { d.addEventListener('click', function () { jump(k); }); });
+    cards.forEach(function (c) { c.addEventListener('click', function () { select(c.getAttribute('data-story-pick')); }); });
+    nextBtn.addEventListener('click', function () { select(nextBtn.getAttribute('data-next')); });
     new IntersectionObserver(function (es) {
       visible = es[0].isIntersecting;
       if (visible && !playing && !still()) setPlaying(true);
@@ -580,7 +655,7 @@
     }, { threshold: 0.5 }).observe(root);
 
     root.classList.toggle('dv-still', still());
-    frame();
+    select('fan');
     if (still()) { toggle.textContent = '▶'; root.classList.add('dv-paused'); }
   })();
 })();
