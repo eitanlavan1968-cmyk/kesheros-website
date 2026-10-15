@@ -489,4 +489,21 @@
       }
     });
   });
+  /* ─── "Developing with AI since January 2025": the phrase moves on its own, every six months ───
+     Aug 2026 "שנתיים" -> Feb 2027 "למעלה משנתיים" -> Aug 2027 "שלוש שנים" -> Feb 2028 "למעלה משלוש שנים" ...
+     (the static text in the HTML is only what shows without JavaScript; update it when the phase changes if you want it exact there too) */
+  (function () {
+    var WORDS = { 3: 'שלוש', 4: 'ארבע', 5: 'חמש', 6: 'שש', 7: 'שבע', 8: 'שמונה', 9: 'תשע', 10: 'עשר' };
+    function years(n) { return n === 1 ? 'שנה' : n === 2 ? 'שנתיים' : (WORDS[n] || n) + ' שנים'; }
+    function aiYearsPhrase(now) {
+      var m = (now.getFullYear() - 2025) * 12 + now.getMonth();      // months since January 2025 (January 2025 = 0)
+      var p = Math.floor((m - 1) / 6);                               // half-year phase: it turns over in August and February
+      if (p <= 0) return 'מינואר 2025';
+      if (p % 2 === 1) return years((p + 1) / 2);                    // 1: a year, 3: two years, 5: three years ...
+      return 'למעלה מ' + years(p / 2);  // 2: over a year, 4: over two years ...
+    }
+    window.aiYearsPhrase = aiYearsPhrase;
+    var text = aiYearsPhrase(new Date());
+    document.querySelectorAll('[data-ai-years]').forEach(function (el) { el.textContent = text; });
+  })();
 })();
