@@ -108,7 +108,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=0e3a40bc">
+  <link rel="stylesheet" href="style.css?v=06034ba6">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -678,13 +678,15 @@
           <p>בחרו תסריט של 30 שניות מחיי היישוב. כל אחד מראה דבר אחד שהמערכת עושה בשבילכם.</p>
         </div>
         <div class="dv-cards" role="group" aria-label="בחירת תסריט">
-          <button type="button" class="dv-card" data-story-pick="fan" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">📋</i><b>מניפה</b><span>בדיקת מצב של כל הבתים, בזמן אמת</span><em>30 שניות</em></button>
-          <button type="button" class="dv-card" data-story-pick="distress" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚨</i><b>התראת מצוקה</b><span>מהלחיצה ועד שהצוות יודע</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="book" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">📅</i><b>הזמנת מתקן</b><span>מבקשים, מאשרים, והיומן מתעדכן</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="fault" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🔧</i><b>דיווח על תקלה</b><span>מצלמים, והקריאה מגיעה למטפל</span><em>30 שניות</em></button>
           <button type="button" class="dv-card" data-story-pick="vote" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🗳</i><b>הצבעה</b><span>בקוד אימות, תוצאות חיות</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="fan" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">📋</i><b>מניפה</b><span>בדיקת מצב של כל הבתים, בזמן אמת</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="distress" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚨</i><b>התראת מצוקה</b><span>מהלחיצה ועד שהצוות יודע</span><em>30 שניות</em></button>
           <button type="button" class="dv-card" data-story-pick="evac" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚌</i><b>פינוי</b><span>מי בטוח, מי חסר, ומי צריך הסעה</span><em>30 שניות</em></button>
         </div>
         <div class="dv-stage" role="group" aria-label="">
-          <div class="dv-story is-active" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
+          <div class="dv-story" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
           <div class="dv-scene" data-scene="0">
             <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>מניפה</span></div>
               <div class="dv-fx-body"><div class="dv-fx-title">מניפות פעילות</div><div class="dv-fx-empty">אין מניפה פתוחה כרגע</div>
@@ -867,6 +869,88 @@
               <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
           </div>
           </div>
+          <div class="dv-story is-active" data-story="book" data-label="תסריט מונפש של הזמנת מתקן: התושב בוחר שעה פנויה ושולח בקשה, המנהל מאשר, והיומן מתעדכן">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>מגרש טניס</strong><span>השבוע, שעות פנויות</span></div>
+              <div class="dv-ans dv-ans-off">ב׳ 17:00 · תפוס</div><div class="dv-ans dv-ans-ok">ג׳ 18:00 · פנוי</div><div class="dv-ans">ד׳ 18:00 · פנוי</div>
+            </div></div>
+            <div class="dv-note"><b>1</b> התושב בוחר מתקן ושעה פנויה</div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>מגרש טניס</strong><span>ג׳ 18:00 עד 19:00</span></div>
+              <div class="dv-ans dv-ans-ok">שליחת בקשה</div>
+              <div class="dv-sent">✓ הבקשה נשלחה וממתינה לאישור</div>
+            </div></div>
+            <div class="dv-note"><b>2</b> בקשה אחת, בלחיצה אחת</div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-list"><div class="dv-list-head">בקשות הזמנה</div>
+              <div class="dv-row dv-row-open"><span>מגרש טניס · ג׳ 18:00</span><span>דנה כהן</span><em class="st-wait" data-bk="state">ממתין לאישור</em></div>
+              <div class="dv-row"><span>חדר ישיבות · ד׳ 10:00</span><span>משה דויד</span><em class="st-ok">אושר</em></div></div>
+            <div class="dv-note"><b>3</b> המנהל רואה את הבקשה ומאשר</div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>מגרש טניס · השבוע</span><span>יומן</span></div>
+              <div class="dv-fx-rows dv-bk-rows"><div class="dv-fx-row"><span>א׳ 09:00</span><em class="rem">תפוס</em></div><div class="dv-fx-row"><span>ב׳ 17:00</span><em class="rem">תפוס</em></div><div class="dv-fx-row dv-bk-new"><span>ג׳ 18:00 · דנה כהן</span><em>חדש</em></div><div class="dv-fx-row"><span>ד׳ 18:00</span><em class="free">פנוי</em></div></div></div>
+            <div class="dv-note"><b>4</b> היומן מתעדכן מיד, לכולם</div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q dv-late0"><strong>✅ ההזמנה אושרה</strong><span>מגרש טניס, ג׳ 18:00</span></div>
+              <div class="dv-q dv-late1"><strong>🔔 תזכורת</strong><span>מחר ב-18:00: מגרש טניס</span></div>
+            </div></div>
+            <div class="dv-note"><b>5</b> התושב מקבל אישור, ותזכורת לפני המועד</div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>הזמנות בלי טלפונים ובלי בלגן</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+          </div>
+          <div class="dv-story" data-story="fault" data-label="תסריט מונפש של דיווח על תקלה: התושב מדווח עם תמונה, הקריאה מגיעה למטפל, והתושב מקבל עדכון במייל">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>פנס רחוב כבוי ליד בית 23</strong><span>קטגוריה: תאורה</span></div>
+              <div class="dv-photo" aria-hidden="true">📷 תמונה מצורפת</div>
+              <div class="dv-ans dv-ans-ok">שליחה</div>
+            </div></div>
+            <div class="dv-note"><b>1</b> התושב מדווח על תקלה, עם תמונה</div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-check" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+              <strong>הקריאה נשלחה</strong><span>קריאה מספר 1042</span>
+            </div></div>
+            <div class="dv-note"><b>2</b> הקריאה מגיעה לטיפול מיד</div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-list"><div class="dv-list-head">קריאות שירות</div>
+              <div class="dv-row dv-row-open"><span>פנס כבוי · בית 23</span><span>תאורה</span><em data-ft="state">חדשה</em></div>
+              <div class="dv-row"><span>ברז דולף · גינה</span><span>אינסטלציה</span><em class="st-ok">טופלה</em></div></div>
+            <div class="dv-note"><b>3</b> הקריאה אצל המטפל, והוא לוקח אותה</div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-mail dv-mail-w"><div class="dv-mail-bar">✉ דואר נכנס</div>
+              <div class="dv-mail-subj">[קיבוץ הדגמה] הקריאה שלך בטיפול</div>
+              <div class="dv-mail-txt">איש האחזקה לקח את הקריאה: פנס כבוי ליד בית 23.</div>
+              <div class="dv-mail-btn dv-mail-ok">לצפייה בקריאה</div></div>
+            <div class="dv-note"><b>4</b> מי שדיווח מקבל עדכון במייל</div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-list"><div class="dv-list-head">קריאות שירות</div>
+              <div class="dv-row dv-row-open"><span>פנס כבוי · בית 23</span><span>תאורה</span><em class="st-ok">טופלה</em></div>
+              <div class="dv-row"><span>ברז דולף · גינה</span><span>אינסטלציה</span><em class="st-ok">טופלה</em></div>
+              <div class="dv-row"><span>דלת תקועה · מועדון</span><span>נגרות</span><em class="st-ok">טופלה</em></div></div>
+            <div class="dv-note"><b>5</b> הקריאה נסגרת, והכול נשמר בהיסטוריה</div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>תקלה לא נופלת בין הכיסאות</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+          </div>
         </div>
         <div class="dv-caption" aria-live="polite"></div>
         <div class="dv-controls">
@@ -878,7 +962,9 @@
         </div>
         <p class="dv-sig">תסריט להמחשה: המסכים מעוצבים בהשראת המערכת וקרובים מאוד למציאות, אך אינם צילום חי שלה. כל השמות והנתונים בדויים.</p>
         <div class="dv-cta"><span>רוצים לראות את המערכת עצמה?</span> <a class="btn btn-primary" href="#contact">נקבע הדגמה חיה</a></div>
-        <p class="sr-only" data-story-desc="fan">תיאור טקסטואלי: המנהל פותח מניפה, בדיקת מצב לכל בתי היישוב. כל תושב מקבל הודעה ועונה בלחיצה אחת: בסדר, צריכים עזרה או לא ביישוב. התשובות נכנסות ללוח הבקרה בזמן אמת עם ספירה וסרגל התקדמות. מי שביקש עזרה מופיע מיד עם הכתובת. מי שלא ענה מקבל תזכורת, עד שרוב היישוב ענה.</p>
+        <p class="sr-only" data-story-desc="book">תיאור טקסטואלי: תושבת בוחרת מגרש טניס ושעה פנויה ושולחת בקשה בלחיצה אחת. המנהל רואה את הבקשה ומאשר אותה. היומן מתעדכן מיד. התושבת מקבלת אישור ותזכורת לפני המועד.</p>
+        <p class="sr-only" data-story-desc="fault" hidden>תיאור טקסטואלי: תושב מדווח על פנס רחוב כבוי, עם תמונה. הקריאה מגיעה מיד לטיפול ומופיעה ברשימת קריאות השירות. המטפל לוקח אותה, והתושב מקבל עדכון במייל. כשהקריאה נסגרת היא נשמרת בהיסטוריה.</p>
+        <p class="sr-only" data-story-desc="fan" hidden>תיאור טקסטואלי: המנהל פותח מניפה, בדיקת מצב לכל בתי היישוב. כל תושב מקבל הודעה ועונה בלחיצה אחת: בסדר, צריכים עזרה או לא ביישוב. התשובות נכנסות ללוח הבקרה בזמן אמת עם ספירה וסרגל התקדמות. מי שביקש עזרה מופיע מיד עם הכתובת. מי שלא ענה מקבל תזכורת, עד שרוב היישוב ענה.</p>
         <p class="sr-only" data-story-desc="vote" hidden>תיאור טקסטואלי: המנהל פותח הצבעה על תקציב 2026. כל מצביע מזדהה בקוד חד-פעמי ובוחר בעד, נגד או נמנע. בהצבעה אנונימית הקול נספר בלי שם. התוצאות מתעדכנות בזמן אמת, ובסיום ההצבעה התוצאה מוכנה מיד.</p>
         <p class="sr-only" data-story-desc="evac" hidden>תיאור טקסטואלי: המנהל מפעיל מצב פינוי ובוחר יעד. ההוראה יוצאת לכל תושב בשפה שלו. לוח הבקרה מראה בזמן אמת כמה הגיעו ליעד, כמה בדרך וכמה עדיין לא ידוע. מי שלא ענה, מי שאין לו מייל ומי שנמצא במרשם הפגיעים מסומן לטיפול, ושולחים אליו הסעה.</p>
         <p class="sr-only" data-story-desc="distress" hidden>תיאור טקסטואלי: תושבת בשם דנה כהן לוחצת על כפתור המצוקה באפליקציה. ההתראה נשלחת מיד עם המיקום שלה. הצוות מקבל הודעה בפעמון המערכת ומייל, כל אחד בשפה שלו. כל ההתראות מופיעות ברשימה אחת עם הסטטוס שלהן. כשהיא מבטלת התראה, כל מי שקיבל אותה מקבל הודעת ביטול.</p>
@@ -2634,7 +2720,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=0c98813a" defer></script>
+  <script src="script.js?v=a169919c" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

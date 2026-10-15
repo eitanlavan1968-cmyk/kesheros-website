@@ -2727,3 +2727,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-vb:first-child .dv-vb-bar i { background: #27AE60; }
 .dv-vb-sum { color: #4a5668; font-weight: 600; font-size: .9em; text-align: center; }
 .dv-closed { background: #5b6677; border-radius: 9px; padding: 0 9px; font-size: .85em; }
+
+/* ─── Booking and fault stories ─── */
+.dv-ans-off { opacity: .55; text-decoration: line-through; }
+.dv-sent { margin-top: 8px; font-weight: 700; color: #1B7A43; opacity: 0; }
+.is-on .dv-sent { animation: dv-in .5s 3.2s forwards; }
+.dv-photo { width: 100%; border-radius: 8px; background: #d8dde6; color: #3d4a5e; padding: 12px 8px; font-weight: 600; }
+.dv-row em.st-ok { background: #1B7A43; }
+.dv-row em.st-wait { background: #8a5a00; }
+.dv-row em.st-prog { background: #1A5FB4; }
+.dv-fx-row em.free { background: transparent; color: #1B7A43; border: 1px solid #1B7A43; }
+.dv-bk-new { box-shadow: 0 0 0 2px #C4922A; }
+.dv-bk-rows { padding-top: 10px; }
+.is-on .dv-bk-rows .dv-fx-row:nth-child(1) { animation-delay: .4s; }
+.is-on .dv-bk-rows .dv-fx-row:nth-child(2) { animation-delay: .9s; }
+.is-on .dv-bk-rows .dv-fx-row:nth-child(3) { animation-delay: 1.8s; }
+.is-on .dv-bk-rows .dv-fx-row:nth-child(4) { animation-delay: 2.4s; }
+.dv-late0, .dv-late1 { opacity: 0; transform: translateY(-8px); width: 100%; }
+.is-on .dv-late0 { animation: dv-in .5s .5s forwards; }
+.is-on .dv-late1 { animation: dv-in .5s 2.2s forwards; }
+.dv-mail-w { width: 52%; }
+.dv-mail-txt { padding: 0 9px 4px; }
+.dv-mail-ok { background: #1A3558; }
+@media (max-width: 640px) { .dv-mail-w { width: 92%; } }

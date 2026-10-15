@@ -520,7 +520,7 @@
     var cards = root.querySelectorAll('[data-story-pick]');
     var storyEls = root.querySelectorAll('.dv-story');
     var descs = root.querySelectorAll('[data-story-desc]');
-    var ORDER = ['fan', 'distress', 'vote', 'evac'];
+    var ORDER = ['book', 'fault', 'vote', 'fan', 'distress', 'evac'];
 
     function lerp(pts, t, k) {
       if (t <= pts[0][0]) return pts[0][k];
@@ -537,7 +537,35 @@
     var EV_TXT = [['הוראת פינוי', 'יש להתפנות לאולם הספורט'], ['คำสั่งอพยพ', 'กรุณาอพยพไปที่หอกีฬา'], ['निकासी का निर्देश', 'कृपया खेल हॉल की ओर निकलें']];
     function setAll(attr, key, val) { root.querySelectorAll('[' + attr + '="' + key + '"]').forEach(function (el) { el.textContent = val; }); }
 
+    function chip(sel, on, textOn, textOff, clsOn, clsOff) {
+      root.querySelectorAll(sel).forEach(function (el) { el.textContent = on ? textOn : textOff; el.className = on ? clsOn : clsOff; });
+    }
+
     var DEFS = {
+      book: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'התושב בוחר מתקן ושעה פנויה.' },
+          { at: 5, text: 'בקשה אחת, בלחיצה אחת.' },
+          { at: 11, text: 'המנהל רואה את הבקשה ומאשר.', settle: 5 },
+          { at: 17, text: 'היומן מתעדכן מיד, לכולם.' },
+          { at: 23, text: 'התושב מקבל אישור, ותזכורת לפני המועד.' },
+          { at: 28, text: 'הזמנות בלי טלפונים ובלי בלגן.' }
+        ],
+        frame: function (t) { chip('[data-bk="state"]', t >= 14.5, 'אושר', 'ממתין לאישור', 'st-ok', 'st-wait'); }
+      },
+      fault: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'התושב מדווח על תקלה, עם תמונה.' },
+          { at: 5, text: 'הקריאה מגיעה לטיפול מיד.' },
+          { at: 11, text: 'הקריאה אצל המטפל, והוא לוקח אותה.', settle: 5 },
+          { at: 17, text: 'מי שדיווח מקבל עדכון במייל.' },
+          { at: 23, text: 'הקריאה נסגרת, והכול נשמר בהיסטוריה.' },
+          { at: 28, text: 'תקלה לא נופלת בין הכיסאות.' }
+        ],
+        frame: function (t) { chip('[data-ft="state"]', t >= 14.5, 'בטיפול', 'חדשה', 'st-prog', ''); }
+      },
       fan: {
         total: 32,
         steps: [
@@ -624,7 +652,7 @@
     };
 
     var still = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('a11y-stop-motion'); };
-    var story = 'fan', def = DEFS.fan, scenes = [], dots = [];
+    var story = 'book', def = DEFS.book, scenes = [], dots = [];
     var t = 0, cur = -1, playing = false, visible = false, timer = null, userStarted = false;      // userStarted: the viewer pressed play themselves, which is allowed even with reduced motion
 
     function cardTitle(id) { return root.querySelector('[data-story-pick="' + id + '"] b').textContent; }
@@ -703,7 +731,7 @@
     }, { threshold: 0.5 }).observe(root);
 
     root.classList.toggle('dv-still', still());
-    select('fan');
+    select('book');
     if (still()) { toggle.textContent = '▶'; root.classList.add('dv-paused'); }
   })();
 })();
