@@ -108,7 +108,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=15090a2e">
+  <link rel="stylesheet" href="style.css?v=0e3a40bc">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -680,6 +680,8 @@
         <div class="dv-cards" role="group" aria-label="בחירת תסריט">
           <button type="button" class="dv-card" data-story-pick="fan" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">📋</i><b>מניפה</b><span>בדיקת מצב של כל הבתים, בזמן אמת</span><em>30 שניות</em></button>
           <button type="button" class="dv-card" data-story-pick="distress" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚨</i><b>התראת מצוקה</b><span>מהלחיצה ועד שהצוות יודע</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="vote" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🗳</i><b>הצבעה</b><span>בקוד אימות, תוצאות חיות</span><em>30 שניות</em></button>
+          <button type="button" class="dv-card" data-story-pick="evac" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚌</i><b>פינוי</b><span>מי בטוח, מי חסר, ומי צריך הסעה</span><em>30 שניות</em></button>
         </div>
         <div class="dv-stage" role="group" aria-label="">
           <div class="dv-story is-active" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
@@ -776,6 +778,95 @@
               <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
           </div>
           </div>
+          <div class="dv-story" data-story="vote" data-label="תסריט מונפש של הצבעה: המנהל פותח הצבעה, התושבים מזדהים בקוד ומצביעים, והתוצאות מגיעות בזמן אמת">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>הצבעות</span></div>
+              <div class="dv-fx-body"><div class="dv-fx-title">הצבעות</div><div class="dv-fx-empty">אין הצבעה פתוחה כרגע</div>
+                <div class="dv-fx-new" aria-hidden="true">+ הצבעה חדשה: תקציב 2026<i class="dv-tap"></i></div></div></div>
+            <div class="dv-note"><b>1</b> המנהל פותח הצבעה: תקציב 2026</div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>הצבעה: תקציב 2026</strong><span>הזינו את הקוד שנשלח אליכם</span></div>
+              <div class="dv-otp" aria-hidden="true"><i>4</i><i>8</i><i>2</i><i>7</i><i>1</i><i>9</i></div>
+              <div class="dv-ans dv-ans-ok">אימות</div>
+            </div></div>
+            <div class="dv-note"><b>2</b> כל מצביע מזדהה בקוד חד-פעמי</div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>תקציב 2026</strong><span>מה דעתכם?</span></div>
+              <div class="dv-ans dv-ans-ok">בעד</div><div class="dv-ans">נגד</div><div class="dv-ans">נמנע</div>
+              <div class="dv-lock">🔒 הצבעה אנונימית</div>
+            </div></div>
+            <div class="dv-note"><b>3</b> לוחצים ומצביעים. בהצבעה אנונימית הקול נספר בלי שם</div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>תקציב 2026</span><span><b data-vx="turn">0</b> מתוך 140 הצביעו</span></div>
+              <div class="dv-vbs">
+                <div class="dv-vb"><span>בעד</span><div class="dv-vb-bar"><i data-vx-bar="yes"></i></div><b data-vx="yes">0</b></div>
+                <div class="dv-vb"><span>נגד</span><div class="dv-vb-bar"><i data-vx-bar="no"></i></div><b data-vx="no">0</b></div>
+                <div class="dv-vb"><span>נמנע</span><div class="dv-vb-bar"><i data-vx-bar="abs"></i></div><b data-vx="abs">0</b></div>
+              </div></div>
+            <div class="dv-note"><b>4</b> התוצאות מתעדכנות בזמן אמת, בלי ספירה ידנית</div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>תקציב 2026</span><span class="dv-closed">ההצבעה נסגרה</span></div>
+              <div class="dv-vbs">
+                <div class="dv-vb"><span>בעד</span><div class="dv-vb-bar"><i data-vx-bar="yes"></i></div><b data-vx="yes">0</b></div>
+                <div class="dv-vb"><span>נגד</span><div class="dv-vb-bar"><i data-vx-bar="no"></i></div><b data-vx="no">0</b></div>
+                <div class="dv-vb"><span>נמנע</span><div class="dv-vb-bar"><i data-vx-bar="abs"></i></div><b data-vx="abs">0</b></div>
+                <div class="dv-vb-sum"><b data-vx="turn">0</b> מתוך 140 בעלי זכות הצבעה הצביעו</div>
+              </div></div>
+            <div class="dv-note"><b>5</b> ההצבעה נסגרת והתוצאה מוכנה מיד</div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>הצבעה מסודרת, ותוצאה באותו רגע</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+          </div>
+          <div class="dv-story" data-story="evac" data-label="תסריט מונפש של פינוי: המנהל מפעיל פינוי, ההוראה יוצאת בשפה של כל תושב, ולוח הבקרה מראה מי בטוח, מי בדרך ומי חסר">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>פינוי</span></div>
+              <div class="dv-fx-body"><div class="dv-fx-title">פינוי</div><div class="dv-fx-empty">אין פינוי פעיל</div>
+                <div class="dv-fx-new dv-fx-red" aria-hidden="true">⚠ הפעלת מצב פינוי: יעד אולם הספורט<i class="dv-tap"></i></div></div></div>
+            <div class="dv-note"><b>1</b> המנהל מפעיל פינוי ובוחר יעד</div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong id="dv-evtitle">הוראת פינוי</strong><span id="dv-evmsg">יש להתפנות לאולם הספורט</span></div>
+              <div class="dv-langs" aria-hidden="true"><span class="on">עברית</span><span>ภาษาไทย</span><span>हिन्दी</span></div>
+              <div class="dv-ans dv-ans-ok">אני בדרך</div>
+            </div></div>
+            <div class="dv-note"><b>2</b> ההוראה יוצאת בשפה של כל תושב</div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>מצב פינוי · אולם הספורט</span><span>312 תושבים</span></div>
+              <div class="dv-fx-nums"><div class="fx-ok"><b data-ex="safe">0</b>הגיעו ליעד</div><div class="fx-wait"><b data-ex="route">0</b>בדרך</div><div class="fx-help"><b data-ex="unk">312</b>לא ידוע</div></div>
+              <div class="dv-fx-bar"><i data-ex="bar"></i></div></div>
+            <div class="dv-note"><b>3</b> רואים בזמן אמת מי בטוח ומי עדיין בדרך</div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-list"><div class="dv-list-head">אין עליהם מידע</div>
+              <div class="dv-row dv-row-open"><span>רחל אברהם</span><span>מרשם פגיעים</span><em>לטיפול</em></div>
+              <div class="dv-row dv-row-open"><span>סומצ'אי</span><span>ללא מייל</span><em>לטיפול</em></div>
+              <div class="dv-row dv-row-open"><span>משה דויד</span><span>ללא תגובה</span><em>לטיפול</em></div></div>
+            <div class="dv-note"><b>4</b> מי שלא ענה, בלי מייל או פגיע, מסומן לטיפול</div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>מצב פינוי · אולם הספורט</span><span>312 תושבים</span></div>
+              <div class="dv-fx-nums"><div class="fx-ok"><b data-ex="safe">0</b>הגיעו ליעד</div><div class="fx-wait"><b data-ex="route">0</b>בדרך</div><div class="fx-help"><b data-ex="unk">312</b>לא ידוע</div></div>
+              <div class="dv-fx-bar"><i data-ex="bar"></i></div>
+              <div class="dv-fx-rows"><div class="dv-fx-row"><span>רחל אברהם</span><em class="rem">הסעה נשלחה</em></div><div class="dv-fx-row"><span>סומצ'אי</span><em class="rem">הסעה נשלחה</em></div></div></div>
+            <div class="dv-note"><b>5</b> שולחים הסעה, והפערים נסגרים</div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>בפינוי, אף אחד לא נשכח</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+          </div>
         </div>
         <div class="dv-caption" aria-live="polite"></div>
         <div class="dv-controls">
@@ -788,6 +879,8 @@
         <p class="dv-sig">תסריט להמחשה: המסכים מעוצבים בהשראת המערכת וקרובים מאוד למציאות, אך אינם צילום חי שלה. כל השמות והנתונים בדויים.</p>
         <div class="dv-cta"><span>רוצים לראות את המערכת עצמה?</span> <a class="btn btn-primary" href="#contact">נקבע הדגמה חיה</a></div>
         <p class="sr-only" data-story-desc="fan">תיאור טקסטואלי: המנהל פותח מניפה, בדיקת מצב לכל בתי היישוב. כל תושב מקבל הודעה ועונה בלחיצה אחת: בסדר, צריכים עזרה או לא ביישוב. התשובות נכנסות ללוח הבקרה בזמן אמת עם ספירה וסרגל התקדמות. מי שביקש עזרה מופיע מיד עם הכתובת. מי שלא ענה מקבל תזכורת, עד שרוב היישוב ענה.</p>
+        <p class="sr-only" data-story-desc="vote" hidden>תיאור טקסטואלי: המנהל פותח הצבעה על תקציב 2026. כל מצביע מזדהה בקוד חד-פעמי ובוחר בעד, נגד או נמנע. בהצבעה אנונימית הקול נספר בלי שם. התוצאות מתעדכנות בזמן אמת, ובסיום ההצבעה התוצאה מוכנה מיד.</p>
+        <p class="sr-only" data-story-desc="evac" hidden>תיאור טקסטואלי: המנהל מפעיל מצב פינוי ובוחר יעד. ההוראה יוצאת לכל תושב בשפה שלו. לוח הבקרה מראה בזמן אמת כמה הגיעו ליעד, כמה בדרך וכמה עדיין לא ידוע. מי שלא ענה, מי שאין לו מייל ומי שנמצא במרשם הפגיעים מסומן לטיפול, ושולחים אליו הסעה.</p>
         <p class="sr-only" data-story-desc="distress" hidden>תיאור טקסטואלי: תושבת בשם דנה כהן לוחצת על כפתור המצוקה באפליקציה. ההתראה נשלחת מיד עם המיקום שלה. הצוות מקבל הודעה בפעמון המערכת ומייל, כל אחד בשפה שלו. כל ההתראות מופיעות ברשימה אחת עם הסטטוס שלהן. כשהיא מבטלת התראה, כל מי שקיבל אותה מקבל הודעת ביטול.</p>
       </div>
 
@@ -2541,7 +2634,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=e8885621" defer></script>
+  <script src="script.js?v=0c98813a" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

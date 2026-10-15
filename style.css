@@ -2710,3 +2710,20 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-fx-row em.rem { background: #5b6677; }
 .is-on .dv-list .dv-row-open:nth-child(3) { animation-delay: 1s; }
 .is-on .dv-list .dv-row-open:nth-child(4) { animation-delay: 1.6s; }
+
+/* ─── Vote and evacuation stories ─── */
+.dv-fx-red { background: #b02a1f; }
+.dv-otp { display: flex; gap: 4px; direction: ltr; margin: 4px 0; }
+.dv-otp i { font-style: normal; font-weight: 800; background: #fff; border: 1px solid #c9ced8; border-radius: 6px; width: 1.7em; padding: 4px 0; opacity: 0; }
+.is-on .dv-otp i { animation: dv-in .3s forwards; }
+.is-on .dv-otp i:nth-child(1) { animation-delay: .6s; } .is-on .dv-otp i:nth-child(2) { animation-delay: .9s; } .is-on .dv-otp i:nth-child(3) { animation-delay: 1.2s; }
+.is-on .dv-otp i:nth-child(4) { animation-delay: 1.5s; } .is-on .dv-otp i:nth-child(5) { animation-delay: 1.8s; } .is-on .dv-otp i:nth-child(6) { animation-delay: 2.1s; }
+.dv-lock { margin-top: 6px; color: #4a5668; font-size: .85em; }
+.dv-vbs { padding: 12px 14px 12px; display: grid; gap: 8px; }
+.dv-vb { display: grid; grid-template-columns: 3.2em 1fr 2.4em; gap: 8px; align-items: center; font-weight: 700; }
+.dv-vb b { text-align: end; }
+.dv-vb-bar { height: 14px; background: #dcd8cf; border-radius: 7px; overflow: hidden; }
+.dv-vb-bar i { display: block; height: 100%; width: 0; background: #1A3558; }
+.dv-vb:first-child .dv-vb-bar i { background: #27AE60; }
+.dv-vb-sum { color: #4a5668; font-weight: 600; font-size: .9em; text-align: center; }
+.dv-closed { background: #5b6677; border-radius: 9px; padding: 0 9px; font-size: .85em; }
