@@ -2522,3 +2522,20 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .contact-form .cf-sheet a { color: #7A5C14; font-weight: 700; text-decoration: underline; }
 
 .test-layers-summary h3 { margin: 0; font-size: inherit; font-weight: inherit; color: inherit; }
+
+
+/* ── Who stands behind KesherOS ── */
+.about-section { padding: 80px 0; background: var(--bg-alt); --about-photo: 96px; }
+.about-card { max-width: 760px; margin: 0 auto; display: flex; gap: 28px; align-items: flex-start; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--card-shadow); padding: 32px; }
+.about-photo { width: var(--about-photo); height: var(--about-photo); min-width: var(--about-photo); border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--gold); box-shadow: 0 0 0 4px var(--gold-glow); }
+.about-body h3 { font-size: 1.3rem; font-weight: 700; margin: 0 0 10px; }
+.about-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; }
+.about-chips li { font-size: 0.8rem; font-weight: 600; color: var(--text); background: var(--gold-pale); border-radius: 999px; padding: 4px 12px; }
+:root[data-theme="dark"] .about-chips li { color: var(--gold-light); background: rgba(196,146,42,0.14); }
+.about-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin: 0 0 10px; }
+.about-body p:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  .about-section { padding: 56px 0; }
+  .about-card { flex-direction: column; align-items: center; text-align: center; padding: 24px; }
+  .about-chips { justify-content: center; }
+}
