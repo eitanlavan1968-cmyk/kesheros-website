@@ -506,4 +506,81 @@
     var text = aiYearsPhrase(new Date());
     document.querySelectorAll('[data-ai-years]').forEach(function (el) { el.textContent = text; });
   })();
+  /* ─── The 30-second distress story: a timeline of six scenes, captions, pause / restart / jump ───
+     It starts when half of it is on screen, pauses when it leaves, loops; with reduced motion (the OS setting or the site's own accessibility panel) it does not move on its own: the viewer steps through the scenes. */
+  (function () {
+    var root = document.querySelector('[data-dv]');
+    if (!root) return;
+    var scenes = root.querySelectorAll('.dv-scene');
+    var caption = root.querySelector('.dv-caption');
+    var bar = root.querySelector('.dv-progress i');
+    var dots = root.querySelectorAll('.dv-dots button');
+    var toggle = root.querySelector('[data-dv-toggle]');
+    var STEPS = [
+      { at: 0, text: 'תושבת בקיבוץ לוחצת על כפתור המצוקה באפליקציה.' },
+      { at: 5, text: 'ההתראה נשלחת מיד, עם המיקום שלה.' },
+      { at: 10, text: 'הצוות מקבל הודעה בפעמון ובמייל, כל אחד בשפה שלו.' },
+      { at: 17, text: 'כל ההתראות במקום אחד, עם הסטטוס של כל אחת.' },
+      { at: 23, text: 'היא ביטלה? כל מי שקיבל את ההתראה מקבל עדכון מיד.' },
+      { at: 28, text: 'כשיש אזעקה, כל שנייה קובעת.' }
+    ];
+    var TOTAL = 32, SUBJ = ['[קיבוץ הדגמה] 🚨 התראת מצוקה — דנה כהן', '[Demo Kibbutz] 🚨 Distress alert — Dana Cohen', '[ชุมชนตัวอย่าง] 🚨 การแจ้งเหตุฉุกเฉิน — Dana Cohen'];
+    var still = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('a11y-stop-motion'); };
+    var t = 0, cur = -1, playing = false, visible = false, timer = null, userStarted = false;      // userStarted: the viewer pressed play themselves, which is allowed even with reduced motion
+
+    function show(i) {
+      if (i === cur) return;
+      cur = i;
+      scenes.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+      caption.textContent = STEPS[i].text;
+    }
+    function langs() {
+      var sc = scenes[2];
+      if (!sc || !sc.classList.contains('is-on')) return;
+      var k = Math.min(2, Math.floor((t - 11.5) / 1.8));
+      if (k < 0) k = 0;
+      var chips = sc.querySelectorAll('.dv-langs span');
+      chips.forEach(function (c, j) { c.classList.toggle('on', j === k); });
+      var subj = sc.querySelector('#dv-subj');
+      subj.textContent = SUBJ[k];
+      subj.dir = k === 0 ? 'rtl' : 'ltr';      // an English or Thai subject line reads left to right, whatever the page direction
+    }
+    function frame() {
+      var i = 0;
+      STEPS.forEach(function (s, k) { if (t >= s.at) i = k; });
+      show(i);
+      langs();
+      bar.style.width = Math.min(100, t / TOTAL * 100) + '%';
+    }
+    var wasStill = still();
+    function tick() {
+      var s = still();
+      if (s && !wasStill) userStarted = false;      // the viewer has just switched motion off (the site's accessibility panel): that wins over an earlier play
+      wasStill = s;
+      if (s && !userStarted) { setPlaying(false); return; }
+      t += 0.1; if (t >= TOTAL) { t = 0; cur = -1; } frame(); }
+    function setPlaying(on) {
+      playing = on && (!still() || userStarted);
+      root.classList.toggle('dv-paused', !playing);
+      toggle.textContent = playing ? '⏸' : '▶';
+      toggle.setAttribute('aria-label', playing ? 'השהיה' : 'הפעלה');
+      clearInterval(timer);
+      if (playing) timer = setInterval(tick, 100);
+    }
+    function jump(i) { t = STEPS[i].at; cur = -1; frame(); }
+
+    toggle.addEventListener('click', function () { if (!playing && still()) { userStarted = true; root.classList.remove('dv-still'); } setPlaying(!playing); });
+    root.querySelector('[data-dv-restart]').addEventListener('click', function () { if (still()) { userStarted = true; root.classList.remove('dv-still'); } t = 0; cur = -1; frame(); setPlaying(true); });
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { jump(k); }); });
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible && !playing && !still()) setPlaying(true);
+      else if (!visible && playing) setPlaying(false);
+    }, { threshold: 0.5 }).observe(root);
+
+    root.classList.toggle('dv-still', still());
+    frame();
+    if (still()) { toggle.textContent = '▶'; root.classList.add('dv-paused'); }
+  })();
 })();
