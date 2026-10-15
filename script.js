@@ -529,12 +529,12 @@
       }
       return pts[pts.length - 1][k];
     }
-    var SUBJ = ['[קיבוץ הדגמה] 🚨 התראת מצוקה — דנה כהן', '[Demo Kibbutz] 🚨 Distress alert — Dana Cohen', '[ชุมชนตัวอย่าง] 🚨 การแจ้งเหตุฉุกเฉิน — Dana Cohen'];
+    var SUBJ = ['[קיבוץ הדגמה] 🚨 התראת מצוקה — דנה כהן', '[Demo Kibbutz] 🚨 Distress alert — Dana Cohen', '[Демо-кибуц] 🚨 Сигнал тревоги — Дана Коэн'];
     var FAN_PTS = [[11, 0, 0], [18, 74, 3], [25, 74, 3], [28.5, 96, 4]];      // [seconds, answered ok, need help]: 128 households
 
     var VOTE_PTS = [[17, 0, 0, 0], [23, 71, 18, 7], [24, 71, 18, 7], [27.5, 83, 21, 8]];      // [seconds, yes, no, abstain]: 140 eligible voters
     var EVAC_PTS = [[11, 0, 0], [18, 241, 38], [26, 241, 38], [28.5, 283, 21]];      // [seconds, arrived, on the way]: 312 residents
-    var EV_TXT = [['הוראת פינוי', 'יש להתפנות לאולם הספורט'], ['คำสั่งอพยพ', 'กรุณาอพยพไปที่หอกีฬา'], ['निकासी का निर्देश', 'कृपया खेल हॉल की ओर निकलें']];
+    var EV_TXT = [['הוראת פינוי', 'יש להתפנות לאולם הספורט'], ['Evacuation order', 'Please evacuate to the sports hall'], ['Приказ об эвакуации', 'Просим эвакуироваться в спортзал']];
     function setAll(attr, key, val) { root.querySelectorAll('[' + attr + '="' + key + '"]').forEach(function (el) { el.textContent = val; }); }
 
     function chip(sel, on, textOn, textOff, clsOn, clsOff) {
@@ -655,7 +655,7 @@
           sc.querySelectorAll('.dv-langs span').forEach(function (c, j) { c.classList.toggle('on', j === k); });
           var ti = sc.querySelector('#dv-evtitle'), ms = sc.querySelector('#dv-evmsg');
           ti.textContent = EV_TXT[k][0]; ms.textContent = EV_TXT[k][1];
-          ti.lang = ms.lang = ['he', 'th', 'hi'][k];
+          ti.lang = ms.lang = ['he', 'en', 'ru'][k];
         }
       },
       distress: {
