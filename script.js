@@ -520,7 +520,7 @@
     var cards = root.querySelectorAll('[data-story-pick]');
     var storyEls = root.querySelectorAll('.dv-story');
     var descs = root.querySelectorAll('[data-story-desc]');
-    var ORDER = ['book', 'fault', 'vote', 'fan', 'distress', 'evac'];
+    var ORDER = ['book', 'fault', 'vehicle', 'event', 'vote', 'fan', 'distress', 'evac'];
 
     function lerp(pts, t, k) {
       if (t <= pts[0][0]) return pts[0][k];
@@ -541,7 +541,37 @@
       root.querySelectorAll(sel).forEach(function (el) { el.textContent = on ? textOn : textOff; el.className = on ? clsOn : clsOff; });
     }
 
+    var EVT_PTS = [[11, 0, 0], [18, 64, 9], [25, 64, 9], [28.5, 82, 12]];      // [seconds, coming, not coming]: 120 invited
+
     var DEFS = {
+      vehicle: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'התושב מבקש את הרכב לשעות שהוא צריך.' },
+          { at: 5, text: 'המנהל מאשר, והרכב שמור.', settle: 5 },
+          { at: 11, text: 'סריקה אחת בתחילת הנסיעה.' },
+          { at: 17, text: 'הנסיעה נרשמת, בלי מחברת בכניסה.' },
+          { at: 23, text: 'כל הנסיעות במקום אחד: מי, מתי ולכמה זמן.' },
+          { at: 28, text: 'רכב משותף, בלי מחברת נסיעות.' }
+        ],
+        frame: function (t) { chip('[data-vh="state"]', t >= 8.5, 'אושר', 'ממתין לאישור', 'st-ok', 'st-wait'); }
+      },
+      event: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'המנהל פותח אירוע ומזמין את היישוב.' },
+          { at: 5, text: 'כל תושב מקבל הזמנה ועונה בלחיצה.' },
+          { at: 11, text: 'רואים בזמן אמת כמה מגיעים.', settle: 6 },
+          { at: 19, text: 'הרשימה מוכנה, בלי לרדוף אחרי אף אחד.' },
+          { at: 25, text: 'תזכורת אוטומטית לפני האירוע.' },
+          { at: 29, text: 'אירוע שכולם יודעים עליו.' }
+        ],
+        frame: function (t) {
+          var y = Math.round(lerp(EVT_PTS, t, 1)), n = Math.round(lerp(EVT_PTS, t, 2)), pct = Math.round((y + n) / 120 * 100);
+          setAll('data-ev', 'yes', y); setAll('data-ev', 'no', n); setAll('data-ev', 'wait', 120 - y - n); setAll('data-ev', 'pct', pct);
+          root.querySelectorAll('[data-ev="bar"]').forEach(function (el) { el.style.width = pct + '%'; });
+        }
+      },
       book: {
         total: 32,
         steps: [

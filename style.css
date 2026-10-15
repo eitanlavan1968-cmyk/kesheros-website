@@ -2658,15 +2658,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .dv-phone { height: 60%; }
   .dv-story[data-story="distress"] .dv-scene[data-scene="4"] .dv-phone { height: 42%; }
   .dv-desk, .dv-desk-s, .dv-desk-w, .dv-mail, .dv-list { width: 92%; }
-  .dv-card { flex: 0 0 140px; min-width: 140px; }
-  .dv-cards { margin-inline: -16px; padding-inline: 16px; }
   .dv-av i { width: 40px; height: 40px; }
   .dv-note { font-size: .82rem; bottom: 3%; }
 }
 
 /* ─── Story shell: the card row, the shared stage, the fan story ─── */
-.dv-cards { display: flex; gap: 12px; margin: 0 0 18px; padding: 4px 2px 10px; overflow-x: auto; scroll-snap-type: x proximity; }
-.dv-card { flex: 1 1 0; min-width: 150px; scroll-snap-align: start; text-align: start; background: var(--card-bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 14px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; font-family: inherit; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.dv-cards { display: grid; gap: 14px; margin: 0 0 18px; }
+.dv-cardrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dv-rowlabel { grid-column: 1 / -1; font-size: .85rem; font-weight: 700; color: var(--text-muted); }
+.dv-card { min-width: 0; text-align: start; background: var(--card-bg); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 14px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; font-family: inherit; transition: border-color .2s, transform .2s, box-shadow .2s; }
 .dv-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
 .dv-card[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-glow); background: var(--gold-pale); color: #0E2340; }
 .dv-card-ico { font-size: 1.6rem; line-height: 1; font-style: normal; }
@@ -2750,3 +2750,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-mail-txt { padding: 0 9px 4px; }
 .dv-mail-ok { background: #1A3558; }
 @media (max-width: 640px) { .dv-mail-w { width: 92%; } }
+
+/* ─── Vehicle and event stories, and the two-row card grid ─── */
+.dv-qrbox { position: relative; background: #fff; border-radius: 10px; padding: 8px; overflow: hidden; line-height: 0; }
+.dv-scan { position: absolute; inset-inline: 0; top: 0; height: 3px; background: #d63a2f; box-shadow: 0 0 6px #d63a2f; }
+.is-on .dv-scan { animation: dv-scanmove 1.4s .4s 3 alternate both; }
+@keyframes dv-scanmove { from { top: 4%; } to { top: 94%; } }
+@media (max-width: 640px) {
+  .dv-cardrow { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .dv-card { flex-direction: row; align-items: center; gap: 8px; padding: 10px 12px; }
+  .dv-card span, .dv-card em { display: none; }
+  .dv-card-ico { font-size: 1.3rem; }
+  .dv-card b { font-size: .92rem; }
+}
