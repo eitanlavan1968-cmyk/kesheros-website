@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדיניות פרטיות | KesherOS</title>
+  <meta name="description" content="מדיניות הפרטיות של אתר KesherOS: איזה מידע נאסף, למה, כמה זמן נשמר ומה הזכויות שלכם.">
+  <!-- האתר חסום בסיסמה עד ההשקה, כמו הדף הראשי: כשמסירים את הגייט יש להסיר גם את ה-noindex כאן. -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://kesheros.co.il/privacy.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* the same saved preferences the main page restores: theme and the accessibility panel's settings */
+    (function () {
+      try {
+        var r = document.documentElement, t = localStorage.getItem('theme');
+        if (t) r.setAttribute('data-theme', t);
+        var a = JSON.parse(localStorage.getItem('a11y') || '{}');
+        if (a.font) r.style.fontSize = (16 + a.font * 2) + 'px';
+        if (a.contrast) r.classList.add('a11y-high-contrast');
+        if (a.links) r.classList.add('a11y-highlight-links');
+        if (a.motion) r.classList.add('a11y-stop-motion');
+      } catch (e) { /* storage blocked: the defaults stand */ }
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+  <header class="legal-header">
+    <div class="container legal-header-inner">
+      <a class="logo-text" href="/" aria-label="KesherOS — לדף הראשי"><span class="logo-kesher">Kesher</span><span class="logo-os">OS</span></a>
+      <a class="legal-back" href="/">חזרה לאתר ←</a>
+    </div>
+  </header>
+  <main id="main" class="legal-main">
+    <div class="container legal-container">
+      <h1>מדיניות פרטיות</h1>
+      <p class="legal-lead">אנחנו אוספים באתר רק את מה שאתם בוחרים לשלוח לנו, ולא עוקבים אחריכם.</p>
+
+      <h2>מי אנחנו</h2>
+      <p>KesherOS, המופעל על ידי איתן לבן. לפניות בנושא פרטיות: <a href="mailto:eitan.lavan.1968@gmail.com" dir="ltr">eitan.lavan.1968@gmail.com</a>.</p>
+
+      <h2>מה אנחנו אוספים</h2>
+      <p>רק מה שאתם ממלאים בטופס "צרו קשר": שם, שם הקהילה, כתובת מייל, טלפון (שדה רשות) והודעה חופשית. בנוסף נשמרות בדפדפן שלכם שתי העדפות תצוגה בלבד, ערכת הנושא והגדרות פאנל הנגישות. האתר לא משתמש בעוגיות, ובכלי ניתוח, מעקב או פרסום.</p>
+
+      <h2>למה</h2>
+      <p>כדי לחזור אליכם, ולתאם שיחה או פיילוט. איננו מוכרים או מעבירים את הפרטים לשימוש שיווקי של צד שלישי.</p>
+
+      <h2>מי מטפל במידע</h2>
+      <ul>
+        <li><strong>שירות Web3Forms:</strong> הטופס נשלח דרכו אל תיבת הדואר שלנו. השירות עשוי לתעד את כתובת ה-IP שלכם.</li>
+        <li><strong>Cloudflare:</strong> האתר מתארח אצלם, והם רואים כתובות IP לצורך אספקת הדף.</li>
+        <li><strong>WhatsApp (Meta):</strong> הלחיצה על כפתור הוואטסאפ פותחת את השירות שלהם, והשיחה שם כפופה למדיניות שלהם.</li>
+      </ul>
+
+      <h2>כמה זמן</h2>
+      <p>נשמור הודעות שנשלחו בטופס 12 חודשים, או עד שתבקשו למחוק אותן, המוקדם מביניהם.</p>
+
+      <h2>הזכויות שלכם</h2>
+      <p>לפי חוק הגנת הפרטיות, התשמ״א-1981, אתם זכאים לעיין במידע שנשמר עליכם, לבקש לתקן אותו ולבקש למחוק אותו. פנו אלינו במייל או בטלפון ונטפל בבקשה.</p>
+
+      <h2>מידע במערכת עצמה</h2>
+      <p>נתוני הקהילה שמוזנים למערכת KesherOS מטופלים לפי הסכם נפרד עם כל קהילה, ולא לפי מדיניות זו.</p>
+
+      <h2>יצירת קשר</h2>
+      <div class="legal-contact">
+        <strong>איתן לבן</strong>
+        <a href="tel:+972528296824" dir="ltr">052-829-6824</a>
+        <a href="mailto:eitan.lavan.1968@gmail.com" dir="ltr">eitan.lavan.1968@gmail.com</a>
+      </div>
+
+      <p class="legal-updated">עודכן לאחרונה: 15 באוקטובר 2026</p>
+
+    </div>
+  </main>
+  <footer class="site-footer legal-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 KesherOS. כל הזכויות שמורות.</span>
+        <span><a href="accessibility.html">הצהרת נגישות</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

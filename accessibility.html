@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הצהרת נגישות | KesherOS</title>
+  <meta name="description" content="הצהרת הנגישות של אתר KesherOS: מה קיים, לפי איזה תקן, ואיך לפנות אלינו.">
+  <!-- האתר חסום בסיסמה עד ההשקה, כמו הדף הראשי: כשמסירים את הגייט יש להסיר גם את ה-noindex כאן. -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://kesheros.co.il/accessibility.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* the same saved preferences the main page restores: theme and the accessibility panel's settings */
+    (function () {
+      try {
+        var r = document.documentElement, t = localStorage.getItem('theme');
+        if (t) r.setAttribute('data-theme', t);
+        var a = JSON.parse(localStorage.getItem('a11y') || '{}');
+        if (a.font) r.style.fontSize = (16 + a.font * 2) + 'px';
+        if (a.contrast) r.classList.add('a11y-high-contrast');
+        if (a.links) r.classList.add('a11y-highlight-links');
+        if (a.motion) r.classList.add('a11y-stop-motion');
+      } catch (e) { /* storage blocked: the defaults stand */ }
+    })();
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">דלג לתוכן הראשי</a>
+  <header class="legal-header">
+    <div class="container legal-header-inner">
+      <a class="logo-text" href="/" aria-label="KesherOS — לדף הראשי"><span class="logo-kesher">Kesher</span><span class="logo-os">OS</span></a>
+      <a class="legal-back" href="/">חזרה לאתר ←</a>
+    </div>
+  </header>
+  <main id="main" class="legal-main">
+    <div class="container legal-container">
+      <h1>הצהרת נגישות</h1>
+      <p class="legal-lead">ב-KesherOS אנחנו שואפים שהאתר והמערכת יהיו נגישים לכולם, כולל אנשים עם מוגבלות.</p>
+
+      <h2>מה קיים באתר</h2>
+      <ul>
+        <li>קישור "דלג לתוכן הראשי" בתחילת כל עמוד.</li>
+        <li>אפשר לנווט באתר במקלדת, ופריטי הפעולה מסומנים בבירור בזמן מיקוד.</li>
+        <li>פאנל נגישות מובנה: הגדלה והקטנה של הטקסט, ניגודיות גבוהה, הדגשת קישורים, עצירת אנימציות, ובחירה בין תצוגה כהה לבהירה. ההעדפות נשמרות בדפדפן שלכם.</li>
+        <li>כיבוד ההעדפה של מערכת ההפעלה להפחתת תנועה.</li>
+        <li>הדפים כתובים בעברית מימין לשמאל, ושפת הדף וכיוונו מוגדרים.</li>
+        <li>לכל שדה בטופס "צרו קשר" יש תווית, ואפשר להגדיל את הדף בלי הגבלה.</li>
+      </ul>
+
+      <h2>תקן ובדיקות</h2>
+      <p>האתר נבנה בהתאם להנחיות WCAG 2.1 ברמה AA ולתקן הישראלי ת״י 5568. הוא נבדק על ידינו ובכלי בדיקה אוטומטי, ולא על ידי גורם חיצוני מוסמך. ייתכן שנותרו בו ליקויים שעוד לא איתרנו, ואנחנו מתקנים אותם ברגע שאנחנו מגלים אותם.</p>
+
+      <h2>המערכת עצמה</h2>
+      <p>במערכת KesherOS עצמה יש פאנל נגישות משלה, ותמיכה בניווט במקלדת. הצהרה זו מתייחסת לאתר השיווקי.</p>
+
+      <h2>מגבלות ידועות</h2>
+      <p>ב-15 באוקטובר 2026 הרצנו בדיקה אוטומטית (axe-core) על דף הבית, בתצוגה הכהה ובבהירה, ועל שני עמודי המדיניות, ותיקנו את הליקויים שנמצאו (בעיקר ניגודיות צבעים). עדיין לא נבדק ידנית טקסט שמוצג מעל רקעים מדורגים באזור הפתיחה של דף הבית, כי כלי הבדיקה אינו יכול לקבוע שם את צבע הרקע. נשמח לדעת אם משהו לא קריא לכם.</p>
+
+      <h2>נתקלתם בבעיה? נשמח לשמוע</h2>
+      <p>אם משהו באתר אינו נגיש לכם, או שאתם זקוקים לתוכן בפורמט אחר, פנו אל רכז הנגישות:</p>
+      <div class="legal-contact">
+        <strong>איתן לבן, רכז הנגישות</strong>
+        <a href="tel:+972528296824" dir="ltr">052-829-6824</a>
+        <a href="mailto:eitan.lavan.1968@gmail.com" dir="ltr">eitan.lavan.1968@gmail.com</a>
+      </div>
+      <p>נשתדל להשיב בתוך חמישה ימי עבודה.</p>
+
+      <p class="legal-updated">עודכן לאחרונה: 15 באוקטובר 2026</p>
+
+    </div>
+  </main>
+  <footer class="site-footer legal-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 KesherOS. כל הזכויות שמורות.</span>
+        <span><a href="accessibility.html">הצהרת נגישות</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

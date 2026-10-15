@@ -1981,11 +1981,11 @@ img, svg { display: block; max-width: 100%; }
   border-radius: var(--radius-sm);
 }
 .btn-wa {
-  background: #25D366;
+  background: #0F7B3E;      /* WCAG AA: white on the brand #25D366 is 1.98:1; this green is 5.3:1 */
   color: #FFF;
 }
 .btn-wa:hover {
-  background: #20BD5A;
+  background: #0C6633;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2539,3 +2539,37 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .about-card { flex-direction: column; align-items: center; text-align: center; padding: 24px; }
   .about-chips { justify-content: center; }
 }
+
+
+/* ── Legal pages (accessibility statement, privacy policy) ── */
+.legal-header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 14px 0; }
+.legal-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.legal-back { font-size: 0.9rem; font-weight: 600; color: var(--gold); text-decoration: none; }
+.legal-back:hover { text-decoration: underline; }
+.legal-main { padding: 56px 0 72px; background: var(--bg); min-height: 60vh; }
+.legal-container { max-width: 760px; }
+.legal-container h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin: 0 0 12px; }
+.legal-lead { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin: 0 0 32px; }
+.legal-container h2 { font-size: 1.25rem; font-weight: 700; margin: 36px 0 10px; }
+.legal-container p, .legal-container li { font-size: 0.98rem; line-height: 1.9; color: var(--text); }
+.legal-container p { margin: 0 0 12px; }
+.legal-container ul { margin: 0 0 12px; padding-inline-start: 22px; }
+.legal-container li { margin-bottom: 6px; }
+.legal-container a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.legal-contact { display: flex; flex-direction: column; gap: 4px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin: 6px 0 14px; width: fit-content; max-width: 100%; }
+.legal-contact strong { font-size: 1.05rem; }
+.legal-updated { margin-top: 36px; font-size: 0.85rem; color: var(--text-muted); }
+
+/* contrast (WCAG AA 4.5:1): the brand gold is for fills and large type; as TEXT it needs the darker shade on a light page, and the teal footer links need a lighter shade on the dark one */
+:root[data-theme="light"] .legal-header .logo-os,
+:root[data-theme="light"] .legal-back,
+:root[data-theme="light"] .legal-container a { color: #7A5C14; }
+:root[data-theme="dark"] .legal-footer a { color: var(--gold-light); }
+:root[data-theme="light"] .legal-header .logo-kesher { color: var(--navy); }      /* the header is white in the light theme: the logo's white half would vanish */
+
+/* contrast on the light theme (WCAG AA 4.5:1): the brand gold and success green are fills and large type; as small TEXT on white they need the darker shades */
+:root[data-theme="light"] .site-header[data-scrolled] .logo-os,
+:root[data-theme="light"] .footer-brand .logo-os { color: #7A5C14; }      /* only where the background is light: over the navy hero the gold stays */
+:root[data-theme="light"] .ba-label-after { color: #1B7A43; }
+:root[data-theme="dark"] .ba-label-before { color: #EF7B6E; }      /* #C0392B on the dark card is 3.07:1 */
+:root[data-theme="dark"] .footer-bottom a { color: var(--gold-light); }      /* the teal link colour is 2.97:1 on the dark footer */
