@@ -2580,12 +2580,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-head { text-align: center; margin-bottom: 18px; }
 .dv-head h3 { font-size: 1.35rem; font-weight: 800; margin: 0 0 6px; }
 .dv-head p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
-.dv-stage { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius); background: linear-gradient(160deg, #0E2340, #162D50); border: 1px solid rgba(196,146,42,.35); color: #F0EDE8; box-shadow: var(--card-shadow-hover); }
-.dv-scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6%; padding: 4% 5% 11%; opacity: 0; visibility: hidden; transition: opacity .45s; }
+.dv-stage { position: relative; aspect-ratio: 16 / 8.4; overflow: hidden; border-radius: var(--radius); background: linear-gradient(160deg, #0E2340, #162D50); border: 1px solid rgba(196,146,42,.35); color: #F0EDE8; box-shadow: var(--card-shadow-hover); }
+.dv-scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6%; padding: 4% 5%; opacity: 0; visibility: hidden; transition: opacity .45s; }
 .dv-scene.is-on { opacity: 1; visibility: visible; }
-.dv-note { position: absolute; bottom: 4%; inset-inline: 5%; text-align: center; font-size: clamp(.85rem, 2.4vw, 1.2rem); font-weight: 700; }
-.dv-note b { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--gold); color: #0E2340; margin-inline-end: .5em; }
-.dv-phone { height: 76%; aspect-ratio: 9 / 16; background: #0b1730; border: 3px solid #2a4066; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+.dv-phone { height: 88%; aspect-ratio: 9 / 16; background: #0b1730; border: 3px solid #2a4066; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
 .dv-phone-bar { background: #1A3558; font-size: .65rem; text-align: center; padding: 6px 0; color: #9fb3d1; }
 .dv-phone-body { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 10px; background: #f3f1ec; color: #0E2340; text-align: center; font-size: clamp(.72rem, 1.7vw, .95rem); gap: 4px; }
 .dv-phone-body.dv-center { justify-content: center; }
@@ -2602,7 +2600,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .is-on .dv-av i:nth-child(1) { animation-delay: .6s, 1.2s; }
 .is-on .dv-av i:nth-child(2) { animation-delay: .9s, 1.5s; }
 .is-on .dv-av i:nth-child(3) { animation-delay: 1.2s, 1.8s; }
-.dv-desk { width: 47%; background: #f3f1ec; color: #0E2340; border-radius: 10px; overflow: hidden; font-size: clamp(.72rem, 1.95vw, 1.02rem); }
+.dv-desk { width: 50%; background: #f3f1ec; color: #0E2340; border-radius: 10px; overflow: hidden; font-size: clamp(.72rem, 1.95vw, 1.02rem); }
 .dv-desk-s { width: 42%; }
 .dv-desk-top { background: #1A3558; color: #fff; display: flex; justify-content: space-between; padding: 6px 10px; font-weight: 700; }
 .dv-bell em { font-style: normal; background: #d63a2f; border-radius: 9px; padding: 0 5px; margin-inline-start: 4px; font-size: .75em; }
@@ -2619,7 +2617,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-langs { display: flex; gap: 5px; padding: 0 9px 9px; }
 .dv-langs span { background: #e6e9ee; border-radius: 9px; padding: 1px 8px; transition: background .3s; font-family: 'Heebo', 'Segoe UI', 'Leelawadee UI', 'Noto Sans Thai', system-ui, sans-serif; }
 .dv-langs span.on { background: #C4922A; color: #0E2340; }
-.dv-list { width: 66%; background: #f3f1ec; color: #0E2340; border-radius: 10px; overflow: hidden; font-size: clamp(.78rem, 2vw, 1.05rem); }
+.dv-list { width: 70%; background: #f3f1ec; color: #0E2340; border-radius: 10px; overflow: hidden; font-size: clamp(.78rem, 2vw, 1.05rem); }
 .dv-list-head { background: #1A3558; color: #fff; padding: 7px 12px; font-weight: 800; }
 .dv-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; padding: 9px 12px; border-top: 1px solid #dcd8cf; }
 .dv-row em { font-style: normal; font-weight: 700; color: #fff; background: #d63a2f; border-radius: 9px; padding: 0 9px; }
@@ -2654,12 +2652,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 @keyframes dv-slide { to { opacity: 1; transform: none; } }
 @media (max-width: 640px) {
   .dv-stage { aspect-ratio: 4 / 5; }
-  .dv-scene { flex-direction: column; gap: 14px; padding: 5% 4% 18%; }
-  .dv-phone { height: 60%; }
+  .dv-scene { flex-direction: column; gap: 14px; padding: 6% 4%; }
+  .dv-phone { height: 70%; }
   .dv-story[data-story="distress"] .dv-scene[data-scene="4"] .dv-phone { height: 42%; }
   .dv-desk, .dv-desk-s, .dv-desk-w, .dv-mail, .dv-list { width: 92%; }
   .dv-av i { width: 40px; height: 40px; }
-  .dv-note { font-size: .82rem; bottom: 3%; }
 }
 
 /* ─── Story shell: the card row, the shared stage, the fan story ─── */
@@ -2680,7 +2677,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dv-btn.dv-next { background: var(--gold); border-color: var(--gold); color: #0E2340; font-weight: 700; padding: 0 12px; }
 .dv-sig { text-align: center; color: var(--text-muted); font-size: .85rem; margin: 14px auto 0; max-width: 640px; }
 .dv-cta { text-align: center; margin-top: 18px; display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; font-weight: 600; }
-.dv-desk-w { width: 62%; }
+.dv-desk-w { width: 66%; }
 .dv-fx-body { padding: 12px 14px 14px; display: grid; gap: 10px; }
 .dv-fx-title { font-weight: 800; }
 .dv-fx-empty { color: #5b6677; }
@@ -2763,3 +2760,5 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .dv-card-ico { font-size: 1.3rem; }
   .dv-card b { font-size: .92rem; }
 }
+
+.dv-end { padding-bottom: 4%; }
