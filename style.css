@@ -930,10 +930,11 @@ img, svg { display: block; max-width: 100%; }
 .quality { background: var(--bg); padding: 90px 0; }
 .quality-metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 56px;
 }
+@media (max-width: 1000px) and (min-width: 769px) { .quality-metrics { grid-template-columns: repeat(2, 1fr); } }
 .metric-card {
   background: var(--card-bg);
   border-radius: var(--radius);
@@ -963,6 +964,10 @@ img, svg { display: block; max-width: 100%; }
 .method-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
 @media (max-width: 768px) { .method-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .method-grid { grid-template-columns: 1fr; } }
+.method-grid-5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1100px) { .method-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .method-grid-5 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .method-grid-5 { grid-template-columns: 1fr; } }
 
 .test-layers { margin-bottom: 0; }
 .test-layers-summary {
