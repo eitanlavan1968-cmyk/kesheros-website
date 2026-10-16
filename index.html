@@ -108,7 +108,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=801697bf">
+  <link rel="stylesheet" href="style.css?v=27b2406f">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -125,9 +125,9 @@
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "ILS",
-      "lowPrice": "590",
-      "highPrice": "2190",
-      "offerCount": "4"
+      "lowPrice": "990",
+      "highPrice": "2990",
+      "offerCount": "3"
     },
     "author": {
       "@type": "Organization",
@@ -555,7 +555,7 @@
           <div class="origin-marker">2</div>
           <div class="origin-content">
             <h3>אוקטובר 2023 — רגע ההכרעה</h3>
-            <p>אחרי ה-7 באוקטובר, הפער הפך לסכנה. קהילות שלא הצליחו לאתר תושבים. הודעות פינוי שלא הגיעו לעובדים הזרים. מרשם פגיעים שלא היה קיים. זה לא היה עוד "נוחות" — זה היה פער בטיחותי. החלטנו לבנות.</p>
+            <p>ב-7 באוקטובר 2023 פונינו מקיבוץ כיסופים. כשנתיים וחצי חיינו מחוץ לבית, ועכשיו חזרנו אליו. ראינו מקרוב איך נראה איתור של כל תושב בלי מערכת: קהילות שלא הצליחו לאתר תושבים, הודעות פינוי שלא הגיעו לעובדים הזרים, מרשם פגיעים שלא היה קיים. זה לא היה עוד "נוחות" — זה היה פער בטיחותי. מכאן נולד ה-Fan-out של KesherOS, וההחלטה לבנות.</p>
           </div>
         </div>
         <div class="origin-step reveal reveal-delay-2">
@@ -581,7 +581,7 @@
           <ul class="about-chips" aria-label="בקצרה">
             <li>מפתח תוכנה מאז 1994</li>
             <li>מפתח באמצעות <bdi>AI</bdi> כבר <span data-ai-years>שנתיים</span></li>
-            <li>חבר קיבוץ</li>
+            <li>חבר קיבוץ כיסופים — פונה וחזר</li>
             <li>חבר הנהלת היישוב — שתי קדנציות</li>
             <li>יו״ר ועדה</li>
           </ul>
@@ -2451,8 +2451,8 @@
       </div>
 
       <div class="plan-match reveal">
-        <label for="pm-input">כמה משפחות בקהילה שלכם?</label>
-        <input type="number" id="pm-input" min="1" max="5000" step="10" inputmode="numeric" placeholder="למשל 320">
+        <label for="pm-input">כמה אנשים יוגדרו במערכת? (תושבים, ילדים ועובדים)</label>
+        <input type="number" id="pm-input" min="1" max="5000" step="10" inputmode="numeric" placeholder="למשל 640">
         <p class="plan-match-out" id="pm-out" role="status" aria-live="polite"></p>
       </div>
 
@@ -2460,14 +2460,14 @@
         <!-- Start -->
         <article class="price-card reveal">
           <h3>Kesher Start</h3>
-          <div class="tier-capacity">עד 150 משפחות</div>
-          <div class="price-amount" data-price="590">₪590</div>
+          <div class="tier-capacity">עד 500 נפשות</div>
+          <div class="price-amount" data-price="990">₪990</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
-            <li>אלפון ומשקי בית</li>
-            <li>מסמכים ותקנונים</li>
-            <li>לוח מודעות</li>
-            <li>אירועים</li>
+            <li>כל המודולים כלולים</li>
+            <li>חירום ומניפה — איתור כל תושב</li>
+            <li>הצבעות, סקרים וועדות</li>
+            <li>עוזר AI מובנה*</li>
             <li>15 שפות</li>
           </ul>
           <a href="#contact" class="btn btn-outline" style="color:var(--text);border-color:var(--border)">צרו קשר</a>
@@ -2477,16 +2477,15 @@
         <article class="price-card featured reveal reveal-delay-1">
           <div class="price-badge">הכי פופולרי</div>
           <h3>Kesher Community</h3>
-          <div class="tier-capacity">עד 400 משפחות</div>
-          <div class="price-amount" data-price="1190">₪1,190</div>
+          <div class="tier-capacity">עד 1,000 נפשות</div>
+          <div class="price-amount" data-price="1690">₪1,690</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
-            <li>כל מה שב-Start</li>
-            <li>הצבעות וסקרים</li>
-            <li>התראות חירום</li>
-            <li>פרוטוקולים</li>
-            <li>קריאות שירות</li>
-            <li>AI חיפוש סמנטי</li>
+            <li>כל המודולים כלולים</li>
+            <li>חירום ומניפה — איתור כל תושב</li>
+            <li>הצבעות, סקרים וועדות</li>
+            <li>עוזר AI מובנה*</li>
+            <li>15 שפות</li>
           </ul>
           <a href="#contact" class="btn btn-primary">צרו קשר</a>
         </article>
@@ -2494,15 +2493,15 @@
         <!-- Professional -->
         <article class="price-card reveal reveal-delay-2">
           <h3>Kesher Professional</h3>
-          <div class="tier-capacity">עד 800 משפחות</div>
-          <div class="price-amount" data-price="2190">₪2,190</div>
+          <div class="tier-capacity">עד 2,000 נפשות</div>
+          <div class="price-amount" data-price="2990">₪2,990</div>
           <div class="price-period">לחודש</div>
           <ul class="price-features">
-            <li>כל מה שב-Community</li>
-            <li>ועדות ומעקב החלטות</li>
-            <li>מרשם תושבים פגיעים</li>
-            <li>ניהול פינוי</li>
-            <li>דוחות מתקדמים</li>
+            <li>כל המודולים כלולים</li>
+            <li>חירום ומניפה — איתור כל תושב</li>
+            <li>הצבעות, סקרים וועדות</li>
+            <li>עוזר AI מובנה*</li>
+            <li>15 שפות</li>
           </ul>
           <a href="#contact" class="btn btn-outline" style="color:var(--text);border-color:var(--border)">צרו קשר</a>
         </article>
@@ -2511,7 +2510,7 @@
              נמכר על פיצ'רים שעדיין בפיתוח. להחזיר כשהם קיימים. -->
       </div>
 
-      <p class="pricing-note">כל המחירים לא כוללים מע"מ. ללא התחייבות. ניתן לשדרג או לבטל בכל עת.</p>
+      <p class="pricing-note">בכל מסלול מקבלים הכול — ההבדל היחיד הוא מספר האנשים. נספרים אנשים פעילים: תושבים, ילדים ועובדים שאינם גרים ביישוב; מי שהוסר לא נספר. מתקרבים לתקרה? נתריע ונציע מסלול גדול יותר, בלי לחסום. כל המחירים לא כוללים מע"מ. ללא התחייבות. ניתן לשדרג או לבטל בכל עת.</p>
 
       <!-- What's included vs. external -->
       <div class="pricing-extras reveal">
@@ -2527,14 +2526,14 @@
           </div>
           <div class="extras-card">
             <div class="extras-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/></svg>
             </div>
-            <h4>AI — בינה מלאכותית</h4>
-            <p>חשבון אצל ספק מודל שפה (כמו Anthropic או OpenAI). <strong>תשלום לפי שימוש בלבד</strong> — כ-<strong>$0.01 לשאלה</strong>. קהילה שמריצה 1,000 שאלות בחודש תשלם כ-$10. אפשר להגדיר תקרת הוצאה חודשית אצל הספק, כך שלא תופתעו.</p>
+            <h4>AI — העוזר מובנה, הדלק בנפרד</h4>
+            <p>* העוזר מובנה בכל מסלול, ובלי תוספת בתעריף שלנו. השימוש בו מחויב ישירות על ידכם מול ספק מודל השפה (כמו Anthropic או OpenAI): פותחים חשבון אצל הספק פעם אחת, ואנחנו מלווים את ההגדרה חינם. <strong>תשלום לפי שימוש בלבד</strong> — כ-<strong>$0.01 לשאלה</strong>. קהילה שמריצה 1,000 שאלות בחודש תשלם כ-$10. אפשר להגדיר תקרת הוצאה חודשית אצל הספק, כך שלא תופתעו. אנחנו לא גובים מרווח על השימוש.</p>
           </div>
           <div class="extras-card">
             <div class="extras-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01" stroke-width="2.5"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>
             </div>
             <h4>SMS — אופציונלי</h4>
             <p>לשליחת התראות חירום ב-SMS (בנוסף לאימייל). הרשמה אצל ספק SMS ישראלי, עלות של כ-<strong>3–5 אג׳ להודעה</strong>. רלוונטי בעיקר למניפת חירום — ולגמרי אופציונלי.</p>
@@ -2782,7 +2781,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=0182ca36" defer></script>
+  <script src="script.js?v=7f9f590b" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

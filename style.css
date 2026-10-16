@@ -95,30 +95,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0C0E12;
-    --bg-alt: #141820;
-    --bg-dark: #080C14;
+    --bg: #0E2340;
+    --bg-alt: #122B4D;
+    --bg-dark: #0A1A33;
     --text: #E8E4DC;
     --text-muted: #9A9083;
     --text-on-dark: #E8E4DC;
     --text-on-dark-muted: rgba(232,228,220,0.55);
-    --border: #2A2E36;
-    --card-bg: #1A1E26;
+    --border: #2B4A74;
+    --card-bg: #1A3558;
     --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
     --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
     --gold-glow: rgba(196,146,42,0.35);
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0C0E12;
-  --bg-alt: #141820;
-  --bg-dark: #080C14;
+  --bg: #0E2340;
+  --bg-alt: #122B4D;
+  --bg-dark: #0A1A33;
   --text: #E8E4DC;
   --text-muted: #9A9083;
   --text-on-dark: #E8E4DC;
   --text-on-dark-muted: rgba(232,228,220,0.55);
-  --border: #2A2E36;
-  --card-bg: #1A1E26;
+  --border: #2B4A74;
+  --card-bg: #1A3558;
   --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
   --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
   --gold-glow: rgba(196,146,42,0.35);

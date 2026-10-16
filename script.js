@@ -233,9 +233,9 @@
   if (pmInput && pmOut) {
     // index into .price-card in DOM order: Start, Community, Professional
     var PM_TIERS = [
-      { max: 150, i: 0, name: 'Kesher Start' },
-      { max: 400, i: 1, name: 'Kesher Community' },
-      { max: 800, i: 2, name: 'Kesher Professional' }
+      { max: 500, i: 0, name: 'Kesher Start' },
+      { max: 1000, i: 1, name: 'Kesher Community' },
+      { max: 2000, i: 2, name: 'Kesher Professional' }
     ];
     pmInput.addEventListener('input', function () {
       var cards = document.querySelectorAll('.price-card');
