@@ -108,7 +108,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=27b2406f">
+  <link rel="stylesheet" href="style.css?v=eaa0788d">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -569,31 +569,6 @@
     </div>
   </section>
 
-  <section class="about-section" id="about" aria-label="מי עומד מאחורי KesherOS">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2>מי עומד מאחורי <bdi>KesherOS</bdi></h2>
-      </div>
-      <div class="about-card reveal">
-        <img class="about-photo" src="images/eitan.webp" width="96" height="96" alt="איתן לבן" loading="lazy" decoding="async">
-        <div class="about-body">
-          <h3>איתן לבן</h3>
-          <ul class="about-chips" aria-label="בקצרה">
-            <li>מפתח תוכנה מאז 1994</li>
-            <li>מפתח באמצעות <bdi>AI</bdi> כבר <span data-ai-years>שנתיים</span></li>
-            <li>חבר קיבוץ כיסופים — פונה וחזר</li>
-            <li>חבר הנהלת היישוב — שתי קדנציות</li>
-            <li>יו״ר ועדה</li>
-          </ul>
-          <p>בפיתוח תוכנה מאז 1994, בין היתר בפלאפון, נייס, <bdi>DVTel</bdi>, <bdi>LOGIC</bdi>, <bdi>BForex</bdi> ו-<bdi>DBMotion</bdi>.</p>
-          <p>ובקהילה: חבר הנהלת היישוב בשתי קדנציות, יו״ר ועדה, ופעיל בעבר ובהווה בוועדות נוספות.</p>
-          <p>את <bdi>KesherOS</bdi> אני בונה מתוך הצרכים שפגשתי בעצמי: ישיבות, פרוטוקולים, הודעות שלא מגיעות והחלטות שאי אפשר למצוא.</p>
-          <p>מאז ינואר 2025 אני מפתח באמצעות <bdi>AI</bdi>. <bdi>KesherOS</bdi> נבנית כך, וכל שינוי בה עובר בדיקות אוטומטיות וסריקות איכות קבועות.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════════════════════════════════
        4c. BEFORE / AFTER
        ═══════════════════════════════════════════════════════ -->
@@ -672,6 +647,8 @@
         <p class="demo-scope">תצוגה מקדימה · חלק מהמודולים, נתוני דוגמה</p>
       </div>
 
+      <details class="m-fold" open>
+        <summary class="m-fold-summary"><span class="m-fold-title">לצפות בהדגמה האינטראקטיבית</span><span class="m-fold-sub">תסריטים קצרים של 30 שניות מחיי היישוב, ומסך המערכת עצמו</span></summary>
       <div class="dv-wrap reveal" id="stories" data-dv>
         <div class="dv-head">
           <h3>ככה זה נראה ביום אמת</h3>
@@ -1830,6 +1807,8 @@
         <div class="demo-help-fab" aria-hidden="true">?</div>
 
       </div><!-- /demo-frame -->
+      </details>
+
       <div class="demo-cta reveal">
         <p class="demo-disclaimer">המערכת המלאה כוללת 20 מודולים, הרשאות מתקדמות, בינה מלאכותית ועוד.</p>
         <a href="#contact" class="btn btn-primary btn-lg">לראות את המערכת המלאה</a>
@@ -1847,6 +1826,8 @@
         <p class="section-lead">כל מודול עומד בפני עצמו, אך ביחד הם מערכת ניהול קהילתית אחת — במקום קבוצות וואטסאפ, גיליונות אקסל וניירת.</p>
       </div>
 
+      <details class="m-fold" open>
+        <summary class="m-fold-summary"><span class="m-fold-title">פירוט 20 המודולים</span><span class="m-fold-sub">ארבע קבוצות — מה כל מודול עושה</span></summary>
       <div class="product-groups">
         <!-- Records -->
         <article class="product-group group-records reveal">
@@ -2019,6 +2000,7 @@
           </div>
         </article>
       </div>
+      </details>
 
       <p class="product-systems">
         ובנוסף, מעבר ל-20: <strong>קונסולת ניהול</strong> לבעלי תפקידים, <strong>הגדרות קהילה</strong>, ו<strong>הגדרות אישיות</strong> לכל תושב — שפה, התראות, נגישות וערכת נושא.
@@ -2046,6 +2028,8 @@
         <p class="section-lead">אחרי אוקטובר 2023, כל קהילה חייבת מערכת שיודעת לאתר כל תושב תוך דקות — ב-15 שפות. KesherOS תוכנן מהיום הראשון עם חירום בליבה.</p>
       </div>
 
+      <details class="m-fold" open>
+        <summary class="m-fold-summary"><span class="m-fold-title">פירוט ניהול החירום</span><span class="m-fold-sub">ציר הזמן והיכולות — מהאזעקה ועד החזרה לשגרה</span></summary>
       <div class="timeline reveal">
         <div class="timeline-step">
           <div class="timeline-icon">
@@ -2090,6 +2074,7 @@
           <p>הוראות פינוי בהינדי, תאית, סינית, סינהלית — כי עובדים זרים חייבים להבין. זה פער בטיחותי</p>
         </div>
       </div>
+      </details>
     </div>
   </section>
 
@@ -2173,6 +2158,8 @@
         <p class="section-lead">כל המתחרים עובדים בעברית בלבד. KesherOS תומך ב-15 שפות — כולל שפות של עובדים זרים שחיים בקהילות הכפריות.</p>
       </div>
 
+      <details class="m-fold" open>
+        <summary class="m-fold-summary"><span class="m-fold-title">15 שפות — הרשימה המלאה</span><span class="m-fold-sub">כל השפות, והדגמה של מעבר ביניהן</span></summary>
       <div class="lang-grid">
         <div class="lang-chip reveal"><span class="lang-native">עברית</span><span class="lang-name">עברית</span></div>
         <div class="lang-chip reveal reveal-delay-1"><span class="lang-native">العربية</span><span class="lang-name">ערבית</span></div>
@@ -2250,6 +2237,7 @@
       </div>
 
       <p class="lang-note">יישוב שמפעיל התראת פינוי חירום <strong>חייב</strong> להגיע גם לעובדים הזרים. זהו פער בטיחותי, לא רק נוחות.</p>
+      </details>
     </div>
   </section>
 
@@ -2286,6 +2274,8 @@
         </div>
       </div>
 
+      <details class="m-fold" open>
+        <summary class="m-fold-summary"><span class="m-fold-title">שיטת הבדיקה והפירוט הטכני</span><span class="m-fold-sub">איך נבדקת המערכת ומהן שכבות הבדיקה</span></summary>
       <details class="quality-method quality-method-fold reveal">
         <summary class="test-layers-summary">
           <svg class="test-layers-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2432,6 +2422,32 @@
           </div>
         </div>
       </details>
+      </details>
+    </div>
+  </section>
+
+  <section class="about-section" id="about" aria-label="מי עומד מאחורי KesherOS">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>מי עומד מאחורי <bdi>KesherOS</bdi></h2>
+      </div>
+      <div class="about-card reveal">
+        <img class="about-photo" src="images/eitan.webp" width="96" height="96" alt="איתן לבן" loading="lazy" decoding="async">
+        <div class="about-body">
+          <h3>איתן לבן</h3>
+          <ul class="about-chips" aria-label="בקצרה">
+            <li>מפתח תוכנה מאז 1994</li>
+            <li>מפתח באמצעות <bdi>AI</bdi> כבר <span data-ai-years>שנתיים</span></li>
+            <li>חבר קיבוץ כיסופים — פונה וחזר</li>
+            <li>חבר הנהלת היישוב — שתי קדנציות</li>
+            <li>יו״ר ועדה</li>
+          </ul>
+          <p>בפיתוח תוכנה מאז 1994, בין היתר בפלאפון, נייס, <bdi>DVTel</bdi>, <bdi>LOGIC</bdi>, <bdi>BForex</bdi> ו-<bdi>DBMotion</bdi>.</p>
+          <p>ובקהילה: חבר הנהלת היישוב בשתי קדנציות, יו״ר ועדה, ופעיל בעבר ובהווה בוועדות נוספות.</p>
+          <p>את <bdi>KesherOS</bdi> אני בונה מתוך הצרכים שפגשתי בעצמי: ישיבות, פרוטוקולים, הודעות שלא מגיעות והחלטות שאי אפשר למצוא.</p>
+          <p>מאז ינואר 2025 אני מפתח באמצעות <bdi>AI</bdi>. <bdi>KesherOS</bdi> נבנית כך, וכל שינוי בה עובר בדיקות אוטומטיות וסריקות איכות קבועות.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2781,7 +2797,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=7f9f590b" defer></script>
+  <script src="script.js?v=a4891cc6" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){

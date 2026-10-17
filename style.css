@@ -995,7 +995,7 @@ img, svg { display: block; max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    10. PRICING
    ═══════════════════════════════════════════════════════════ */
-.pricing { background: var(--bg-alt); padding: 90px 0; }
+.pricing { background: var(--bg); padding: 90px 0; }      /* the about band (alt) now sits right before it */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2767,3 +2767,24 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 }
 
 .dv-end { padding-bottom: 4%; }
+
+/* ─── Mobile folds: a long section keeps ALL its content, but on a phone its detail opens on demand (details.m-fold, opened by script.js on desktop) ─── */
+.m-fold-summary { display: none; }
+@media (max-width: 768px) {
+  .m-fold-summary {
+    display: flex; flex-direction: column; gap: 4px; position: relative;
+    padding: 16px 52px 16px 18px; margin: 4px 0 18px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent;
+  }
+  .m-fold-summary::-webkit-details-marker { display: none; }
+  .m-fold-title { font-weight: 700; font-size: 1.05rem; color: var(--text); }
+  .m-fold-sub { font-size: .9rem; color: var(--text-muted); }
+  .m-fold-summary::after {
+    content: ''; position: absolute; inset-inline-end: 18px; top: 50%; width: 10px; height: 10px; margin-top: -8px;
+    border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(45deg); transition: transform .2s;      /* physical borders: the chevron points DOWN when closed in RTL and LTR */
+  }
+  .m-fold[open] > .m-fold-summary::after { transform: rotate(-135deg); margin-top: -2px; }
+  .m-fold-summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .m-fold-summary::after { transition: none; } }

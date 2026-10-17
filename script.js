@@ -765,3 +765,33 @@
     if (still()) { toggle.textContent = '▶'; root.classList.add('dv-paused'); }
   })();
 })();
+
+/* ─── Mobile folds (details.m-fold): closed on a phone, always open on desktop; a link or a hash that points INTO a section opens its folds ─── */
+(function () {
+  var folds = document.querySelectorAll('details.m-fold');
+  if (!folds.length) return;
+  var mq = window.matchMedia('(max-width: 768px)');
+  function sync() {
+    folds.forEach(function (d) {
+      if (!mq.matches) d.open = true;
+      else if (!d.hasAttribute('data-user')) d.open = false;
+    });
+  }
+  function openIn(id) {
+    var s = id ? document.getElementById(id) : null;
+    if (!s) return;
+    s.querySelectorAll('details.m-fold').forEach(function (d) { d.open = true; d.setAttribute('data-user', '1'); });
+  }
+  folds.forEach(function (d) {
+    var sm = d.querySelector('summary');
+    if (sm) sm.addEventListener('click', function () { d.setAttribute('data-user', '1'); });
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (a && a.getAttribute('href').length > 1) openIn(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', function () { openIn(location.hash.slice(1)); });
+  sync();
+  if (location.hash.length > 1) openIn(location.hash.slice(1));
+  if (mq.addEventListener) mq.addEventListener('change', sync); else if (mq.addListener) mq.addListener(sync);
+})();
