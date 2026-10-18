@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" data-theme="dark">
+<html lang="he" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0E2340" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#080C14" media="(prefers-color-scheme: dark)">
+  <script>
+    /* the visitor's saved theme is applied BEFORE the first paint (the default is light), so a returning visitor who chose dark never sees a light flash */
+    (function () { try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) { /* storage blocked: the default stands */ } })();
+  </script>
   <title>KesherOS — מערכת ההפעלה הקהילתית</title>
   <meta name="description" content="פלטפורמת SaaS לניהול קיבוצים, מושבים ויישובים קהילתיים. 20 מודולים, 15 שפות, AI שמבצע פעולות, ניהול חירום — הכל במקום אחד.">
   <meta name="keywords" content="ניהול קהילה, קיבוץ, מושב, יישוב, הצבעות דיגיטליות, ניהול חירום, KesherOS">
@@ -2775,7 +2779,7 @@
     </div>
     <div class="a11y-option a11y-theme-row">
       <span>מצב תצוגה</span>
-      <button type="button" data-a11y="theme" class="a11y-toggle" aria-pressed="false">כהה</button>
+      <button type="button" data-a11y="theme" class="a11y-toggle" aria-pressed="false">בהיר</button>
     </div>
     <button type="button" data-a11y="reset-all" class="a11y-reset">איפוס הכל</button>
   </div>
@@ -2797,7 +2801,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=a4891cc6" defer></script>
+  <script src="script.js?v=ed728444" defer></script>
   <script>
   // Preloader — fade out once page is ready
   (function(){
