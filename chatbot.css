@@ -34,5 +34,6 @@
 .kc-submit { margin-top: auto; padding: 11px; border: 0; border-radius: 11px; background: var(--kc-gold); color: #1c1403; font: inherit; font-weight: 800; cursor: pointer; }
 .kc-captcha:empty { display: none; }
 .kc-captcha { padding: 0 12px 8px; }
+@media (min-width: 900px) { .kc-root { font-size: 16px; } .kc-panel { width: 460px; height: min(680px, calc(100vh - 80px)); height: min(680px, calc(100dvh - 80px)); } }
 @media (max-width: 480px) { .kc-panel { inset-inline-start: 12px; inset-inline-end: 12px; bottom: 12px; width: auto; } }
 @media (prefers-reduced-motion: no-preference) { .kc-panel { animation: kc-in .18s ease-out; } @keyframes kc-in { from { opacity: 0; transform: translateY(8px); } } }
