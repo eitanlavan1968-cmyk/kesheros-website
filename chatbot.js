@@ -100,7 +100,7 @@
   function loadCaptcha(cfg) {
     if (!cfg.turnstile || !cfg.turnstile_sitekey) return;
     window.__kcTurnstile = function () {
-      window.turnstile.render(captchaBox, { sitekey: cfg.turnstile_sitekey, language: 'he', appearance: 'interaction-only', callback: function (t) { state.token = t; }, 'expired-callback': function () { state.token = ''; } });
+      window.turnstile.render(captchaBox, { sitekey: cfg.turnstile_sitekey, language: 'he', appearance: 'interaction-only', callback: function (t) { state.token = t; captchaBox.hidden = true; }, 'expired-callback': function () { state.token = ''; }, 'before-interactive-callback': function () { captchaBox.hidden = false; }, 'error-callback': function () { captchaBox.hidden = false; } });
     };
     var s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=__kcTurnstile'; s.async = true; document.head.appendChild(s);
   }
@@ -142,7 +142,7 @@
           var tooMany = b.error === 'too_many_turns';
           fill(wait, r.status === 429 ? (tooMany ? T.limit : T.rate) : (r.status === 503 ? T.unavailable : T.error), r.status !== 429 || tooMany);
         }
-        if (window.turnstile && state.token) { try { window.turnstile.reset(); state.token = ''; } catch (e) { /* the next send gets a fresh token */ } }
+        if (window.turnstile && state.token) { try { window.turnstile.reset(); state.token = ''; captchaBox.hidden = true; } catch (e) { /* the next send gets a fresh token */ } }
       })
       .catch(function () { fill(wait, T.error, true); })
       .then(function () { state.busy = false; sendBtn.disabled = false; if (!form.hidden && !state.lead) input.focus(); });
