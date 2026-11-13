@@ -112,7 +112,7 @@
        off first paint but rebuilt the layout three times (0 -> 6,472 -> 7,665 -> 13,025px),
        so scroll restoration and anchor clicks landed in a page that was still growing.
        17KB gzipped is not worth that. -->
-  <link rel="stylesheet" href="style.css?v=eaa0788d">
+  <link rel="stylesheet" href="style.css?v=3c15441e">
   <link rel="stylesheet" href="chatbot.css?v=8b07a267">
 
   <!-- JSON-LD Structured Data -->
@@ -642,6 +642,71 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
+       4c. THE RESIDENT'S HOME
+       ═══════════════════════════════════════════════════════ -->
+  <section class="resident-home" id="resident-home" aria-label="מסך הבית של התושב">
+    <div class="container">
+      <div class="section-header">
+        <h2>הדבר הראשון שתושב פותח בבוקר</h2>
+        <p class="section-lead">מסך הבית מרכז במקום אחד את רוב מה שתושב צריך ביום-יום: מה חדש, מה ממתין לתשובה, ומה אפשר לעשות בלחיצה. ככה התושבים מגיעים אליו מעצמם, במקום שהוועד ירדוף אחריהם.</p>
+      </div>
+      <div class="rh-grid">
+        <div class="rh-visual reveal">
+          <div class="rh-phone" role="img" aria-label="מסך הבית של תושבת: עדכונים אחרונים, שני דברים שממתינים לתשובה, ופעולות מהירות — דיווח על תקלה, הזמנת רכב והזמנת מתקן. נתוני דוגמה.">
+            <div class="rh-phone-bar" aria-hidden="true">קיבוץ הדגמה</div>
+            <div class="rh-phone-body" aria-hidden="true">
+              <div class="rh-hi">בוקר טוב, דנה</div>
+              <div class="rh-block">
+                <b class="rh-block-title">ממתין לך</b>
+                <div class="rh-pend"><span>ערב שבת קהילתי — להשיב</span><i>1</i></div>
+                <div class="rh-pend"><span>סקר: שעות הבריכה</span><i>1</i></div>
+              </div>
+              <div class="rh-tiles">
+                <span class="rh-tile"><i>🔧</i>דיווח על תקלה</span>
+                <span class="rh-tile"><i>🚗</i>הזמנת רכב</span>
+                <span class="rh-tile"><i>📅</i>הזמנת מתקן</span>
+                <span class="rh-tile rh-tile-sos"><i>🚨</i>מצוקה</span>
+              </div>
+              <div class="rh-block">
+                <b class="rh-block-title">עדכונים אחרונים</b>
+                <div class="rh-news">הודעת ועד: עבודות בכביש הראשי</div>
+                <div class="rh-news">הצבעה נפתחה: תקציב הגינה</div>
+              </div>
+            </div>
+          </div>
+          <p class="rh-note">תצוגה מקדימה · נתוני דוגמה. הפעולות שמופיעות תלויות במודולים שהוועד מפעיל ובהרשאות של כל תושב.</p>
+        </div>
+        <div class="rh-points">
+          <div class="rh-point reveal">
+            <span class="rh-point-ico" aria-hidden="true">📱</span>
+            <div><h3>הכול במסך אחד, בטלפון, בשפה של כל תושב</h3>
+            <p>עדכונים, אירועים, סקרים והצבעות במקום אחד. 15 שפות, כולל תאילנדית והינדי, בלי להתקין שום דבר.</p></div>
+          </div>
+          <div class="rh-point reveal reveal-delay-1">
+            <span class="rh-point-ico" aria-hidden="true">📥</span>
+            <div><h3>בקשות שמגיעות מסודרות</h3>
+            <p>דיווח על תקלה, הזמנת מתקן או רכב, אישור הגעה: כל פעולה בלחיצה, והיא מגיעה לגורם הנכון עם כל הפרטים. בלי טלפונים, ובלי הודעה שנקברה בקבוצה.</p></div>
+          </div>
+          <div class="rh-point reveal reveal-delay-1">
+            <span class="rh-point-ico" aria-hidden="true">🔔</span>
+            <div><h3>מה שממתין לתשובה לא נשכח</h3>
+            <p>אישורי הגעה וסקרים שעוד לא נענו מסומנים לתושב עצמו, עם מספר. הוועד לא צריך לרדוף.</p></div>
+          </div>
+          <div class="rh-point reveal reveal-delay-2">
+            <span class="rh-point-ico" aria-hidden="true">🚨</span>
+            <div><h3>חירום במרחק לחיצה, על אותו מסך</h3>
+            <p>כפתור המצוקה שולח מיקום והתראה לצוות שהוגדר, באפליקציה ובאימייל.</p></div>
+          </div>
+          <div class="rh-cta">
+            <a class="btn btn-primary" href="#stories" data-story-go="home">לצפות בתסריט: הבית של התושב</a>
+            <a class="btn btn-outline" href="#contact">נקבע הדגמה חיה</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
        5. INTERACTIVE DEMO
        ═══════════════════════════════════════════════════════ -->
   <section class="demo-section" id="demo" aria-label="הדגמה אינטראקטיבית">
@@ -660,8 +725,11 @@
           <p>בחרו תסריט של 30 שניות מחיי היישוב. כל אחד מראה דבר אחד שהמערכת עושה בשבילכם.</p>
         </div>
         <div class="dv-cards" role="group" aria-label="בחירת תסריט">
+          <div class="dv-cardrow" role="group" aria-label="המסך הראשי"><span class="dv-rowlabel" aria-hidden="true">המסך הראשי</span>
+            <button type="button" class="dv-card" data-story-pick="home" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">🏠</i><b>הבית של התושב</b><span>הכול במסך אחד, בטלפון</span><em>30 שניות</em></button>
+          </div>
           <div class="dv-cardrow" role="group" aria-label="חיי היומיום"><span class="dv-rowlabel" aria-hidden="true">חיי היומיום</span>
-            <button type="button" class="dv-card" data-story-pick="book" aria-pressed="true"><i class="dv-card-ico" aria-hidden="true">📅</i><b>הזמנת מתקן</b><span>מבקשים, מאשרים, והיומן מתעדכן</span><em>30 שניות</em></button>
+            <button type="button" class="dv-card" data-story-pick="book" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">📅</i><b>הזמנת מתקן</b><span>מבקשים, מאשרים, והיומן מתעדכן</span><em>30 שניות</em></button>
             <button type="button" class="dv-card" data-story-pick="fault" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🔧</i><b>דיווח על תקלה</b><span>מצלמים, והקריאה מגיעה למטפל</span><em>30 שניות</em></button>
             <button type="button" class="dv-card" data-story-pick="vehicle" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🚗</i><b>הזמנת רכב</b><span>בקשה, אישור וסריקת QR</span><em>30 שניות</em></button>
             <button type="button" class="dv-card" data-story-pick="event" aria-pressed="false"><i class="dv-card-ico" aria-hidden="true">🎉</i><b>אירוע והזמנות</b><span>מזמינים, ורואים מי מגיע</span><em>30 שניות</em></button>
@@ -674,7 +742,46 @@
           </div>
         </div>
         <div class="dv-stage" role="group" aria-label="">
-          <div class="dv-story" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
+          <div class="dv-story" data-story="home" data-label="תסריט מונפש של מסך הבית של התושב: התושבת פותחת את הבית ורואה מה חדש, רואה מה ממתין לתשובה שלה, בוחרת פעולה מהמסך הראשי, והוועד רואה מה קורה ביישוב">
+          <div class="dv-scene" data-scene="0">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>עדכונים אחרונים</strong><span>הודעת ועד: עבודות בכביש הראשי</span><span>הצבעה נפתחה: תקציב הגינה</span><span>אירוע: ערב שבת קהילתי</span></div>
+            </div></div>
+          </div>
+          <div class="dv-scene" data-scene="1">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-q"><strong>ממתין לך (2)</strong><span>ערב שבת קהילתי — להשיב</span><span>סקר: שעות הבריכה</span></div>
+              <div class="dv-ans dv-ans-ok">מגיעים</div>
+            </div></div>
+          </div>
+          <div class="dv-scene" data-scene="2">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-tiles" aria-hidden="true">
+                <span class="dv-tile"><i>🔧</i>דיווח על תקלה</span>
+                <span class="dv-tile"><i>🚗</i>הזמנת רכב</span>
+                <span class="dv-tile"><i>📅</i>הזמנת מתקן</span>
+                <span class="dv-tile"><i>🎉</i>אישור הגעה</span>
+              </div>
+            </div></div>
+          </div>
+          <div class="dv-scene" data-scene="3">
+            <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>מה קורה היום ביישוב</span></div>
+              <div class="dv-day-nums"><div><b>3</b>קריאות שירות חדשות</div><div><b>64</b>אישרו הגעה לערב שבת</div><div><b>12</b>הזמנות מתקנים</div></div>
+              <div class="dv-fx-rows"><div class="dv-fx-row"><span>פנס כבוי · בית 23</span><em class="rem">קריאה חדשה</em></div><div class="dv-fx-row"><span>מגרש טניס · 17:00</span><em class="ok">אושר</em></div></div></div>
+          </div>
+          <div class="dv-scene" data-scene="4">
+            <div class="dv-phone"><div class="dv-phone-bar">קיבוץ הדגמה</div><div class="dv-phone-body dv-center">
+              <div class="dv-sos" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l10 18H2z"/><path d="M12 9v5M12 17h.01"/></svg></div>
+              <strong>מצוקה</strong><span>לחיצה אחת: מיקום והתראה לצוות</span>
+            </div></div>
+          </div>
+          <div class="dv-scene dv-end" data-scene="5">
+            <div class="dv-endcard"><span class="dv-logo">Kesher<i>OS</i></span>
+              <strong>הכול במקום אחד, בטלפון של כל תושב</strong>
+              <a class="btn btn-primary" href="#contact">צרו קשר</a></div>
+          </div>
+        </div>
+        <div class="dv-story" data-story="fan" data-label="תסריט מונפש של מניפה: המנהל פותח בדיקת מצב, התושבים עונים, והתשובות מגיעות ללוח הבקרה בזמן אמת">
           <div class="dv-scene" data-scene="0">
             <div class="dv-desk dv-desk-w"><div class="dv-desk-top"><span>KesherOS</span><span>מניפה</span></div>
               <div class="dv-fx-body"><div class="dv-fx-title">מניפות פעילות</div><div class="dv-fx-empty">אין מניפה פתוחה כרגע</div>
@@ -992,7 +1099,8 @@
         </div>
         <p class="dv-sig">תסריט להמחשה: המסכים מעוצבים בהשראת המערכת וקרובים מאוד למציאות, אך אינם צילום חי שלה. כל השמות והנתונים בדויים.</p>
         <div class="dv-cta"><span>רוצים לראות את המערכת עצמה?</span> <a class="btn btn-primary" href="#contact">נקבע הדגמה חיה</a></div>
-        <p class="sr-only" data-story-desc="book">תיאור טקסטואלי: תושבת בוחרת מגרש טניס ושעה פנויה ושולחת בקשה בלחיצה אחת. המנהל רואה את הבקשה ומאשר אותה. היומן מתעדכן מיד. התושבת מקבלת אישור ותזכורת לפני המועד.</p>
+        <p class="sr-only" data-story-desc="home">תיאור טקסטואלי: תושבת פותחת את מסך הבית ורואה את העדכונים האחרונים של היישוב: הודעת ועד, הצבעה שנפתחה ואירוע. אחר כך היא רואה שני דברים שממתינים לתשובה שלה, ערב שבת קהילתי וסקר, ועונה בלחיצה. מהמסך הראשי היא בוחרת פעולה: דיווח על תקלה, הזמנת רכב, הזמנת מתקן או אישור הגעה. הוועד רואה במקום אחד מה קורה ביישוב היום: קריאות שירות חדשות, אישורי הגעה והזמנות. ובמקרה חירום יש כפתור מצוקה על אותו מסך.</p>
+        <p class="sr-only" data-story-desc="book" hidden>תיאור טקסטואלי: תושבת בוחרת מגרש טניס ושעה פנויה ושולחת בקשה בלחיצה אחת. המנהל רואה את הבקשה ומאשר אותה. היומן מתעדכן מיד. התושבת מקבלת אישור ותזכורת לפני המועד.</p>
         <p class="sr-only" data-story-desc="vehicle" hidden>תיאור טקסטואלי: תושבת מבקשת רכב משותף לשעות מסוימות. המנהל מאשר והרכב נשמר. בתחילת הנסיעה היא סורקת קוד שעל הרכב והנסיעה נרשמת. כל הנסיעות מופיעות ביומן אחד: מי נסע, מתי ולכמה זמן.</p>
         <p class="sr-only" data-story-desc="event" hidden>תיאור טקסטואלי: המנהל פותח אירוע, ערב שבת קהילתי, ומזמין את היישוב. כל תושב מקבל הזמנה ועונה בלחיצה אחת, מגיעים או לא מגיעים. בלוח הבקרה רואים בזמן אמת כמה מגיעים וכמה עדיין לא ענו, ויש רשימת משתתפים. לפני האירוע נשלחת תזכורת אוטומטית.</p>
         <p class="sr-only" data-story-desc="fault" hidden>תיאור טקסטואלי: תושב מדווח על פנס רחוב כבוי, עם תמונה. הקריאה מגיעה מיד לטיפול ומופיעה ברשימת קריאות השירות. המטפל לוקח אותה, והתושב מקבל עדכון במייל. כשהקריאה נסגרת היא נשמרת בהיסטוריה.</p>
@@ -2802,7 +2910,7 @@
     <a href="https://wa.me/972528296824" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 
-  <script src="script.js?v=ed728444" defer></script>
+  <script src="script.js?v=8459f0ea" defer></script>
   <script src="chatbot.js?v=d8a8a527" data-api="https://web-production-fcd4c.up.railway.app" defer></script>
   <script>
   // Preloader — fade out once page is ready

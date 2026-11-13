@@ -520,7 +520,7 @@
     var cards = root.querySelectorAll('[data-story-pick]');
     var storyEls = root.querySelectorAll('.dv-story');
     var descs = root.querySelectorAll('[data-story-desc]');
-    var ORDER = ['book', 'fault', 'vehicle', 'event', 'vote', 'fan', 'distress', 'evac'];
+    var ORDER = ['home', 'book', 'fault', 'vehicle', 'event', 'vote', 'fan', 'distress', 'evac'];
 
     function lerp(pts, t, k) {
       if (t <= pts[0][0]) return pts[0][k];
@@ -544,6 +544,18 @@
     var EVT_PTS = [[11, 0, 0], [18, 64, 9], [25, 64, 9], [28.5, 82, 12]];      // [seconds, coming, not coming]: 120 invited
 
     var DEFS = {
+      home: {
+        total: 32,
+        steps: [
+          { at: 0, text: 'התושבת פותחת את הבית: מה חדש ביישוב, במסך אחד.' },
+          { at: 5, text: 'מה שממתין לתשובה מסומן, והתשובה בלחיצה.' },
+          { at: 11, text: 'פעולות היומיום מהמסך הראשי: תקלה, רכב, מתקן.' },
+          { at: 17, text: 'הוועד רואה במקום אחד מה קורה ביישוב.' },
+          { at: 23, text: 'ובחירום, כפתור המצוקה על אותו מסך.' },
+          { at: 28, text: 'הכול במקום אחד, בטלפון של כל תושב.' }
+        ],
+        frame: function () {}
+      },
       vehicle: {
         total: 32,
         steps: [
@@ -682,7 +694,7 @@
     };
 
     var still = function () { return window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('a11y-stop-motion'); };
-    var story = 'book', def = DEFS.book, scenes = [], dots = [];
+    var story = 'home', def = DEFS.home, scenes = [], dots = [];
     var t = 0, cur = -1, playing = false, visible = false, timer = null, userStarted = false;      // userStarted: the viewer pressed play themselves, which is allowed even with reduced motion
 
     function cardTitle(id) { return root.querySelector('[data-story-pick="' + id + '"] b').textContent; }
@@ -761,7 +773,7 @@
     }, { threshold: 0.5 }).observe(root);
 
     root.classList.toggle('dv-still', still());
-    select('book');
+    select('home');
     if (still()) { toggle.textContent = '▶'; root.classList.add('dv-paused'); }
   })();
 })();
@@ -794,4 +806,14 @@
   sync();
   if (location.hash.length > 1) openIn(location.hash.slice(1));
   if (mq.addEventListener) mq.addEventListener('change', sync); else if (mq.addListener) mq.addListener(sync);
+})();
+
+/* ─── The resident-home section's button opens the matching demo story (the link itself scrolls to the demo) ─── */
+(function () {
+  document.querySelectorAll('[data-story-go]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var card = document.querySelector('[data-story-pick="' + a.getAttribute('data-story-go') + '"]');
+      if (card) card.click();
+    });
+  });
 })();
