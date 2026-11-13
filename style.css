@@ -2968,3 +2968,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .loop-grid .ring-arc { animation: none !important; stroke-dashoffset: 0; }
   .mig-flow li.reveal, .mig-trust.reveal, .mig-cta.reveal { transition: none; }
 }
+
+/* ─── The thread: gold line at the LEFT page edge (the right edge holds the site's section dots), filled by scroll, a knot at each section (script.js; wide screens only) ─── */
+.page-thread { position: absolute; top: 0; left: 22px; width: 3px; border-radius: 3px; background: rgba(128,128,128,.22); z-index: 50; pointer-events: none; }
+.page-thread::after { content: ''; position: absolute; top: 0; inset-inline: 0; height: calc(var(--p, 0) * 100%); background: linear-gradient(to bottom, #E8B659, var(--gold)); box-shadow: 0 0 14px rgba(242,166,90,.8); }
+.page-knot { position: absolute; left: -8px; width: 19px; height: 19px; border-radius: 50%; background: var(--bg); border: 3px solid var(--gold); box-shadow: 0 0 0 6px rgba(196,146,42,.18); }
+@media (max-width: 1279px) { .page-thread { display: none; } }
+@media print { .page-thread { display: none; } }

@@ -817,3 +817,34 @@
     });
   });
 })();
+
+/* ─── The thread ("קשר"): a gold line at the page edge that fills as you scroll and ties a small knot at the top of each section (wide screens only) ─── */
+(function () {
+  var wide = window.matchMedia('(min-width: 1280px)');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var thread = null;
+  function build() {
+    if (thread || !wide.matches) return;
+    thread = document.createElement('div');
+    thread.className = 'page-thread';
+    thread.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(thread);
+    [].slice.call(document.querySelectorAll('main > section')).forEach(function (sec) {
+      var k = document.createElement('i');
+      k.className = 'page-knot';
+      k.style.top = (sec.getBoundingClientRect().top + window.scrollY + 36) + 'px';
+      thread.appendChild(k);
+    });
+    update();
+  }
+  function update() {
+    if (!thread) return;
+    var h = document.documentElement.scrollHeight;
+    thread.style.height = h + 'px';
+    thread.style.setProperty('--p', Math.min(1, (window.scrollY + window.innerHeight * 0.6) / h));
+  }
+  window.addEventListener('scroll', function () { if (!reduce.matches) update(); }, { passive: true });
+  window.addEventListener('resize', function () { if (thread) { thread.remove(); thread = null; } build(); });
+  window.addEventListener('load', function () { if (thread) { thread.remove(); thread = null; } build(); });
+  build();
+})();
