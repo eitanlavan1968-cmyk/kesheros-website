@@ -2912,3 +2912,59 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
   .hero-threads .t-flow, .hero-threads .t-knot { animation: none; }
   .hero-threads .t-flow { stroke-dasharray: none; opacity: .22; }
 }
+
+/* ═══ Loops ("a real connection is when the information comes back to you") ═══ */
+.loops { background: var(--bg); padding: 90px 0; }
+.loops h2 em, .migration h2 em { font-style: normal; color: var(--gold); }
+:root[data-theme="light"] .loops h2 em { color: #9A6A0E; }
+.loop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.loop { padding: 26px 22px; border-radius: 24px; background: var(--card-bg); border: 1px solid var(--border); box-shadow: var(--card-shadow); text-align: center; }
+.loop h3 { font-size: 1.2rem; font-weight: 800; margin: 0; }
+.loop p { margin: 6px 0 0; color: var(--text-muted); font-size: .95rem; line-height: 1.6; }
+.ring { width: 200px; height: 200px; margin: 0 auto 14px; display: block; overflow: visible; }
+.ring-track { fill: none; stroke: var(--border); stroke-width: 3; }
+.ring-arc { fill: none; stroke: url(#ringGold); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; }
+.loop.is-alert .ring-arc { stroke: url(#ringAlert); }
+.ring-dot { fill: var(--card-bg); stroke: var(--gold); stroke-width: 3; }
+.ring text { font: 700 11px var(--font-body); fill: var(--text); }
+/* the rings close one after the other, but only once the grid has scrolled into view (the site's own reveal adds .visible) */
+.loop-grid.visible .ring-arc { animation: ring-close 5.5s cubic-bezier(.45,.05,.35,1) .5s forwards; }
+.loop-grid.visible .loop:nth-child(2) .ring-arc { animation-delay: 1.3s; }
+.loop-grid.visible .loop:nth-child(3) .ring-arc { animation-delay: 2.1s; }
+@keyframes ring-close { to { stroke-dashoffset: 0; } }
+
+/* ═══ Migration ═══ */
+.migration { background: var(--bg-dark); color: var(--text-on-dark); padding: 90px 0; }
+.migration h2 { color: #FFF; }
+.migration .section-lead { color: var(--text-on-dark-muted); }
+.mig-flow { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: mig; }
+.mig-flow li { position: relative; padding: 26px 22px 24px; border-radius: 22px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); counter-increment: mig; }
+.mig-flow li::before {
+  content: counter(mig); display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, #E8B659, var(--gold)); color: #1B1203; font-weight: 900; font-size: 1.15rem; margin-bottom: 16px;
+}
+.mig-flow li:not(:last-child)::after { content: ''; position: absolute; top: 47px; inset-inline-end: -18px; width: 18px; height: 2px; background: linear-gradient(to left, #E8B659, transparent); }
+.mig-flow h3 { font-size: 1.15rem; font-weight: 800; color: #FFF; margin: 0 0 6px; }
+.mig-flow p { font-size: .95rem; color: var(--text-on-dark-muted); margin: 0; line-height: 1.6; }
+.mig-flow li.reveal { transition: opacity 1.5s ease, transform 1.5s cubic-bezier(.2,.7,.2,1); }
+.mig-flow li:nth-child(1) { transition-delay: .2s; } .mig-flow li:nth-child(2) { transition-delay: 1s; }
+.mig-flow li:nth-child(3) { transition-delay: 1.8s; } .mig-flow li:nth-child(4) { transition-delay: 2.6s; }
+.mig-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+.mig-trust span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); font-weight: 600; font-size: .95rem; }
+.mig-trust svg { color: #48C79C; }
+.mig-cta { text-align: center; margin-top: 36px; }
+.mig-trust.reveal, .mig-cta.reveal { transition: opacity 1.4s ease 3.4s, transform 1.4s ease 3.4s; }
+
+@media (max-width: 900px) {
+  .loops, .migration { padding: 56px 0; }
+  .loop-grid { grid-template-columns: 1fr; }
+  .mig-flow { grid-template-columns: 1fr; gap: 14px; }
+  .mig-flow li:not(:last-child)::after { display: none; }
+  .mig-flow li { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; padding: 18px; }
+  .mig-flow li::before { margin: 0; grid-row: span 2; }
+  .mig-cta .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loop-grid .ring-arc { animation: none !important; stroke-dashoffset: 0; }
+  .mig-flow li.reveal, .mig-trust.reveal, .mig-cta.reveal { transition: none; }
+}
